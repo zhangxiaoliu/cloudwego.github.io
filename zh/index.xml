@@ -1,4 +1,137 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>/zh/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Kitex v0.3.2 版本发布</title><link>/zh/blog/2022/06/02/kitex-v0.3.2-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Thu, 02 Jun 2022 00:00:00 +0000</pubDate><guid>/zh/blog/2022/06/02/kitex-v0.3.2-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>/zh/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 字节跳动开源 Go HTTP 框架 Hertz 设计实践</title><link>/zh/blog/2022/06/21/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E5%BC%80%E6%BA%90-go-http-%E6%A1%86%E6%9E%B6-hertz-%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/</link><pubDate>Tue, 21 Jun 2022 00:00:00 +0000</pubDate><guid>/zh/blog/2022/06/21/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E5%BC%80%E6%BA%90-go-http-%E6%A1%86%E6%9E%B6-hertz-%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/</guid><description>
+&lt;h2 id="01-前言">01 前言&lt;/h2>
+&lt;p>Hertz 是字节跳动服务框架团队研发的超大规模的企业级微服务 HTTP 框架，具有高易用性、易扩展、低时延等特点。在经过了字节跳动内部一年多的使用和迭代后，如今已在 CloudWeGo 正式开源。目前，Hertz 已经成为了字节跳动内部最大的 HTTP 框架，线上接入的服务数量超过 1 万，峰值 QPS 超过 4 千万。除了各个业务线的同学使用外，也服务于内部很多基础组件，如：函数计算平台 FaaS、压测平台、各类网关、Service Mesh 控制面等，均收到不错的使用反馈。在如此大规模的场景下，Hertz 拥有极强的稳定性和性能，在内部实践中某些典型服务，如框架占比较高的服务、网关等服务，迁移 Hertz 后相比 Gin 框架，资源使用显著减少，CPU 使用率随流量大小降低 30%—60%，时延也有明显降低。&lt;/p>
+&lt;p>Hertz 坚持 &lt;strong>内外维护一套代码&lt;/strong> ，为开源使用提供了强有力的保障。通过开源， Hertz 也将丰富云原生的 Golang 中间件体系，完善 CloudWeGo 生态矩阵，为更多开发者和企业搭建云原生化的大规模分布式系统，提供一种现代的、资源高效的的技术方案。&lt;/p>
+&lt;p>本文将重点关注 Hertz 的&lt;strong>架构设计&lt;/strong>与 &lt;strong>功能特性&lt;/strong> 。&lt;/p>
+&lt;h2 id="02-项目缘起">02 项目缘起&lt;/h2>
+&lt;p>最初，字节跳动内部的 HTTP 框架是对 Gin 框架的封装，具备不错的易用性、生态完善等优点。随着内部业务的不断发展，高性能、多场景的需求日渐强烈。而 Gin 是对 Golang 原生 net/http 进行的二次开发，在按需扩展和性能优化上受到很大局限。因此，为了满足业务需求，更好的服务各大业务线，2020 年初，字节跳动服务框架团队经过内部使用场景和外部主流开源 HTTP 框架 Fasthttp、Gin、Echo 的调研后，开始基于自研网络库 Netpoll 开发内部框架 Hertz，让 Hertz 在面对企业级需求时，有更好的性能及稳定性表现，也能够满足业务发展和应对不断演进的技术需求。&lt;/p>
+&lt;h2 id="03-架构设计">03 架构设计&lt;/h2>
+&lt;p>Hertz 设计之初调研了大量业界优秀的 HTTP 框架，同时参考了近年来内部实践中积累的经验。为了保证框架整体上满足：1. 极致性能优化的可能性；2. 面对未来不可控需求的扩展能力， Hertz 采用了 4 层分层设计，保证各个层级功能内聚，同时通过层级之间的接口达到灵活扩展的目标。整体架构图如图 1 所示。&lt;/p>
+&lt;p>&lt;img src="/img/blog/Go_HTTP_Hertz/Hertz_Architectural.png" alt="image">&lt;/p>
+&lt;p align="center">
+图1 Hertz 架构图
+&lt;/p>
+&lt;p>Hertz 从上到下分为：应用层、路由层、协议层和传输层，每一层各司其职，同时公共能力被统一抽象到公共层（Common），做到跨层级复用。另外，同主库一同发布的还有作为子模块的 Hz 脚手架，它能够协助使用者快速搭建出项目核心骨架以及提供实用的构建工具链。&lt;/p>
+&lt;h3 id="应用层">应用层&lt;/h3>
+&lt;p>应用层是和用户直接交互的一层，提供丰富易用的 API，主要包括 Server、Client 和一些其他通用抽象。Server 提供了注册 HandlerFunc、Binding、Rendering 等能力；Client 提供了调用下游和服务发现等能力；以及抽象一个 HTTP 请求所必须涉及到的请求（Request）、响应（Response）、上下文（RequestContext）、中间件（Middleware）等等。Hertz 的 Server 和 Client 都能够提供中间件这样的扩展能力。&lt;/p>
+&lt;p>应用层中一个非常重要的抽象就是对 Server HandlerFunc 的抽象。早期，Hertz 路由的处理函数 （HandlerFunc）中并没有接收标准的 context.Context，我们在大量的实践过程中发现，业务方通常需要一个标准的上下文在 RPC Client 或者日志、Tracing 等组件间传递，但由于请求上下文（RequestContext）生命周期局限于一次 HTTP 请求之内，而以上提到的场景往往存在异步的传递和处理，导致如果直接传递请求上下文，会导致出现一些数据不一致的问题。为此我们做了诸多尝试，但是因为核心原因在于请求上下文（RequestContext）的生命周期无法优雅的按需延长，最终在各种设计权衡下，我们在路由的处理函数签名中增加一个标准的上下文入参，通过分离出生命周期长短各异的两个上下文的方式，从根本上解决各种因为上下文生命周期不一致导致的异常问题，即：&lt;/p>
+&lt;p>&lt;img src="/img/blog/Go_HTTP_Hertz/RequestContext.png" alt="image">&lt;/p>
+&lt;h3 id="路由层">路由层&lt;/h3>
+&lt;p>路由层负责根据 URI 匹配对应的处理函数。&lt;/p>
+&lt;p>起初，Hertz 的路由基于 httprouter 开发，但随着使用的用户越来越多，httprouter 渐渐不能够满足需求，主要体现在 httprouter 不能够同时注册静态路由和参数路由，即 &lt;code>/a/b&lt;/code>， &lt;code>/:c/d&lt;/code> 这两个路由不能够同时注册；甚至有一些更特殊的需求，如 &lt;code>/a/b&lt;/code>、&lt;code>/:c/b&lt;/code> ，当匹配 &lt;code>/a/b&lt;/code> 路由时，两个路由都能够匹配上。&lt;/p>
+&lt;p>Hertz 为满足这些需求重新构造了路由树，用户在注册路由时拥有很高的自由度：支持静态路由、参数路由的注册；支持按优先级匹配，如上述例子会优先匹配静态路由 &lt;code>/a/b&lt;/code>；支持路由回溯，如注册 &lt;code>/a/b&lt;/code>、&lt;code>/:c/d&lt;/code>，当匹配 &lt;code>/a/d&lt;/code> 时仍然能够匹配上；支持尾斜线重定向，如注册 &lt;code>/a/b&lt;/code>，当匹配 &lt;code>/a/b/&lt;/code> 时能够重定向到 &lt;code>/a/b&lt;/code> 上。Hertz 提供了丰富的路由能力来满足用户的需求，更多的功能可以参考 Hertz 配置文档。&lt;/p>
+&lt;p>&lt;strong>Httprouter&lt;/strong>：https://github.com/julienschmidt/httprouter&lt;/p>
+&lt;p>&lt;strong>Hertz 配置文档：&lt;/strong> &lt;a href="https://www.cloudwego.io/zh/docs/hertz/reference/config/">https://www.cloudwego.io/zh/docs/hertz/reference/config/&lt;/a>&lt;/p>
+&lt;h3 id="协议层">协议层&lt;/h3>
+&lt;p>协议层负责不同协议的实现和扩展。&lt;/p>
+&lt;p>Hertz 支持协议的扩展，用户只需要实现下面的接口便可以按照自己的需求在引擎（Engine） 上扩展协议，同时也支持通过 ALPN 协议协商的方式注册。Hertz 首批只开源了 HTTP1 实现，未来会陆续开源 HTTP2、QUIC 等实现。协议层扩展提供的灵活性甚至可以超越 HTTP 协议的范畴，用户完全可以按需注册任意符合自身需求的协议层实现，并且加入到 Hertz 的引擎中来，同时，也能够无缝享受到传输层带来的极致性能。&lt;/p>
+&lt;p>&lt;strong>协议扩展&lt;/strong>：
+&lt;a href="https://www.cloudwego.io/zh/docs/hertz/tutorials/framework-exten/advanced-exten/protocol/">https://www.cloudwego.io/zh/docs/hertz/tutorials/framework-exten/advanced-exten/protocol/&lt;/a>&lt;/p>
+&lt;p>&lt;img src="/img/blog/Go_HTTP_Hertz/Server.png" alt="image">&lt;/p>
+&lt;h3 id="传输层">传输层&lt;/h3>
+&lt;p>传输层负责底层的网络库的抽象和实现。&lt;/p>
+&lt;p>Hertz 支持底层网络库的扩展。Hertz 原生完美适配 Netpoll，在时延方面有很多深度的优化，非常适合时延敏感的业务接入。Netpoll 对 TLS 能力的支持有待完善，而 TLS 能力又是 HTTP 框架必备能力，为此 Hertz 底层同时支持基于 Golang 标准网络库的实现适配，同时支持网络库的一键切换，用户可根据自己的需求选择合适的网络库进行替换。如果用户有更加高效的网络库或其他网络库需求，也完全可以根据需求自行扩展。&lt;/p>
+&lt;p>&lt;strong>网络库的扩展&lt;/strong>：
+&lt;a href="https://www.cloudwego.io/zh/docs/hertz/tutorials/framework-exten/advanced-exten/network-lib/">https://www.cloudwego.io/zh/docs/hertz/tutorials/framework-exten/advanced-exten/network-lib/&lt;/a>&lt;/p>
+&lt;h3 id="hz-脚手架">Hz 脚手架&lt;/h3>
+&lt;p>与 Hertz 一并开源的还有一个易用的命令行工具 Hz，用户只需提供一个 IDL，根据定义好的接口信息，Hz 便可以一键生成项目脚手架，让 Hertz 达到开箱即用的状态；Hz 也支持基于 IDL 的更新能力，能够基于 IDL 变动智能地更新项目代码。目前 Hz 支持了 Thrift 和 Protobuf 两种 IDL 定义。命令行工具内置丰富的选项，可以根据自己的需求使用。同时它底层依赖 Protobuf 官方的编译器和自研的 Thriftgo 的编译器，两者都支持自定义的生成代码插件。如果默认模板不能够满足需求，完全能够按需定义。&lt;/p>
+&lt;p>未来，我们将继续迭代 Hz，持续集成各种常用的中间件，提供更高层面的模块化构建能力。给 Hertz 的用户提供按需调整的能力，通过灵活的自定义配置打造一套满足自身开发需求的脚手架。&lt;/p>
+&lt;h3 id="common-组件">Common 组件&lt;/h3>
+&lt;p>Common 组件主要存放一些公共的能力，比如错误处理、单元测试能力、可观测性相关能力（Log、Trace、Metrics 等）。对于服务可观测性的能力，Hertz 提供了默认的实现，用户可以按需装配；如果用户有特殊的需求，也可以通过 Hertz 提供的接口注入。比如对于 Trace 能力，Hertz 提供了默认的实现，也提供了将 Hertz 和 Kitex 串起来的 Example。如果想注入自己的实现，也可以实现下面的接口：&lt;/p>
+&lt;p>&lt;img src="/img/blog/Go_HTTP_Hertz/Common.png" alt="image">&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>：
+&lt;a href="https://github.com/cloudwego/hertz-examples/blob/main/tracer/README.md">https://github.com/cloudwego/hertz-examples/blob/main/tracer/README.md&lt;/a>&lt;/p>
+&lt;h2 id="04-功能特性">04 功能特性&lt;/h2>
+&lt;h3 id="中间件">中间件&lt;/h3>
+&lt;p>Hertz 除了提供 Server 的中间件能力，还提供了 Client 中间件能力。用户可以使用中间件能力将通用逻辑（如：日志记录、性能统计、异常处理、鉴权逻辑等等）和业务逻辑区分开，让用户更加专注于业务代码。Server 和 Client 中间件使用方式相同，使用 Use 方法注册中间件，中间件执行顺序和注册顺序相同，同时支持预处理和后处理逻辑。&lt;/p>
+&lt;p>Server 和 Client 的中间件实现方式并不相同。对于 Server 来说，我们希望减少栈的深度，同时也希望中间件能够默认的执行下一个，用户需要手动终止中间件的执行。因此，我们将 Server 的中间件分成了两种类型，即不在同一个函数调用栈（该中间件调用完后返回，由上一个中间件调用下一个中间件，如图 2 中 B 和 C）和在同一个函数调用栈的中间件（该中间件调用完后由该中间件继续调用下一个中间件，如图 2 中 C 和 Business Handler）。&lt;/p>
+&lt;p>&lt;img src="/img/blog/Go_HTTP_Hertz/Middleware.png" alt="image">&lt;/p>
+&lt;p align="center">
+图2 中间件链路
+&lt;/p>
+&lt;p>其核心是需要一个地方存下当前的调用位置 index，并始终保持其递增。恰好 RequestContext 就是一个存储 index 合适的位置。但是对于 Client，由于没有合适的地方存储 index，我们只能退而求其次，抛弃 index 的实现，将所有的中间件构造在同一调用链上，需要用户手动调用下一个中间件。&lt;/p>
+&lt;h3 id="流式处理">流式处理&lt;/h3>
+&lt;p>Hertz 提供 Server 和 Client 的流式处理能力。HTTP 的文件场景是十分常见的场景，除了 Server 侧的上传场景之外，Client 的下载场景也十分常见。为此，Hertz 支持了 Server 和 Client 的流式处理。在内部网关场景中，从 Gin 迁移到 Hertz 后，CPU 使用量随流量大小不同可节省 30%—60% 不等，服务压力越大，收益越大。Hertz 开启流式功能的方式也很容易，只需要在 Server 上或 Client 上添加一个配置即可，可参考 CloudWeGo 官网 Hertz 文档的流式处理部分。&lt;/p>
+&lt;p>由于 Netpoll 采用 LT 的触发模式，由网络库主动将将数据从 TCP 缓冲区读到用户态，并存储到 buffer 中，否则 epoll 事件会持续触发。因此 Server 在超大请求的场景下，由于 Netpoll 持续将数据读到用户态内存中，可能会有 OOM 的风险。HTTP 文件上传场景就是一个典型的场景，但 HTTP 上传服务又是很常见的场景，因此我们支持标准网络库 go net，并针对 Hertz 做了特殊优化，暴露出 Read() 接口，防止 OOM 发生。&lt;/p>
+&lt;p>对于 Client，情况并不相同。流式场景下会将连接封装成 Reader 暴露给用户，而Client 有连接池管理，那这样连接就多了一种状态，何时关连接，何时复用连接成了一个问题。由于框架侧并不知道该连接何时会用完，框架侧复用该连接不现实，会导致串包问题。由于 GC 会关闭连接，因此我们起初设想流式场景下的连接交由用户后，由 GC 负责关闭，这样也不会导致资源泄漏。但是在测试后发现，由于 GC 存在一定时间间隔，另外 TCP 中主动关闭连接的一方需要等待 2RTT，在高并发场景下会导致 fd 被打满的情况。最终我们提供了复用连接的接口，对于性能有场要求用户，在使用完连接后可以将连接重新放入连接池中复用。&lt;/p>
+&lt;p>&lt;strong>流式处理&lt;/strong>：https://www.cloudwego.io/zh/docs/hertz/tutorials/basic-feature/stream/&lt;/p>
+&lt;h2 id="05-性能表现">05 性能表现&lt;/h2>
+&lt;p>Hertz 使用字节跳动自研高性能网络库 Netpoll，在提高网络库效率方面有诸多实践，参考已发布文章 &lt;strong>字节跳动在 Go 网络库上的实践&lt;/strong> 。除此之外，Netpoll 还针对 HTTP 场景进行优化，通过减少拷贝和系统调用次数提高吞吐以及降低时延。为了衡量 Hertz 性能指标，我们选取了社区中有代表性的框架 Gin（net/http）和 Fasthttp 作为对比，如图3所示。可以看到，Hertz 的极限吞吐、TP99 等指标均处于业界领先水平。未来，Hertz 还将继续和 Netpoll 深度配合，探索 HTTP 框架性能的极限。&lt;/p>
+&lt;p>&lt;img src="/img/blog/Go_HTTP_Hertz/Fasthttp.png" alt="image">&lt;/p>
+&lt;p align="center">
+图3 Hertz 和其他框架性能对比
+&lt;/p>
+&lt;h2 id="06-一个demo">06 一个Demo&lt;/h2>
+&lt;p>下面简单演示一下 Hertz 是如何开发一个服务的。&lt;/p>
+&lt;ol>
+&lt;li>首先，定义 IDL，这里使用 Thrift 作为 IDL 的定义（也支持使用 Protobuf 定义的 IDL），编写一个名为 Demo 的 service。这个服务有一个 API: Hello，它的请求参数是一个 query，响应是一个包含一个 RespBody 字段的 Json。&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="/img/blog/Go_HTTP_Hertz/Hello.png" alt="image">&lt;/p>
+&lt;ol start="2">
+&lt;li>接下来我们使用 Hz 生成代码，并整理和拉取依赖。&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="/img/blog/Go_HTTP_Hertz/Hz.png" alt="image">&lt;/p>
+&lt;ol start="3">
+&lt;li>填充业务逻辑，比如我们返回 &lt;code>hello，${Name}&lt;/code>，那我们在 &lt;code>biz/handler/example/hello_service.go&lt;/code> 中添加以下代码即可。&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="/img/blog/Go_HTTP_Hertz/Hello_service.png" alt="image">&lt;/p>
+&lt;ol start="4">
+&lt;li>编译并运行项目。&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="/img/blog/Go_HTTP_Hertz/Build.png" alt="image">&lt;/p>
+&lt;p>到现在一个简单的 Hertz 项目已经生成，下面我们来测试一下。&lt;/p>
+&lt;p>&lt;img src="/img/blog/Go_HTTP_Hertz/Hertz-Examples.png" alt="image">&lt;/p>
+&lt;p>以上 Demo 可以在 Hertz-Examples 中查看，之后就可以愉快地构建自己的项目了。&lt;/p>
+&lt;h2 id="07-后记">07 后记&lt;/h2>
+&lt;p>希望以上的分享能够让大家对 Hertz 有一个整体上的认识。同时，我们也在不断地迭代 Hertz、完善CloudWeGo 整体生态。欢迎各位感兴趣的同学们加入我们，共同建设 CloudWeGo。&lt;/p>
+&lt;h2 id="08-参考资料">08 参考资料&lt;/h2>
+&lt;p>&lt;strong>Hertz&lt;/strong>：https://github.com/cloudwego/hertz&lt;/p>
+&lt;p>&lt;strong>Hertz Doc&lt;/strong>：https://www.cloudwego.io/zh/docs/hertz/&lt;/p>
+&lt;p>官网文章：&lt;a href="https://www.cloudwego.io/zh/blog/2021/10/09/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E5%9C%A8-go-%E7%BD%91%E7%BB%9C%E5%BA%93%E4%B8%8A%E7%9A%84%E5%AE%9E%E8%B7%B5/">&lt;strong>字节跳动在 Go 网络库上的实践&lt;/strong> &lt;/a>&lt;/p></description></item><item><title>Blog: 超大规模的企业级微服务 HTTP 框架 — Hertz 正式开源！</title><link>/zh/blog/2022/06/21/%E8%B6%85%E5%A4%A7%E8%A7%84%E6%A8%A1%E7%9A%84%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1-http-%E6%A1%86%E6%9E%B6-hertz-%E6%AD%A3%E5%BC%8F%E5%BC%80%E6%BA%90/</link><pubDate>Tue, 21 Jun 2022 00:00:00 +0000</pubDate><guid>/zh/blog/2022/06/21/%E8%B6%85%E5%A4%A7%E8%A7%84%E6%A8%A1%E7%9A%84%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BE%AE%E6%9C%8D%E5%8A%A1-http-%E6%A1%86%E6%9E%B6-hertz-%E6%AD%A3%E5%BC%8F%E5%BC%80%E6%BA%90/</guid><description>
+&lt;p>今天，经过了字节跳动内部一年多的使用和迭代，高性能企业级 HTTP 框架—— Hertz，已在 CloudWeGo 正式开源啦！Hertz 已经成为了字节跳动内部最大的 HTTP 框架，线上接入的服务数量超过 &lt;strong>1 万&lt;/strong>，峰值 QPS 超过 &lt;strong>4 千万&lt;/strong>，具有 &lt;strong>高易用性&lt;/strong> 、 &lt;strong>易扩展&lt;/strong> 、&lt;strong>低时延&lt;/strong>的特点。对于字节跳动服务框架团队和 CloudWeGo 而言，Hertz 将不仅仅是一个开源项目，它也是一个真实的超大规模企业级实践。&lt;/p>
+&lt;p>&lt;strong>项目地址：https://github.com/cloudwego/hertz&lt;/strong>&lt;/p>
+&lt;p>未来，字节跳动基础架构团队将以 Hertz 开源库为主进行迭代，坚持内外维护一套代码，统一进行迭代演进，为用户提供更好的体验。&lt;/p>
+&lt;h2 id="01-hertz-概述">01 Hertz 概述&lt;/h2>
+&lt;p>Hertz 是一个超大规模的企业级微服务 HTTP 框架，具有高易用性、易扩展、低时延等特点。最初，字节跳动内部的 HTTP 框架是对 Gin 框架的封装，具备不错的易用性、生态完善等优点。随着内部业务的不断发展，对高性能、多场景的需求日渐强烈。而 Gin 是对 Golang 原生 net/http 进行的二次开发，在按需扩展和性能优化上受到很大局限。因此，为了满足业务需求，更好的服务各大业务线，2020 年初，字节跳动服务框架团队经过内部对使用场景和外部主流开源 HTTP 框架 Fasthttp、Gin、Echo 的调研后，开始基于自研网络库 Netpoll 开发内部框架 Hertz，让 Hertz 在面对企业级需求时，有更好的性能及稳定性表现，也能够满足业务发展和应对不断演进的技术需求。2021 年 7 月，Hertz 正式上线 1.0 版本。&lt;/p>
+&lt;p>在经历了字节跳动内部一年多的使用后，Hertz 框架成为了字节跳动内部最大的 HTTP 框架，&lt;strong>线上接入的服务数量超过 1 万，峰值 QPS 超过 4 千万&lt;/strong>。Hertz 除了业务线的同学使用外，也服务于内部很多基础组件，如：函数计算平台 FaaS、压测平台、各类网关、Service Mesh 控制面等，均收到不错的使用反馈。在如此大规模的场景下，Hertz 拥有极强的稳定性和性能，bug 和 kernel case 也几乎暴露无遗并进行修复。同时 Hertz 坚持的内外维护一套代码，也为开源出去的 Hertz 框架提供了强有力的保障。&lt;/p>
+&lt;p>下面是 Hertz 的一些特性：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>稳定性&lt;/strong>
+Hertz 在如此大规模的场景下，每一个 PR 的合入、每一次发版都要慎之又慎，稍有不慎便可能造成千万甚至更多的损失。我们制定了规范的 PR、发版流程，每次合入代码需要由有经验的同学审核。即便如此，为了降低风险，我们也搭建了各种测试场景，包括兼容性、高并发、大小包等场景，每次的 PR、发版都需要测试一段时间，充分测试，将每次发版的风险减少到最低。&lt;/li>
+&lt;li>&lt;strong>高易用性&lt;/strong>
+在开发过程中，快速写出正确的代码往往是重要的。Hertz 在设计 API 时，考虑到用户的使用习惯，参考业界主流框架使用 API 的方式，并加以优化。在 Hertz 在迭代过程中，积极听取用户意见，持续打磨框架，比如很多用户希望 Client 也有 Trace 的能力，为此，Hertz Client 支持了中间件能力；在代理场景中，Hertz Client 也支持了流式处理。在做中间件和流式处理设计时，也考虑到用户实际使用习惯，帮助用户更快地写出正确的代码。Hertz 也提供了命令行工具，一键生成代码，提高框架的易用性。&lt;/li>
+&lt;li>&lt;strong>易扩展&lt;/strong>
+Hertz 采用了分层设计，提供了较多的接口以及默认的扩展实现，用户也可以自行扩展，详情可参考 CloudWeGo 官网的 Hertz 扩展部分。同时得益于框架的分层设计，框架的扩展性也会大很多。目前仅将稳定的能力开源给社区，更多的规划参考 RoadMap。&lt;/li>
+&lt;li>&lt;strong>低延时&lt;/strong>
+Hertz 默认使用自研的高性能网络库 Netpoll，在一些特殊场景中，相较于 go net，Hertz 在 QPS、时延上均具有一定优势。关于性能数据，可参考下图 Echo 数据。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="/img/blog/Hertz_Open_Source/Echo.png" alt="image">&lt;/p>
+&lt;p>在内部实践中，某些典型服务，如框架占比较高的服务、网关等服务，迁移 Hertz 后相比 Gin 框架，资源使用显著减少，&lt;strong>CPU 使用率随流量大小降低 30%—60%。&lt;/strong>&lt;/p>
+&lt;p>关于详细的性能数据，可参考：https://github.com/cloudwego/hertz-benchmark。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>命令行工具&lt;/strong>
+Hertz 提供了一个简单易用的命令行工具 Hz，用户只需提供一个 IDL，根据定义好的接口信息，Hz 便可以一键生成项目脚手架，开箱即用使用 Hertz；Hz 也提供更新能力，用户的 IDL 如果发生改变，Hz 可以更新脚手架。目前 Hz 支持了 Thrift 和 Protobuf 两种 IDL 定义。命令行工具内置丰富的选项，可以根据自己的需求使用。同时它底层依赖 Protobuf 官方的编译器和自研的 Thriftgo 的编译器，两者都支持自定义的生成代码插件。如果觉得默认模板不能够满足的需求，可以自定义生成的模板。&lt;/li>
+&lt;/ul>
+&lt;p>自 Hertz 发布以来，内部反响优异。在内部，除最常见的前后端通信场景外，还涉及网关、上传、下载、代理等场景；所用到的交互模式除 ping-pong 外，还有 streaming、chunk 等；使用的协议除 HTTP1 外，还有 HTTP2、Websocket 等。这些复杂的交互场景和交互模式都对 Hertz 的 Server 和 Client 的可用性和稳定性提出了不小的挑战。为此，Hertz 快速响应用户需求；搭建稳定性测试服务尽可能模拟线上真实复杂场景；较高的单测覆盖率保证代码逻辑正常。&lt;/p>
+&lt;h2 id="02-内外版本维护">02 内外版本维护&lt;/h2>
+&lt;p>字节跳动内部有着完善的微服务体系，团队非常重视开源建设和承诺，Hertz 和 CloudWeGo 中的开源项目 Kitex 相同，&lt;strong>保持内外一致&lt;/strong>，项目的核心能力均迁移至开源库中，在内部仅封装一层壳帮助企业内无感升级，以保证对开源长期维护的承诺，并且&lt;strong>所有开源特性，都会在内部的稳定性验证后才会开源出来&lt;/strong>。&lt;/p>
+&lt;p>后续，团队将持续以 Hertz 开源库为主进行迭代，及时响应社区需求与问题，为用户提供更好的体验和使用保障。&lt;/p>
+&lt;p>对于 Hertz 的开发者来说，Hertz 同样支持对框架进行灵活的扩展，以适应业务需求。我们也欢迎外部的开发者将自己的贡献提交到社区当中，在社区进行开源共建，共同打造一款有着完善生态、极致性能和高易用性的 HTTP 框架。&lt;/p>
+&lt;h2 id="03-roadmap">03 RoadMap&lt;/h2>
+&lt;p>对于基础架构团队而言，Hertz 不仅仅是一个开源项目，它也是一个&lt;strong>真实的超大规模企业级实践项目&lt;/strong>。通过开源，我们希望 Hertz 能丰富云原生社区的 Golang 中间件体系，完善 CloudWeGo 生态矩阵，为更多开发者和企业搭建云原生化的大规模分布式系统，提供一种现代的、资源高效的的技术方案。&lt;/p>
+&lt;p>如前文所述，目前 Hertz 只开源了内部经过稳定性验证的部分，未来，我们会进一步推动其走向完善：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>云原生能力支持&lt;/strong>。支持 xDS API，从 Istio 动态获取服务配置。&lt;/li>
+&lt;li>&lt;strong>多协议的支持&lt;/strong>。Hertz 目前只开源了 HTTP1 的部分，未来我们还会开源其他协议，如：HTTP2、Websocket、ALPN 等，为开发者提供更多场景的微服务需求支持。如果有需求也可以提交 issue 告诉我们，让我们知道您的需求以便快速支持。&lt;/li>
+&lt;li>&lt;strong>更好用的命令行工具&lt;/strong>。我们将继续迭代 Hz，持续集成各种常用的中间件，提供模块化构建能力，用户可以按需选择所需组件。&lt;/li>
+&lt;li>&lt;strong>更完善的生态支持&lt;/strong>。由于 Hertz 没有采用 go net 的数据结构，需要更多的生态支持。第一批开源我们只开源了 CORS、Trace、Metrics 等生态。未来我们还将支持包括反向代理、Session 等生态。&lt;/li>
+&lt;li>&lt;strong>结合内外部用户需求，持续迭代&lt;/strong>。项目开源后，我们也会根据开发者需求开展迭代。&lt;/li>
+&lt;/ul>
+&lt;p>欢迎大家向 Hertz 提交 issue 和 PR 共建 Hertz。&lt;/p>
+&lt;p>我们诚心期待更多的开发者加入，也期待 Hertz 助力越来越多的企业快速构建云原生架构。我们也真诚欢迎企业用户迁移使用，我们会提供专项技术支持和交流，欢迎入群咨询。&lt;/p>
+&lt;h2 id="04-相关链接">04 相关链接&lt;/h2>
+&lt;p>&lt;strong>项目地址：https://github.com/cloudwego/hertz&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>项目官网：https://www.cloudwego.io&lt;/strong>&lt;/p></description></item><item><title>Blog: Kitex v0.3.2 版本发布</title><link>/zh/blog/2022/06/02/kitex-v0.3.2-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Thu, 02 Jun 2022 00:00:00 +0000</pubDate><guid>/zh/blog/2022/06/02/kitex-v0.3.2-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/473">#473&lt;/a>] 功能 (grpc): 为 Kitex gRPC unary 模式增加短连接功能。&lt;/li>
