@@ -1,4 +1,44 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>/zh/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 字节跳动开源 Go HTTP 框架 Hertz 设计实践</title><link>/zh/blog/2022/06/21/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E5%BC%80%E6%BA%90-go-http-%E6%A1%86%E6%9E%B6-hertz-%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/</link><pubDate>Tue, 21 Jun 2022 00:00:00 +0000</pubDate><guid>/zh/blog/2022/06/21/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E5%BC%80%E6%BA%90-go-http-%E6%A1%86%E6%9E%B6-hertz-%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>/zh/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Hertz v0.2.0 版本发布</title><link>/zh/blog/2022/07/22/hertz-v0.2.0-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate><guid>/zh/blog/2022/07/22/hertz-v0.2.0-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
+&lt;h2 id="feature">Feature&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/124">#124&lt;/a>] feat: 增加参数控制是否使用 hijackConnPool。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/116">#116&lt;/a>] feat: update 也可使用模板更新 handler 及 middleware。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/130">#130&lt;/a>] feat: 如果 Cookie.Value 中存在非法字符，则打印告警日志。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/143">#143&lt;/a>] feat: 增加一个接口支持自定义信号捕捉逻辑，以便根据场景调节优雅退出需要应对的信号类型。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/114">#114&lt;/a>] feat: 标准网络库 Read 方法中调用 connection.Release()，防止在多次少量调用 Read 方法时不回收内存导致的 OOM。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/112">#112&lt;/a>] feat: 修正了 x-www-form-urlencoded 编码下无法读到 bodystream 类型数据。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/105">#105&lt;/a>] feat: client 为 ALPN 和 http2 抽象出协议层 HostClient。client 删除 readbuffersize 和 writebuffersize 配置项。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/92">#92&lt;/a>] feat: hz 命名行工具支持 windows。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/102">#102&lt;/a>] feat: Hertz client 关闭默认的重试逻辑。&lt;/li>
+&lt;/ul>
+&lt;h2 id="optimize">Optimize&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/111">#111&lt;/a>] optimize: 调用 bytesconv.AppendHTTPDate 时，为切片预分配容量，以防止产生额外的拷贝。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/128">#128&lt;/a>] optimize: 去掉路由树中无用逻辑。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/108">#108&lt;/a>] optimize: 通过提前调用 regexp.MustCompile，避免程序重复解析正则表达式。&lt;/li>
+&lt;/ul>
+&lt;h2 id="chore">Chore&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/125">#125&lt;/a>] chore: 更新 license check 方式。&lt;/li>
+&lt;/ul>
+&lt;h2 id="fix">Fix&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/104">#104&lt;/a>] fix: cacheLock 可能会因潜在发生的 panic 导致解锁失败。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/96">#96&lt;/a>] fix: ci 可能被调度到 arm 机器上导致报错 exec format error。&lt;/li>
+&lt;/ul>
+&lt;h2 id="style">Style&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/103">#103&lt;/a>] style: 修正不符合语义的错误拼写 “Ungzipped”。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/90">#90&lt;/a>] style: 常量替换和去掉了重复的类型转换。&lt;/li>
+&lt;/ul>
+&lt;h2 id="refactor">Refactor&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/94">#94&lt;/a>] refactor: 使用 appendCookiePart 函数简化代码。&lt;/li>
+&lt;/ul>
+&lt;h2 id="docs">Docs&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/97">#97&lt;/a>] docs: 文档标点符号优化。&lt;/li>
+&lt;/ul></description></item><item><title>Blog: 字节跳动开源 Go HTTP 框架 Hertz 设计实践</title><link>/zh/blog/2022/06/21/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E5%BC%80%E6%BA%90-go-http-%E6%A1%86%E6%9E%B6-hertz-%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/</link><pubDate>Tue, 21 Jun 2022 00:00:00 +0000</pubDate><guid>/zh/blog/2022/06/21/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E5%BC%80%E6%BA%90-go-http-%E6%A1%86%E6%9E%B6-hertz-%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5/</guid><description>
 &lt;h2 id="01-前言">01 前言&lt;/h2>
 &lt;p>Hertz 是字节跳动服务框架团队研发的超大规模的企业级微服务 HTTP 框架，具有高易用性、易扩展、低时延等特点。在经过了字节跳动内部一年多的使用和迭代后，如今已在 CloudWeGo 正式开源。目前，Hertz 已经成为了字节跳动内部最大的 HTTP 框架，线上接入的服务数量超过 1 万，峰值 QPS 超过 4 千万。除了各个业务线的同学使用外，也服务于内部很多基础组件，如：函数计算平台 FaaS、压测平台、各类网关、Service Mesh 控制面等，均收到不错的使用反馈。在如此大规模的场景下，Hertz 拥有极强的稳定性和性能，在内部实践中某些典型服务，如框架占比较高的服务、网关等服务，迁移 Hertz 后相比 Gin 框架，资源使用显著减少，CPU 使用率随流量大小降低 30%—60%，时延也有明显降低。&lt;/p>
 &lt;p>Hertz 坚持 &lt;strong>内外维护一套代码&lt;/strong> ，为开源使用提供了强有力的保障。通过开源， Hertz 也将丰富云原生的 Golang 中间件体系，完善 CloudWeGo 生态矩阵，为更多开发者和企业搭建云原生化的大规模分布式系统，提供一种现代的、资源高效的的技术方案。&lt;/p>

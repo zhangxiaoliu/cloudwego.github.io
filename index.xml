@@ -1,4 +1,44 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Kitex Release v0.3.2</title><link>/blog/2022/06/02/kitex-release-v0.3.2/</link><pubDate>Thu, 02 Jun 2022 00:00:00 +0000</pubDate><guid>/blog/2022/06/02/kitex-release-v0.3.2/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Hertz Release v0.2.0</title><link>/blog/2022/07/22/hertz-release-v0.2.0/</link><pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate><guid>/blog/2022/07/22/hertz-release-v0.2.0/</guid><description>
+&lt;h2 id="feature">Feature&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/124">#124&lt;/a>] feat: add option to remove hijackConnPool.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/116">#116&lt;/a>] feat: update for template.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/130">#130&lt;/a>] feat: add a warning log for invalid character in Cookie.Value.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/143">#143&lt;/a>] feat: custom signal to graceful shutdown&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/114">#114&lt;/a>] feat: release buffer in standard network method.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/112">#112&lt;/a>] feat: parse post args in bodystream.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/105">#105&lt;/a>] feat: client abstracts hostclient layer.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/92">#92&lt;/a>] feat: hz support windows.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/102">#102&lt;/a>] feat: client removes default retry logic.&lt;/li>
+&lt;/ul>
+&lt;h2 id="optimize">Optimize&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/111">#111&lt;/a>] optimize: pre-allocate slice when calling bytesconv.AppendHTTPDate.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/128">#128&lt;/a>] optimize: remove useless judgement.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/108">#108&lt;/a>] optimize: avoid parsing regular expression repeatedly.&lt;/li>
+&lt;/ul>
+&lt;h2 id="chore">Chore&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/125">#125&lt;/a>] Update pr-check.yml.&lt;/li>
+&lt;/ul>
+&lt;h2 id="fix">Fix&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/104">#104&lt;/a>] fix: use defer to guarantee that mutex will be unlocked.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/96">#96&lt;/a>] fix: ci exec /bin/license-eye: exec format error&lt;/li>
+&lt;/ul>
+&lt;h2 id="style">Style&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/103">#103&lt;/a>] style: fixed the typo &amp;ldquo;ungzipped&amp;rdquo; to &amp;ldquo;gunzipped&amp;rdquo;.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/90">#90&lt;/a>] style: use const var and remove duplicate type conversions.&lt;/li>
+&lt;/ul>
+&lt;h2 id="refactor">Refactor&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/94">#94&lt;/a>] refactor: use appendCookiePart to simplify code.&lt;/li>
+&lt;/ul>
+&lt;h2 id="docs">Docs&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/97">#97&lt;/a>] docs: use comma to separate &amp;amp;&amp;amp; remove extra space.&lt;/li>
+&lt;/ul></description></item><item><title>Blog: Kitex Release v0.3.2</title><link>/blog/2022/06/02/kitex-release-v0.3.2/</link><pubDate>Thu, 02 Jun 2022 00:00:00 +0000</pubDate><guid>/blog/2022/06/02/kitex-release-v0.3.2/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/473">#473&lt;/a>] feat(grpc): support short connection for gRPC unary.&lt;/li>
