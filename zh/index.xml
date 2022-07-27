@@ -171,7 +171,47 @@ Hertz 提供了一个简单易用的命令行工具 Hz，用户只需提供一�
 &lt;p>我们诚心期待更多的开发者加入，也期待 Hertz 助力越来越多的企业快速构建云原生架构。我们也真诚欢迎企业用户迁移使用，我们会提供专项技术支持和交流，欢迎入群咨询。&lt;/p>
 &lt;h2 id="04-相关链接">04 相关链接&lt;/h2>
 &lt;p>&lt;strong>项目地址：https://github.com/cloudwego/hertz&lt;/strong>&lt;/p>
-&lt;p>&lt;strong>项目官网：https://www.cloudwego.io&lt;/strong>&lt;/p></description></item><item><title>Blog: Kitex v0.3.2 版本发布</title><link>/zh/blog/2022/06/02/kitex-v0.3.2-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Thu, 02 Jun 2022 00:00:00 +0000</pubDate><guid>/zh/blog/2022/06/02/kitex-v0.3.2-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
+&lt;p>&lt;strong>项目官网：https://www.cloudwego.io&lt;/strong>&lt;/p></description></item><item><title>Blog: Hertz v0.1.0 版本发布</title><link>/zh/blog/2022/06/20/hertz-v0.1.0-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Mon, 20 Jun 2022 00:00:00 +0000</pubDate><guid>/zh/blog/2022/06/20/hertz-v0.1.0-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
+&lt;h2 id="feature">Feature&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/70">#70&lt;/a>] feat: 增加 hz 脚手架。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/64">#64&lt;/a>] feat: 增加 Hertz Request &amp;amp; Response 到 net/http Request &amp;amp; ResponseWriter 的适配器。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/45">#45&lt;/a>] feat: 添加 ctx.Body() 方法。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/44">#44&lt;/a>] feat: 在 request header 上添加 VisitAllCustomHeader 方法，使得传入的函数 f 只作用在用户自定义的 header 上（除了 cookie, host, content-length, content-type, user-agent 和 connection 以外的 header）。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/59">#59&lt;/a>] feat: 支持 windows 开发环境。&lt;/li>
+&lt;/ul>
+&lt;h2 id="refactor">Refactor&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>[&lt;a href="https://github.com/cloudwego/hertz/pull/37">#37&lt;/a>] refactor: 统一设置 request options 的入口，防止 options 未初始化导致 panic。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>[&lt;a href="https://github.com/cloudwego/hertz/pull/52">#52&lt;/a>] refactor: 去掉 for 循环中多余的判空。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>[&lt;a href="https://github.com/cloudwego/hertz/pull/33">#33&lt;/a>] refactor:
+当子串长度确定为 1 时，可以直接调用 strings.IndexByte 函数而不是像 strings.Index 一样先调用 len() 判断子串长度后再调用 strings.IndexByte 函数；
+为省去整型数字转字符串的工作，可以将相关变量直接定义成 string 类型而不是 int 类型；
+net 包下的 JoinHostPort 函数会再次判断 &amp;lsquo;:&amp;rsquo; 是否在 addr 中，如果不在则将 host 与 port 相关字符串连接起来。然而在 AddingMissingPort 函数中调用 net.JoinHostPort 时，':' 应不在 addr 中。所以在此可以不调用 net.JoinHostPort，而是直接连接 host 和 port 信息。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>[&lt;a href="https://github.com/cloudwego/hertz/pull/27">#27&lt;/a>] refactor: 当字符串不需要格式化时，使用 hertz 的 errors.NewPublic 创建 error 而不是使用 fmt.Errorf。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="style">Style&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/29">#29&lt;/a>] style(*): 修正拼写错误。&lt;/li>
+&lt;/ul>
+&lt;h2 id="optimize">Optimize&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/57">#57&lt;/a>] optimize: 使用 http.TimeFormat 格式化 HTTP 中的 Date 信息，避免产生更多的复制。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/58">#58&lt;/a>] optimize: 服务端错误日志中添加对端地址。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/41">#41&lt;/a>] optimize(recovery): 使用 &amp;lsquo;CtxErrorf&amp;rsquo; 代替 &amp;lsquo;Errorf&amp;rsquo; 当服务 panic。&lt;/li>
+&lt;/ul>
+&lt;h2 id="docs">Docs&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/60">#60&lt;/a>] docs: readme 文件中添加 icon。&lt;/li>
+&lt;/ul></description></item><item><title>Blog: Kitex v0.3.2 版本发布</title><link>/zh/blog/2022/06/02/kitex-v0.3.2-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Thu, 02 Jun 2022 00:00:00 +0000</pubDate><guid>/zh/blog/2022/06/02/kitex-v0.3.2-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/473">#473&lt;/a>] 功能 (grpc): 为 Kitex gRPC unary 模式增加短连接功能。&lt;/li>
