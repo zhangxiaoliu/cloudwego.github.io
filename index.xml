@@ -1,4 +1,45 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Hertz Release v0.3.0</title><link>/blog/2022/08/29/hertz-release-v0.3.0/</link><pubDate>Mon, 29 Aug 2022 00:00:00 +0000</pubDate><guid>/blog/2022/08/29/hertz-release-v0.3.0/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Volo Release v0.2.0</title><link>/blog/2022/10/18/volo-release-v0.2.0/</link><pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate><guid>/blog/2022/10/18/volo-release-v0.2.0/</guid><description>
+&lt;h2 id="feature">Feature&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/31">#31&lt;/a>] Support Windows.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/26">#26&lt;/a>] feat: add sd and lb for grpc.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/45">#45&lt;/a>] feat(grpc): support uds.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/32">#32&lt;/a>] feat: grpc support metainfo.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/30">#30&lt;/a>] feat: grpc server add &lt;code>layer_front()&lt;/code>.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/42">#42&lt;/a>] feat(thrift): support multiplex.&lt;/li>
+&lt;/ul>
+&lt;h2 id="optimize">Optimize&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/53">#53&lt;/a>] fix: &lt;code>write_field_begin&lt;/code> args.&lt;/li>
+&lt;/ul>
+&lt;h2 id="fix">Fix&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/34">#34&lt;/a>] fix: connect timeout.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/46">#46&lt;/a>] retry IO error only.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/33">#33&lt;/a>] fix: grpc middleware error constraints.&lt;/li>
+&lt;/ul></description></item><item><title>Blog: Hertz Release v0.3.2</title><link>/blog/2022/09/20/hertz-release-v0.3.2/</link><pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate><guid>/blog/2022/09/20/hertz-release-v0.3.2/</guid><description>
+&lt;h2 id="feature">Feature&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/198">#198&lt;/a>] feat: add the function to get the client dialer name.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/251">#251&lt;/a>] feat: add a startup log to display the name of the loaded network library.&lt;/li>
+&lt;/ul>
+&lt;h2 id="refactor">Refactor&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/238">#238&lt;/a>] refactor: refactor the client logic initialize for HostClient and TLSHostClient.&lt;/li>
+&lt;/ul>
+&lt;h2 id="optimize">Optimize&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/226">#226&lt;/a>] optimize: add a warning log for illegal status code.&lt;/li>
+&lt;/ul>
+&lt;h2 id="fix">Fix&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/249">#249&lt;/a>] fix: add channel signal judge to allow onShutdownHook to complete or timeout.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/232">#232&lt;/a>] fix: fix some trailing slash redirect bugs.&lt;/li>
+&lt;/ul>
+&lt;h2 id="chore">Chore&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/217">#217&lt;/a>] chore: update pr template.&lt;/li>
+&lt;/ul></description></item><item><title>Blog: Hertz Release v0.3.0</title><link>/blog/2022/08/29/hertz-release-v0.3.0/</link><pubDate>Mon, 29 Aug 2022 00:00:00 +0000</pubDate><guid>/blog/2022/08/29/hertz-release-v0.3.0/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/182">#182&lt;/a>] feat: add service registration &amp;amp; service discovery &amp;amp; load balancing.&lt;/li>
