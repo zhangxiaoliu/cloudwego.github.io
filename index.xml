@@ -1,4 +1,56 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Volo Release v0.2.0</title><link>/blog/2022/10/18/volo-release-v0.2.0/</link><pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate><guid>/blog/2022/10/18/volo-release-v0.2.0/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Hertz Release v0.4.0</title><link>/blog/2022/10/28/hertz-release-v0.4.0/</link><pubDate>Fri, 28 Oct 2022 00:00:00 +0000</pubDate><guid>/blog/2022/10/28/hertz-release-v0.4.0/</guid><description>
+&lt;h2 id="feature">Feature&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/289">#289&lt;/a>] feat: render support IndentedJSON.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/304">#304&lt;/a>] feat: support errors format for the recovery middleware.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/278">#278&lt;/a>] feat: add compile tag for json implementation.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/239">#239&lt;/a>] feat: add retry extension for client.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/265">#265&lt;/a>] feat: add closeNoResetBuffer method for standard network.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/258">#258&lt;/a>] feat: errors support format.&lt;/li>
+&lt;/ul>
+&lt;h2 id="optimize">Optimize&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/295">#295&lt;/a>] optimize: ignore flushing error when connection is closed or reset.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/322">#322&lt;/a>] optimize: modify the default log of the recovery middleware.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/266">#266&lt;/a>] optimize(hlog): distinguish systemlogger and defaultlogger.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/280">#280&lt;/a>] optimize: add listening log when using standard lib.&lt;/li>
+&lt;/ul>
+&lt;h2 id="refactor">Refactor&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/318">#318&lt;/a>] refactor: add SetRetryIf to remain compatible.&lt;/li>
+&lt;/ul>
+&lt;h2 id="test">Test&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/299">#299&lt;/a>] test: enrich ut for pkg/protocol/header.go.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/290">#290&lt;/a>] test: enrich ut for pkg/app/server/option.go.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/274">#274&lt;/a>] test: increase internal/bytesconv unit test statement coverage.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/285">#285&lt;/a>] test: enrich unit tests for pkg/protocol/request.go.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/271">#271&lt;/a>] test: ut supplementary for pkg/network.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/264">#264&lt;/a>] test: add ut for hertz/pkg/common/adaptor.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/267">#267&lt;/a>] test(pkg/common/config): pkg/common/config test coverage.&lt;/li>
+&lt;/ul>
+&lt;h2 id="docs">Docs&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/328">#328&lt;/a>] docs: add lark extension to readme.md.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/325">#325&lt;/a>] docs: update performance data in README and README_cn.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/307">#307&lt;/a>] docs(README): add hertz extensions list.&lt;/li>
+&lt;/ul>
+&lt;h2 id="style">Style&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/316">#316&lt;/a>] style: remove empty comments for license.&lt;/li>
+&lt;/ul>
+&lt;h2 id="chore">Chore&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/272">#272&lt;/a>] chore: upgrade sonic version.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/310">#310&lt;/a>] chore: change license header style to avoid format error of buildtag from CI check.&lt;/li>
+&lt;/ul></description></item><item><title>Blog: Volo Release v0.2.1</title><link>/blog/2022/10/26/volo-release-v0.2.1/</link><pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate><guid>/blog/2022/10/26/volo-release-v0.2.1/</guid><description>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/61">#61&lt;/a>] optimize volo-thrift code, remove unnecessary generic parameters.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/63">#63&lt;/a>] remove TAIT elision lifetime required after nightly-2022-10-20.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/73">#73&lt;/a>] remove useless liftetime paramenter in LoadBalance:: InstanceIter.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/65">#65&lt;/a>] feat: upgrade clap to 4.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/72">#72&lt;/a>] feat: add writev support for volo net conn.&lt;/li>
+&lt;/ul></description></item><item><title>Blog: Volo Release v0.2.0</title><link>/blog/2022/10/18/volo-release-v0.2.0/</link><pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate><guid>/blog/2022/10/18/volo-release-v0.2.0/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/31">#31&lt;/a>] Support Windows.&lt;/li>
