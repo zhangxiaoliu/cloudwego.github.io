@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Hertz Release v0.4.0</title><link>/blog/2022/10/28/hertz-release-v0.4.0/</link><pubDate>Fri, 28 Oct 2022 00:00:00 +0000</pubDate><guid>/blog/2022/10/28/hertz-release-v0.4.0/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Hertz Release v0.4.0</title><link>https://www.cloudwego.io/blog/2022/10/28/hertz-release-v0.4.0/</link><pubDate>Fri, 28 Oct 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/10/28/hertz-release-v0.4.0/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/289">#289&lt;/a>] feat: render support IndentedJSON.&lt;/li>
@@ -43,14 +43,14 @@
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/272">#272&lt;/a>] chore: upgrade sonic version.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/310">#310&lt;/a>] chore: change license header style to avoid format error of buildtag from CI check.&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Volo Release v0.2.1</title><link>/blog/2022/10/26/volo-release-v0.2.1/</link><pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate><guid>/blog/2022/10/26/volo-release-v0.2.1/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Volo Release v0.2.1</title><link>https://www.cloudwego.io/blog/2022/10/26/volo-release-v0.2.1/</link><pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/10/26/volo-release-v0.2.1/</guid><description>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/61">#61&lt;/a>] optimize volo-thrift code, remove unnecessary generic parameters.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/63">#63&lt;/a>] remove TAIT elision lifetime required after nightly-2022-10-20.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/73">#73&lt;/a>] remove useless liftetime paramenter in LoadBalance:: InstanceIter.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/65">#65&lt;/a>] feat: upgrade clap to 4.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/72">#72&lt;/a>] feat: add writev support for volo net conn.&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Volo Release v0.2.0</title><link>/blog/2022/10/18/volo-release-v0.2.0/</link><pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate><guid>/blog/2022/10/18/volo-release-v0.2.0/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Volo Release v0.2.0</title><link>https://www.cloudwego.io/blog/2022/10/18/volo-release-v0.2.0/</link><pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/10/18/volo-release-v0.2.0/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/31">#31&lt;/a>] Support Windows.&lt;/li>
@@ -69,7 +69,7 @@
 &lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/34">#34&lt;/a>] fix: connect timeout.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/46">#46&lt;/a>] retry IO error only.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/33">#33&lt;/a>] fix: grpc middleware error constraints.&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Hertz Release v0.3.2</title><link>/blog/2022/09/20/hertz-release-v0.3.2/</link><pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate><guid>/blog/2022/09/20/hertz-release-v0.3.2/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Hertz Release v0.3.2</title><link>https://www.cloudwego.io/blog/2022/09/20/hertz-release-v0.3.2/</link><pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/09/20/hertz-release-v0.3.2/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/198">#198&lt;/a>] feat: add the function to get the client dialer name.&lt;/li>
@@ -91,7 +91,7 @@
 &lt;h2 id="chore">Chore&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/217">#217&lt;/a>] chore: update pr template.&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Hertz Release v0.3.0</title><link>/blog/2022/08/29/hertz-release-v0.3.0/</link><pubDate>Mon, 29 Aug 2022 00:00:00 +0000</pubDate><guid>/blog/2022/08/29/hertz-release-v0.3.0/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Hertz Release v0.3.0</title><link>https://www.cloudwego.io/blog/2022/08/29/hertz-release-v0.3.0/</link><pubDate>Mon, 29 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/08/29/hertz-release-v0.3.0/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/182">#182&lt;/a>] feat: add service registration &amp;amp; service discovery &amp;amp; load balancing.&lt;/li>
@@ -132,7 +132,7 @@
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/189">#189&lt;/a>] Revert &amp;ldquo;fix: generate router register error&amp;rdquo;.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/203">#203&lt;/a>] add v6 support for AddMissingPort function.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/186">#186&lt;/a>] chore: support codecov.&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Kitex Release v0.4.0</title><link>/blog/2022/08/26/kitex-release-v0.4.0/</link><pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate><guid>/blog/2022/08/26/kitex-release-v0.4.0/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Kitex Release v0.4.0</title><link>https://www.cloudwego.io/blog/2022/08/26/kitex-release-v0.4.0/</link><pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/08/26/kitex-release-v0.4.0/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/571">#571&lt;/a>] feat(protobuf): integrate &lt;a href="https://github.com/cloudwego/fastpb">fastpb&lt;/a> into kitex, refer to &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/code-gen/fastpb/">doc&lt;/a>.&lt;/li>
@@ -191,7 +191,7 @@
 &lt;p>github.com/choleraehyq/pid v0.0.13 -&amp;gt; v0.0.15&lt;/p>
 &lt;p>new imported:&lt;/p>
 &lt;p>github.com/cloudwego/fastpb v0.0.2&lt;/p>
-&lt;p>github.com/jhump/protoreflect v1.8.2&lt;/p></description></item><item><title>Blog: Hertz Release v0.2.0</title><link>/blog/2022/07/22/hertz-release-v0.2.0/</link><pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate><guid>/blog/2022/07/22/hertz-release-v0.2.0/</guid><description>
+&lt;p>github.com/jhump/protoreflect v1.8.2&lt;/p></description></item><item><title>Blog: Hertz Release v0.2.0</title><link>https://www.cloudwego.io/blog/2022/07/22/hertz-release-v0.2.0/</link><pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/07/22/hertz-release-v0.2.0/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/124">#124&lt;/a>] feat: add option to remove hijackConnPool.&lt;/li>
@@ -231,7 +231,7 @@
 &lt;h2 id="docs">Docs&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/97">#97&lt;/a>] docs: use comma to separate &amp;amp;&amp;amp; remove extra space.&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Hertz Release v0.1.0</title><link>/blog/2022/06/20/hertz-release-v0.1.0/</link><pubDate>Mon, 20 Jun 2022 00:00:00 +0000</pubDate><guid>/blog/2022/06/20/hertz-release-v0.1.0/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Hertz Release v0.1.0</title><link>https://www.cloudwego.io/blog/2022/06/20/hertz-release-v0.1.0/</link><pubDate>Mon, 20 Jun 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/06/20/hertz-release-v0.1.0/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/31">#31&lt;/a>] feat: close connection after responding to the short-connection request.&lt;/li>
@@ -263,7 +263,7 @@
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/60">#60&lt;/a>] docs: add icon in README.md and README_cn.md.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/54">#54&lt;/a>] docs: Update README.md.&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Kitex Release v0.3.2</title><link>/blog/2022/06/02/kitex-release-v0.3.2/</link><pubDate>Thu, 02 Jun 2022 00:00:00 +0000</pubDate><guid>/blog/2022/06/02/kitex-release-v0.3.2/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Kitex Release v0.3.2</title><link>https://www.cloudwego.io/blog/2022/06/02/kitex-release-v0.3.2/</link><pubDate>Thu, 02 Jun 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/06/02/kitex-release-v0.3.2/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/473">#473&lt;/a>] feat(grpc): support short connection for gRPC unary.&lt;/li>
@@ -311,7 +311,7 @@
 &lt;h2 id="dependency-change">Dependency Change&lt;/h2>
 &lt;ul>
 &lt;li>github.com/cloudwego/netpoll: v0.2.2 -&amp;gt; v0.2.4&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Kitex Release v0.3.0</title><link>/blog/2022/04/29/kitex-release-v0.3.0/</link><pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate><guid>/blog/2022/04/29/kitex-release-v0.3.0/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Kitex Release v0.3.0</title><link>https://www.cloudwego.io/blog/2022/04/29/kitex-release-v0.3.0/</link><pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/04/29/kitex-release-v0.3.0/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/366">#366&lt;/a>, &lt;a href="https://github.com/cloudwego/kitex/pull/426">#426&lt;/a> ] feat(client): support warming-up for kitex client&lt;/li>
@@ -354,7 +354,7 @@
 &lt;ul>
 &lt;li>github.com/cloudwego/netpoll: v0.2.0 -&amp;gt; v0.2.2&lt;/li>
 &lt;li>github.com/bytedance/gopkg: 20210910103821-e4efae9c17c3 -&amp;gt; 20220413063733-65bf48ffb3a7&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Netpoll Release v0.2.2</title><link>/blog/2022/04/28/netpoll-release-v0.2.2/</link><pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate><guid>/blog/2022/04/28/netpoll-release-v0.2.2/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Netpoll Release v0.2.2</title><link>https://www.cloudwego.io/blog/2022/04/28/netpoll-release-v0.2.2/</link><pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/04/28/netpoll-release-v0.2.2/</guid><description>
 &lt;h2 id="improvement">Improvement&lt;/h2>
 &lt;ul>
 &lt;li>Fix: reduce costs of SetNumLoops&lt;/li>
@@ -376,7 +376,7 @@
 &lt;h2 id="revert">Revert&lt;/h2>
 &lt;ul>
 &lt;li>Revert &amp;ldquo;feat: change default number of loops policy (#31)&amp;rdquo;&lt;/li>
-&lt;/ul></description></item><item><title>Blog: An Article to Learn About ByteDance Microservices Middleware CloudWeGo</title><link>/blog/2022/03/25/an-article-to-learn-about-bytedance-microservices-middleware-cloudwego/</link><pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate><guid>/blog/2022/03/25/an-article-to-learn-about-bytedance-microservices-middleware-cloudwego/</guid><description>
+&lt;/ul></description></item><item><title>Blog: An Article to Learn About ByteDance Microservices Middleware CloudWeGo</title><link>https://www.cloudwego.io/blog/2022/03/25/an-article-to-learn-about-bytedance-microservices-middleware-cloudwego/</link><pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/03/25/an-article-to-learn-about-bytedance-microservices-middleware-cloudwego/</guid><description>
 &lt;p>In the cloud native era, infrastructures across all industries are undergoing a microservice architecture transformation, and all internet companies are concerned about R&amp;amp;D efficiency and stability. Developers who want to build microservices can never forgo supporting microservice governance, such as governance platforms, monitoring, tracing, registration/discovery, configuration centers, service mesh, etc. With Golang gradually becoming the dominating programming language in the cloud native era, there is a strong demand for Golang-based microservices middleware in the open source community.&lt;/p>
 &lt;p>ByteDance also faces these problems. In 2014, ByteDance introduced Golang to solve the high concurrency problem faced by push services with persistent connections; and two years later, the technical team launched a framework called Kite based on Golang, and rolled out Ginex after lightly encapsulating the open-source project Gin. In QCon 2021, Guozhu Cheng, the head of ByteDance&amp;rsquo;s infrastructure/service framework team, said that the launch of these two original frameworks has greatly promoted Golang&amp;rsquo;s adoption within the company.&lt;/p>
 &lt;p>However, due to evolutions of related technologies and demanding business requirements, the deeply coupled Kite and Thrift are difficult to be transformed and improved on the network model or codec level, and therefore continuous feature delivery will inevitably cause code bloat and blocked iterations. In the second half of 2019, the ByteDance technical team began to redesign the Golang RPC framework. At the same time, in order to get better performance in network communication, support connection multiplexing and sense connection status, they developed their own network library Netpoll.&lt;/p>
@@ -400,13 +400,13 @@
 &lt;p>However, CloudWeGo has its own limitations. ByteDance CloudWeGo technical experts told InfoQ: The richness and diversity of CloudWeGo functions are not enough, pending further improvement. ByteDance&amp;rsquo;s technical team will solicit the needs of external users, provide support, and welcome more developers to contribute. At present, the performance advantages of Kitex Server are obvious, but the performance of the Client side with Server, and we will focus on improving the Client in the future. The primary goal is to make default scenarios compatible with each other, with negligible performance overhead. &amp;ldquo;The launch of the open source has attracted public attention, and we observed some stress test comparisons showing that Kitex performance was mediocre, mainly because the stress test scenario was not aligned. We will consider providing better performance strategies for the open-source community.&amp;rdquo;&lt;/p>
 &lt;h1 id="open-source-is-not-about-completing-kpis">Open Source is Not About Completing KPIs&lt;/h1>
 &lt;p>At present, CloudWeGo is dynamic in the community. Before the official announcement of open source, Kitex gained 1.2k stars and Netpoll gathered 700+ stars within one month. After ByteDance officially announced the open source CloudWeGo on September 8, as of early October, the overall number of stars in the project has exceeded 4,800 and has been included in the CNCF landscape. The overall star number of the project has exceeded 4800, and it has been included in the CNCF landscape.&lt;/p>
-&lt;p>&lt;img src="/img/blog/article_to_learn_about_CloudWeGo/image.png" alt="image">&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/article_to_learn_about_CloudWeGo/image.png" alt="image">&lt;/p>
 &lt;p>ByteDance CloudWeGo technical experts said, &amp;ldquo;We have received a lot of feedback from the community. For example, many users call for Protobuf. In response to this feedback, we plan to implement Kitex performance optimizations for Protobuf support. We welcome you to submit issues and PRs to CloudWeGo. We&amp;rsquo;ve also set up customized support for enterprises and organizations to use Kitex and Netpoll, and hope that CloudWeGo will truly become a universal, available open-source solution to microservices communication and governance in the future.&amp;rdquo;&lt;/p>
 &lt;p>Regarding &amp;ldquo;open source&amp;rdquo;, ByteDance CloudWeGo technology experts have a clear vision: &amp;ldquo;Completing KPIs is not the purpose of this open source project.&amp;rdquo; A healthy open-source model focuses on open sharing, co-growth, and long-termism. CloudWeGo recognizes individual participation, community values, and the sense of belonging brought by open source community.&amp;quot;&lt;/p>
 &lt;p>&amp;ldquo;As a beneficiary and participant of the open source project, ByteDance also hopes to become a promoter and leader of the open source project. It hopes to gift excellent internal practices to the open source community, build and enrich the open source ecosystem in the infrastructure field together with the community, and provide wider and better choices for developers and enterprises for their technology selection.&amp;rdquo; ByteDance CloudWeGo technology experts said, &amp;ldquo;We embrace the open source culture, listen to community feedback, actively meet user&amp;rsquo;s needs, provide Chinese and English documentations, and develop guidelines quickly, to facilitate and support community developers to understand CloudWeGo and participate in contributions.&amp;rdquo;&lt;/p>
 &lt;p>&lt;strong>Project address:&lt;/strong> &lt;a href="https://github.com/cloudwego">https://github.com/cloudwego&lt;/a>&lt;/p>
 &lt;p>&lt;strong>Interviewees:&lt;/strong> ByteDance CloudWeGo technical experts (Guangming Luo, Rui Yang, Ziang Ma).&lt;/p>
-&lt;p>&lt;strong>Reference link:&lt;/strong> &lt;a href="https://www.infoq.cn/article/9ixlu4kjapg3ufhymm3j">https://www.infoq.cn/article/9ixlu4kjapg3ufhymm3j&lt;/a>&lt;/p></description></item><item><title>Blog: Kitex Release v0.2.1</title><link>/blog/2022/03/24/kitex-release-v0.2.1/</link><pubDate>Thu, 24 Mar 2022 00:00:00 +0000</pubDate><guid>/blog/2022/03/24/kitex-release-v0.2.1/</guid><description>
+&lt;p>&lt;strong>Reference link:&lt;/strong> &lt;a href="https://www.infoq.cn/article/9ixlu4kjapg3ufhymm3j">https://www.infoq.cn/article/9ixlu4kjapg3ufhymm3j&lt;/a>&lt;/p></description></item><item><title>Blog: Kitex Release v0.2.1</title><link>https://www.cloudwego.io/blog/2022/03/24/kitex-release-v0.2.1/</link><pubDate>Thu, 24 Mar 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/03/24/kitex-release-v0.2.1/</guid><description>
 &lt;h2 id="bugfix">Bugfix&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/383">#383&lt;/a> ] fix(generic): detect circular dependency in thrift IDL when using generic call.&lt;/li>
@@ -434,7 +434,7 @@
 &lt;h2 id="docs">Docs&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/364">#364&lt;/a> ] docs: update readme with new blog.&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Kitex Release v0.2.0</title><link>/blog/2022/02/24/kitex-release-v0.2.0/</link><pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate><guid>/blog/2022/02/24/kitex-release-v0.2.0/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Kitex Release v0.2.0</title><link>https://www.cloudwego.io/blog/2022/02/24/kitex-release-v0.2.0/</link><pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/02/24/kitex-release-v0.2.0/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>Feat(grpc): support options to set the internal params of gRPC&lt;/li>
@@ -456,7 +456,7 @@
 &lt;ul>
 &lt;li>Chore: upgrade netpoll to v0.2.0&lt;/li>
 &lt;li>Chore:add third party license&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Netpoll Release v0.2.0</title><link>/blog/2022/02/22/netpoll-release-v0.2.0/</link><pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate><guid>/blog/2022/02/22/netpoll-release-v0.2.0/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Netpoll Release v0.2.0</title><link>https://www.cloudwego.io/blog/2022/02/22/netpoll-release-v0.2.0/</link><pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/02/22/netpoll-release-v0.2.0/</guid><description>
 &lt;h2 id="improvement">Improvement&lt;/h2>
 &lt;ul>
 &lt;li>Feat: on connect callback&lt;/li>
@@ -474,7 +474,7 @@
 &lt;h2 id="chore">Chore&lt;/h2>
 &lt;ul>
 &lt;li>docs: update readme&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Kitex Release v0.1.4</title><link>/blog/2022/01/18/kitex-release-v0.1.4/</link><pubDate>Tue, 18 Jan 2022 00:00:00 +0000</pubDate><guid>/blog/2022/01/18/kitex-release-v0.1.4/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Kitex Release v0.1.4</title><link>https://www.cloudwego.io/blog/2022/01/18/kitex-release-v0.1.4/</link><pubDate>Tue, 18 Jan 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/01/18/kitex-release-v0.1.4/</guid><description>
 &lt;h2 id="improvement">Improvement&lt;/h2>
 &lt;ul>
 &lt;li>Optimize(log): don&amp;rsquo;t print timeout log in rpctimeout middleware&lt;/li>
@@ -497,7 +497,7 @@ but in handler.go kitex use &amp;ldquo;{{.ServiceName}}{{.RawName}}Server&amp;rd
 &lt;h2 id="chore">Chore&lt;/h2>
 &lt;ul>
 &lt;li>Style: remove unnecessary type conversions&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Kitex Release v0.1.3</title><link>/blog/2021/12/30/kitex-release-v0.1.3/</link><pubDate>Thu, 30 Dec 2021 00:00:00 +0000</pubDate><guid>/blog/2021/12/30/kitex-release-v0.1.3/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Kitex Release v0.1.3</title><link>https://www.cloudwego.io/blog/2021/12/30/kitex-release-v0.1.3/</link><pubDate>Thu, 30 Dec 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/12/30/kitex-release-v0.1.3/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>Transmit the Base from client to server for getting the caller info in JSON generic&lt;/li>
@@ -515,7 +515,7 @@ but in handler.go kitex use &amp;ldquo;{{.ServiceName}}{{.RawName}}Server&amp;rd
 &lt;h2 id="chore">Chore&lt;/h2>
 &lt;ul>
 &lt;li>update the &lt;a href="https://github.com/cloudwego/kitex/blob/develop/ROADMAP.md">ROADMAP&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Kitex Release v0.1.2</title><link>/blog/2021/12/22/kitex-release-v0.1.2/</link><pubDate>Wed, 22 Dec 2021 00:00:00 +0000</pubDate><guid>/blog/2021/12/22/kitex-release-v0.1.2/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Kitex Release v0.1.2</title><link>https://www.cloudwego.io/blog/2021/12/22/kitex-release-v0.1.2/</link><pubDate>Wed, 22 Dec 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/12/22/kitex-release-v0.1.2/</guid><description>
 &lt;h2 id="hotfix">Hotfix&lt;/h2>
 &lt;ul>
 &lt;li>Fix some gRPC request bugs which are involved by v0.1.0&lt;/li>
@@ -528,7 +528,7 @@ but in handler.go kitex use &amp;ldquo;{{.ServiceName}}{{.RawName}}Server&amp;rd
 &lt;h2 id="chore">Chore&lt;/h2>
 &lt;ul>
 &lt;li>Chore: use GitHub&amp;rsquo;s &lt;code>PULL_REQUEST_TEMPLATE&lt;/code> to create a PR&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Kitex Release v0.1.0</title><link>/blog/2021/12/13/kitex-release-v0.1.0/</link><pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate><guid>/blog/2021/12/13/kitex-release-v0.1.0/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Kitex Release v0.1.0</title><link>https://www.cloudwego.io/blog/2021/12/13/kitex-release-v0.1.0/</link><pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/12/13/kitex-release-v0.1.0/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;h3 id="generic-call">Generic Call&lt;/h3>
 &lt;ul>
@@ -590,11 +590,11 @@ but in handler.go kitex use &amp;ldquo;{{.ServiceName}}{{.RawName}}Server&amp;rd
 &lt;h2 id="dependency-change">Dependency Change&lt;/h2>
 &lt;ul>
 &lt;li>github.com/cloudwego/netpoll: v0.0.4 -&amp;gt; v0.1.2&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Netpoll Release v0.1.2</title><link>/blog/2021/12/13/netpoll-release-v0.1.2/</link><pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate><guid>/blog/2021/12/13/netpoll-release-v0.1.2/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Netpoll Release v0.1.2</title><link>https://www.cloudwego.io/blog/2021/12/13/netpoll-release-v0.1.2/</link><pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/12/13/netpoll-release-v0.1.2/</guid><description>
 &lt;h2 id="hotfix">Hotfix&lt;/h2>
 &lt;ul>
 &lt;li>check args in LinkBuffer API&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Netpoll Release v0.1.1</title><link>/blog/2021/12/09/netpoll-release-v0.1.1/</link><pubDate>Thu, 09 Dec 2021 00:00:00 +0000</pubDate><guid>/blog/2021/12/09/netpoll-release-v0.1.1/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Netpoll Release v0.1.1</title><link>https://www.cloudwego.io/blog/2021/12/09/netpoll-release-v0.1.1/</link><pubDate>Thu, 09 Dec 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/12/09/netpoll-release-v0.1.1/</guid><description>
 &lt;h2 id="improvement">Improvement&lt;/h2>
 &lt;ul>
 &lt;li>enhance mux shard queue&lt;/li>
@@ -606,7 +606,7 @@ but in handler.go kitex use &amp;ldquo;{{.ServiceName}}{{.RawName}}Server&amp;rd
 &lt;h2 id="chore">Chore&lt;/h2>
 &lt;ul>
 &lt;li>update readme&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Netpoll Release v0.1.0</title><link>/blog/2021/12/01/netpoll-release-v0.1.0/</link><pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate><guid>/blog/2021/12/01/netpoll-release-v0.1.0/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Netpoll Release v0.1.0</title><link>https://www.cloudwego.io/blog/2021/12/01/netpoll-release-v0.1.0/</link><pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/12/01/netpoll-release-v0.1.0/</guid><description>
 &lt;h2 id="improvement">Improvement&lt;/h2>
 &lt;ul>
 &lt;li>add mux.ShardQueue to support connection multiplexing&lt;/li>
@@ -627,7 +627,7 @@ but in handler.go kitex use &amp;ldquo;{{.ServiceName}}{{.RawName}}Server&amp;rd
 &lt;h2 id="breaking-change">Breaking Change&lt;/h2>
 &lt;ul>
 &lt;li>remove WriteBuffer() returned parameter n&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Getting Started With Kitex's Practice: Performance Testing Guide</title><link>/blog/2021/11/24/getting-started-with-kitexs-practice-performance-testing-guide/</link><pubDate>Wed, 24 Nov 2021 00:00:00 +0000</pubDate><guid>/blog/2021/11/24/getting-started-with-kitexs-practice-performance-testing-guide/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Getting Started With Kitex's Practice: Performance Testing Guide</title><link>https://www.cloudwego.io/blog/2021/11/24/getting-started-with-kitexs-practice-performance-testing-guide/</link><pubDate>Wed, 24 Nov 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/11/24/getting-started-with-kitexs-practice-performance-testing-guide/</guid><description>
 &lt;blockquote>
 &lt;p>On September 8, 2021, ByteDance announced the launch of CloudWeGo open source project.
 CloudWeGo is a set of microservice middleware developed by ByteDance with high performance, strong scalability and stability.
@@ -708,8 +708,8 @@ When Server is fully loaded, P99 Latency of Kitex in connection pool mode is the
 &lt;li>KITEX-MUX: Connection Multiplexing&lt;/li>
 &lt;li>Connection Multiplexing for all other Frameworks&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="/img/blog/kitex_performance_testing/qps.png" alt="image">
-&lt;img src="/img/blog/kitex_performance_testing/tp99.png" alt="image">&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/kitex_performance_testing/qps.png" alt="image">
+&lt;img src="https://www.cloudwego.io/img/blog/kitex_performance_testing/tp99.png" alt="image">&lt;/p>
 &lt;h2 id="summary">Summary&lt;/h2>
 &lt;p>Each mainstream Golang open source RPC framework actually has its own focus in terms of design goals: some focus on generality,
 some on scenarios with light business logic like Redis, some on throughput performance, and some on P99 latency.&lt;/p>
@@ -726,7 +726,7 @@ We also encourage developers to use the testing guide provided in this article, 
 &lt;li>netpoll-benchmark: &lt;a href="https://github.com/cloudwego/netpoll-benchmark">https://github.com/cloudwego/netpoll-benchmark&lt;/a>&lt;/li>
 &lt;li>Go Protobuf Library: &lt;a href="https://github.com/golang/protobuf">https://github.com/golang/protobuf&lt;/a>&lt;/li>
 &lt;li>Thriftgo：https://github.com/cloudwego/thriftgo&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Kitex Release v0.0.8</title><link>/blog/2021/11/05/kitex-release-v0.0.8/</link><pubDate>Fri, 05 Nov 2021 00:00:00 +0000</pubDate><guid>/blog/2021/11/05/kitex-release-v0.0.8/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Kitex Release v0.0.8</title><link>https://www.cloudwego.io/blog/2021/11/05/kitex-release-v0.0.8/</link><pubDate>Fri, 05 Nov 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/11/05/kitex-release-v0.0.8/</guid><description>
 &lt;h2 id="improvement">Improvement:&lt;/h2>
 &lt;ul>
 &lt;li>Use shard rings to reduce lock overhead in connpool.&lt;/li>
@@ -753,7 +753,7 @@ We also encourage developers to use the testing guide provided in this article, 
 &lt;h2 id="dependency-change">Dependency Change:&lt;/h2>
 &lt;ul>
 &lt;li>github.com/tidwall/gjson: v1.8.0 -&amp;gt; v1.9.3&lt;/li>
-&lt;/ul></description></item><item><title>Blog: ByteDance Practices on Go Network Library</title><link>/blog/2021/10/09/bytedance-practices-on-go-network-library/</link><pubDate>Sat, 09 Oct 2021 00:00:00 +0000</pubDate><guid>/blog/2021/10/09/bytedance-practices-on-go-network-library/</guid><description>
+&lt;/ul></description></item><item><title>Blog: ByteDance Practices on Go Network Library</title><link>https://www.cloudwego.io/blog/2021/10/09/bytedance-practices-on-go-network-library/</link><pubDate>Sat, 09 Oct 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/10/09/bytedance-practices-on-go-network-library/</guid><description>
 &lt;blockquote>
 &lt;p>This article is excerpted from the ByteDance Architecture Practice series.&lt;/p>
 &lt;p>&amp;ldquo;ByteDance Architecture Practice&amp;rdquo; is a series of articles produced by the technical teams and experts from the ByteDance Architecture Team, to share the team&amp;rsquo;s practical experience and lessons learnt from the development of infra-architecture, for the purpose of enhancing communication and growth of the developers.&lt;/p>
@@ -765,7 +765,7 @@ We also encourage developers to use the testing guide provided in this article, 
 &lt;h2 id="design-of-the-new-network-library">Design of the New Network Library&lt;/h2>
 &lt;h3 id="reactor---event-monitoring-and-the-core-of-scheduling">Reactor - Event Monitoring and the Core of Scheduling&lt;/h3>
 &lt;p>The core of &amp;ldquo;Netpoll&amp;rdquo; is the event monitoring scheduler &amp;ndash; &amp;ldquo;Reactor&amp;rdquo;, which uses &amp;ldquo;epoll&amp;rdquo; to monitor the &amp;ldquo;File Descriptor (fd)&amp;rdquo; of the connection and triggers the read, write and close events on the connection through the callback mechanism. &lt;br/>
-&lt;img src="/img/blog/bytedance_gonet_practice_img/reactor.png" alt="image">&lt;/p>
+&lt;img src="https://www.cloudwego.io/img/blog/bytedance_gonet_practice_img/reactor.png" alt="image">&lt;/p>
 &lt;h3 id="server---mainreactor--subreactor-implementation">Server - MainReactor &amp;amp; SubReactor Implementation&lt;/h3>
 &lt;p>Netpoll combines Reactors in a 1: N master-slave pattern:&lt;/p>
 &lt;ol>
@@ -775,11 +775,11 @@ We also encourage developers to use the testing guide provided in this article, 
 &lt;li>Add a goroutine pool to centrally process I/O tasks, reduce the number of goroutines and scheduling overhead.
 &lt;br/>&lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="/img/blog/bytedance_gonet_practice_img/server_reactor.png" alt="image">&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/bytedance_gonet_practice_img/server_reactor.png" alt="image">&lt;/p>
 &lt;h3 id="client---shares-the-capability-of-reactor">Client - Shares the Capability of Reactor&lt;/h3>
 &lt;p>SubReactor is shared between the client and server. Netpoll implements &amp;ldquo;Dialer&amp;rdquo; and provides the function for establishing connections. On the client, similar to &amp;ldquo;net.Conn&amp;rdquo;, Netpoll provides underlying support for &amp;ldquo;write -&amp;gt; wait read callback&amp;rdquo;.
 &lt;br/>
-&lt;img src="/img/blog/bytedance_gonet_practice_img/client_reactor.png" alt="image">&lt;/p>
+&lt;img src="https://www.cloudwego.io/img/blog/bytedance_gonet_practice_img/client_reactor.png" alt="image">&lt;/p>
 &lt;h2 id="nocopy-buffer">Nocopy Buffer&lt;/h2>
 &lt;h3 id="why-nocopy-buffer">Why Nocopy Buffer?&lt;/h3>
 &lt;p>As mentioned earlier, the way epoll is triggered affects the design of I/O and buffer, which can be generally divided into two approaches:&lt;/p>
@@ -793,7 +793,7 @@ We also encourage developers to use the testing guide provided in this article, 
 &lt;h3 id="the-design-and-advantages-of-nocopy-buffer">The Design and Advantages of Nocopy Buffer&lt;/h3>
 &lt;p>Nocopy Buffer is implemented based on linked-list of array. As shown in the figure below, we abstract []byte array into blocks and combine blocks into Nocopy Buffer in the form of a linked list. Meanwhile, reference counting mechanism, Nocopy API and object pool are introduced.
 &lt;br/>
-&lt;img src="/img/blog/bytedance_gonet_practice_img/buffer.png" alt="image"> &lt;br/>
+&lt;img src="https://www.cloudwego.io/img/blog/bytedance_gonet_practice_img/buffer.png" alt="image"> &lt;br/>
 Nocopy Buffer has the following advantages over some common buffer libraries like &amp;ldquo;bytes&amp;rdquo;, &amp;ldquo;bufio&amp;rdquo;, and &amp;ldquo;ringbuffer&amp;rdquo;:&lt;/p>
 &lt;ol>
 &lt;li>Read and write in parallel without lock, and supports stream read/write with nocopy
@@ -824,7 +824,7 @@ Nocopy Buffer has the following advantages over some common buffer libraries lik
 &lt;p>There are some existing open-source connection multiplexing solutions. But they are limited by code level constraints. They all require copy buffer for data subcontracting and merging, resulting in poor performance. Nocopy Buffer, with its flexible slicing and splicing, well supports data subcontracting and merging with nocopy, making it possible to achieve high-performance connection multiplexing schemes.&lt;/p>
 &lt;p>The design of Netpoll-based connection multiplexing is shown in the figure below. We abstract the Nocopy Buffer(and its sharding) into virtual connections, so that the upper layer code retains the same calling experience as &amp;ldquo;net.Conn&amp;rdquo;. At the same time, the data on the real connection can be flexibly allocated to the virtual connection through protocol subcontracting in the underlying code. Or send virtual connection data through protocol encoding.
 &lt;br/>
-&lt;img src="/img/blog/bytedance_gonet_practice_img/client_server.png" alt="image"> &lt;br/>&lt;/p>
+&lt;img src="https://www.cloudwego.io/img/blog/bytedance_gonet_practice_img/client_server.png" alt="image"> &lt;br/>&lt;/p>
 &lt;p>The connection multiplexing scheme contains the following core elements:&lt;/p>
 &lt;ol>
 &lt;li>The virtual connection
@@ -849,20 +849,20 @@ Nocopy Buffer has the following advantages over some common buffer libraries lik
 &lt;/ol>
 &lt;h2 id="zerocopy">ZeroCopy&lt;/h2>
 &lt;p>&amp;ldquo;ZeroCopy&amp;rdquo; refers to the ZeroCopy function provided by Linux. In the previous chapter, we discussed nocopy of the service layer. But as we know, when we call the &amp;ldquo;sendmsg&amp;rdquo; system-call to send a data package, actually there is still a copy of the data, and the overhead of such copies is considerable when the data packages are large. For example, when the data package has the size of 100M, we can see the following result: &lt;br/>
-&lt;img src="/img/blog/bytedance_gonet_practice_img/perf.png" alt="image"> &lt;br/>
+&lt;img src="https://www.cloudwego.io/img/blog/bytedance_gonet_practice_img/perf.png" alt="image"> &lt;br/>
 The previous example is merely the overhead of tcp package sending. In our scenario, most services are connected to the &amp;ldquo;Service Mesh&amp;rdquo;. Therefore, there are three copies in a package sending: Service process to kernel, kernel to sidecar, sidecar to kernel. This makes the CPU usage caused by copying especially heavy for services demanding large package transactions, as shown in the following figure:
 &lt;br/>
-&lt;img src="/img/blog/bytedance_gonet_practice_img/service_mesh_copy.png" alt="image"> &lt;br/>
+&lt;img src="https://www.cloudwego.io/img/blog/bytedance_gonet_practice_img/service_mesh_copy.png" alt="image"> &lt;br/>
 To solve this problem, we chose to use the ZeroCopy API provided by Linux (send is supported after 4.14; receive is supported after 5.4). But this introduces an additional engineering problem: the ZeroCopy send API is incompatible with the original call method and does not coexist well. Here&amp;rsquo;s how ZeroCopy Send works: After the service process calls &amp;ldquo;sendmsg&amp;rdquo;, &amp;ldquo;sendmsg&amp;rdquo; records the address of the &amp;ldquo;iovec&amp;rdquo; and returns it immediately. In this case, the service process cannot release the memory, and needs to wait for the kernel to send a signal indicating that an &amp;ldquo;iovec&amp;rdquo; has been successfully sent before it can be released via &amp;ldquo;epoll&amp;rdquo;. Since we don&amp;rsquo;t want to change the way the business side uses it, we need to provide a synchronous sending and receiving interface to the upper layer, so it is difficult to provide both ZeroCopy and non-Zerocopy abstraction based on the existing API. Since ZeroCopy has performance degradation in small package scenarios, this is not the default option.&lt;/p>
 &lt;p>Thus, the ByteDance Service Framework Team collaborated with the ByteDance Kernel Team. The Kernel Team provided the synchronous interface: when &amp;ldquo;sendmsg&amp;rdquo; is called, the kernel listens and intercepts the original kernel callback to the service, and doesn&amp;rsquo;t let &amp;ldquo;sendmsg&amp;rdquo; return values until the callback is complete. This allows us to easily plug in &amp;ldquo;ZeroCopy send&amp;rdquo; without changing the original model. Meanwhile, the ByteDance Kernel Team also implements ZeroCopy based on Unix domain socket, which enables zero-copy communication between service processes and Mesh sidecar.&lt;/p>
 &lt;p>After using &amp;ldquo;ZeroCopy send&amp;rdquo;, we can see that the kernel is no longer occupied by copy through perf:
 &lt;br/>
-&lt;img src="/img/blog/bytedance_gonet_practice_img/perf2.png" alt="image"> &lt;br/>
+&lt;img src="https://www.cloudwego.io/img/blog/bytedance_gonet_practice_img/perf2.png" alt="image"> &lt;br/>
 In terms of CPU usage, ZeroCopy can save half the cpu of non-ZeroCopy in large package scenarios.&lt;/p>
 &lt;h2 id="delay-caused-by-go-scheduling">Delay Caused By Go Scheduling&lt;/h2>
 &lt;p>In our practice, we found that although our newly written &amp;ldquo;Netpoll&amp;rdquo; outperformed the &amp;ldquo;Go net&amp;rdquo; library in terms of avg delay, it was generally higher than the &amp;ldquo;Go net&amp;rdquo; library in terms of p99 and max delay, and the spikes would be more obvious, as shown in the following figure (Go 1.13, Netpoll + multiplexing in blue, Netpoll + persistent connection in green, Go net library + persistent connection in yellow):
 &lt;br/>
-&lt;img src="/img/blog/bytedance_gonet_practice_img/delay.png" alt="image"> &lt;br/>&lt;/p>
+&lt;img src="https://www.cloudwego.io/img/blog/bytedance_gonet_practice_img/delay.png" alt="image"> &lt;br/>&lt;/p>
 &lt;p>We tried many ways to improve it, but the outcomes were unsatisfactory. Finally, we locate that the delay was not caused by the overhead of &amp;ldquo;Netpoll&amp;rdquo; itself, but by the scheduling of Go, for example:&lt;/p>
 &lt;ol>
 &lt;li>In &amp;ldquo;Netpoll&amp;rdquo;, the &amp;ldquo;SubReactor&amp;rdquo; itself is also a &amp;ldquo;goroutine&amp;rdquo;, which is affected by scheduling and cannot be guaranteed to be executed immediately after the &amp;ldquo;EpollWait&amp;rdquo; callback, so there would be a delay here.&lt;/li>
@@ -883,7 +883,7 @@ In terms of CPU usage, ZeroCopy can save half the cpu of non-ZeroCopy in large p
 &lt;li>&lt;a href="https://golang.org/src/runtime/proc.go">https://golang.org/src/runtime/proc.go&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://github.com/panjf2000/gnet">https://github.com/panjf2000/gnet&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://github.com/tidwall/evio">https://github.com/tidwall/evio&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Kitex Release v0.0.5</title><link>/blog/2021/09/26/kitex-release-v0.0.5/</link><pubDate>Sun, 26 Sep 2021 00:00:00 +0000</pubDate><guid>/blog/2021/09/26/kitex-release-v0.0.5/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Kitex Release v0.0.5</title><link>https://www.cloudwego.io/blog/2021/09/26/kitex-release-v0.0.5/</link><pubDate>Sun, 26 Sep 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/09/26/kitex-release-v0.0.5/</guid><description>
 &lt;h2 id="feature">Feature:&lt;/h2>
 &lt;ul>
 &lt;li>Add default ErrorHandler to wrap remote error when no ErrorHandler is specified.&lt;/li>
@@ -919,7 +919,7 @@ In terms of CPU usage, ZeroCopy can save half the cpu of non-ZeroCopy in large p
 &lt;ul>
 &lt;li>github.com/cloudwego/netpoll: v0.0.3 -&amp;gt; v0.0.4&lt;/li>
 &lt;li>github.com/bytedance/gopkg: v0.0.0-20210709064845-3c00f9323f09 -&amp;gt; v0.0.0-20210910103821-e4efae9c17c3&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Performance Optimization on Kitex</title><link>/blog/2021/09/23/performance-optimization-on-kitex/</link><pubDate>Thu, 23 Sep 2021 00:00:00 +0000</pubDate><guid>/blog/2021/09/23/performance-optimization-on-kitex/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Performance Optimization on Kitex</title><link>https://www.cloudwego.io/blog/2021/09/23/performance-optimization-on-kitex/</link><pubDate>Thu, 23 Sep 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/09/23/performance-optimization-on-kitex/</guid><description>
 &lt;h2 id="preface">Preface&lt;/h2>
 &lt;p>Kitex is the next generation high-performance and extensible Go RPC framework developed by ByteDance Service Framework Team. Compared with other RPC frameworks, in addition to its rich features for service governance, it has the following characteristics: integrated with the self-developed network library - Netpoll; supports multiple Message Protocols (Thrift, Protobuf) and Interactive Models (Ping-Pong, Oneway, Streaming); provides a more flexible and extensible code generator.&lt;/p>
 &lt;p>Currently, Kitex has been widely used by the major lines of business in ByteDance, and statistics shows that the number of service access is up to 8K. We&amp;rsquo;ve been continuously improving Kitex&amp;rsquo;s performance since its launch. This article will share our work on optimizing Netpoll and serialization.&lt;/p>
@@ -1046,7 +1046,7 @@ Both serialization and deserialization involve copying data from one piece of me
 &lt;p>&lt;strong>Copy-free String / Binary&lt;/strong>&lt;br>
 For some services, such as video-related services, during its request or return processes, large-size &amp;ldquo;Binary&amp;rdquo; data will be arisen, representing the processed video or image data. Meanwhile, some services will return large-size &amp;ldquo;String&amp;rdquo; data (such as full-text information, etc.). In this scenario, all the hot spots we see through the flame graph are on the copies of the data. So we thought, can we reduce the frequency of such copies?&lt;/p>
 &lt;p>The answer is positive. Since our underlying buffer is a linked list, it is easy to insert a node in the middle of the list.&lt;/p>
-&lt;p>&lt;img src="/img/blog/buffer-linkerd-list.png" alt="!image">&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/buffer-linkerd-list.png" alt="!image">&lt;/p>
 &lt;p>Thus, we have taken a similar approach, when a &amp;ldquo;string&amp;rdquo; or &amp;ldquo;binary&amp;rdquo; data exists during serialization processes. First, split the node&amp;rsquo;s buffer into two segments and then insert the buffer of the &amp;ldquo;string&amp;rdquo; / &amp;ldquo;binary&amp;rdquo; objects in the middle correspondingly. This avoids the copy of large &amp;ldquo;string&amp;rdquo; / &amp;ldquo;binary&amp;rdquo; .&lt;/p>
 &lt;p>Furthermore, a copy will occur if we convert a string to &amp;ldquo;[]byte&amp;rdquo; using &amp;ldquo;[]byte(string)&amp;rdquo;. Because &amp;ldquo;string&amp;rdquo; is immutable and &amp;ldquo;[]byte&amp;rdquo; is mutable in Golang language. &amp;ldquo;unsafe&amp;rdquo; is needed if you don&amp;rsquo;t want to copy during the conversion:&lt;/p>
 &lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#204a87;font-weight:bold">func&lt;/span> &lt;span style="color:#000">StringToSliceByte&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#000">s&lt;/span> &lt;span style="color:#204a87;font-weight:bold">string&lt;/span>&lt;span style="color:#000;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">[]&lt;/span>&lt;span style="color:#204a87;font-weight:bold">byte&lt;/span> &lt;span style="color:#000;font-weight:bold">{&lt;/span>
@@ -1543,7 +1543,7 @@ Go 1.13.5 darwin/amd64 on a 2.5 GHz Intel Core i7 16GB&lt;/p>
 &lt;li>&lt;a href="https://github.com/alecthomas/go_serialization_benchmarks">https://github.com/alecthomas/go_serialization_benchmarks&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://capnproto.org/">https://capnproto.org/&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://software.intel.com/content/www/us/en/develop/documentation/cpp-compiler-developer-guide-and-reference/top/compiler-reference/intrinsics/intrinsics-for-intel-advanced-vector-extensions-2/intrinsics-for-shuffle-operations-1/mm256-shuffle-epi8.html">Intel C++ Compiler Classic Developer Guide and Reference&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Netpoll Release v0.0.4</title><link>/blog/2021/09/16/netpoll-release-v0.0.4/</link><pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate><guid>/blog/2021/09/16/netpoll-release-v0.0.4/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Netpoll Release v0.0.4</title><link>https://www.cloudwego.io/blog/2021/09/16/netpoll-release-v0.0.4/</link><pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/09/16/netpoll-release-v0.0.4/</guid><description>
 &lt;h2 id="improvement">Improvement:&lt;/h2>
 &lt;ul>
 &lt;li>Support TCP_NODELAY by default&lt;/li>
@@ -1558,7 +1558,7 @@ Go 1.13.5 darwin/amd64 on a 2.5 GHz Intel Core i7 16GB&lt;/p>
 &lt;h2 id="bugfix">Bugfix:&lt;/h2>
 &lt;ul>
 &lt;li>Set leftover wait read size&lt;/li>
-&lt;/ul></description></item><item><title>Blog: CloudWeGo Open Source Announcement</title><link>/blog/2021/09/13/cloudwego-open-source-announcement/</link><pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate><guid>/blog/2021/09/13/cloudwego-open-source-announcement/</guid><description>
+&lt;/ul></description></item><item><title>Blog: CloudWeGo Open Source Announcement</title><link>https://www.cloudwego.io/blog/2021/09/13/cloudwego-open-source-announcement/</link><pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/09/13/cloudwego-open-source-announcement/</guid><description>
 &lt;h2 id="background">Background&lt;/h2>
 &lt;p>ByteDance is proud to announce the launch of open source software &lt;a href="https://github.com/cloudwego">CloudWeGo&lt;/a>. Focusing on microservice communication and governance, it offers high performance, strong extensibility, and high reliability which enables quick construction of an enterprise-level cloud native architecture.&lt;/p>
 &lt;p>ByteDance uses Golang as its main development language, and supports the reliable communication of tens of thousands of Golang microservices. We are experienced in microservices after practicing under massive traffic, and so we decided to offer open source software in order to enrich the community&amp;rsquo;s ecology.&lt;/p>
@@ -1632,7 +1632,7 @@ Go 1.13.5 darwin/amd64 on a 2.5 GHz Intel Core i7 16GB&lt;/p>
 &lt;p>Following initial feedback, users have shown a stronger demand for Protobuf. Although Kitex supports multiple protocols, the internal RPC communication protocol of Bytedance is Thrift. Protobuf, Kitex Protobuf or compatibility with gRPC is supported only to fulfill the needs of a small number of internal users, so performance [for Protobuf] has not been optimized yet. In terms of code generation, we have not made any optimizations, and currently utilize Protobuf&amp;rsquo;s official binary directly.&lt;/p>
 &lt;p>Gogo/protobuf is an excellent open source library that optimizes Protobuf serialization performance based on generated code, but unfortunately the library is currently out of maintenance, which is why Kitex did not choose gogo.
 In order to meet the growing needs of developers, we are planning to carry out Kitex&amp;rsquo;s performance optimization for Protobuf support.&lt;/p>
-&lt;p>You are welcome to submit issues and PRs to build CloudWeGo together. We are excited for more developers to join, and also look forward to CloudWeGo helping more and more companies quickly build cloud-native architectures. If any corporate customers want to employ CloudWeGo in your internal projects, we can provide technical support. Feel free to raise an issue in &lt;a href="https://github.com/cloudwego">Github&lt;/a> if you have any questions.&lt;/p></description></item><item><title>Blog: Kitex Release v0.0.4</title><link>/blog/2021/08/26/kitex-release-v0.0.4/</link><pubDate>Thu, 26 Aug 2021 00:00:00 +0000</pubDate><guid>/blog/2021/08/26/kitex-release-v0.0.4/</guid><description>
+&lt;p>You are welcome to submit issues and PRs to build CloudWeGo together. We are excited for more developers to join, and also look forward to CloudWeGo helping more and more companies quickly build cloud-native architectures. If any corporate customers want to employ CloudWeGo in your internal projects, we can provide technical support. Feel free to raise an issue in &lt;a href="https://github.com/cloudwego">Github&lt;/a> if you have any questions.&lt;/p></description></item><item><title>Blog: Kitex Release v0.0.4</title><link>https://www.cloudwego.io/blog/2021/08/26/kitex-release-v0.0.4/</link><pubDate>Thu, 26 Aug 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/08/26/kitex-release-v0.0.4/</guid><description>
 &lt;h2 id="improvement">Improvement:&lt;/h2>
 &lt;ul>
 &lt;li>Make transMetaHandler executed before customized boundHandlers to ensure the customized boundHandlers could get metainfo.&lt;/li>
@@ -1662,11 +1662,11 @@ In order to meet the growing needs of developers, we are planning to carry out K
 &lt;ul>
 &lt;li>Thriftgo: v0.0.2-0.20210726073420-0145861fcd04 -&amp;gt; v0.1.2&lt;/li>
 &lt;li>Netpoll: v0.0.2 -&amp;gt; v0.0.3&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Kitex Release v0.0.3</title><link>/blog/2021/08/01/kitex-release-v0.0.3/</link><pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate><guid>/blog/2021/08/01/kitex-release-v0.0.3/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Kitex Release v0.0.3</title><link>https://www.cloudwego.io/blog/2021/08/01/kitex-release-v0.0.3/</link><pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/08/01/kitex-release-v0.0.3/</guid><description>
 &lt;h2 id="bugfix">Bugfix:&lt;/h2>
 &lt;ul>
 &lt;li>Prevent connection pool from being overridden.&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Kitex Release v0.0.2</title><link>/blog/2021/07/30/kitex-release-v0.0.2/</link><pubDate>Fri, 30 Jul 2021 00:00:00 +0000</pubDate><guid>/blog/2021/07/30/kitex-release-v0.0.2/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Kitex Release v0.0.2</title><link>https://www.cloudwego.io/blog/2021/07/30/kitex-release-v0.0.2/</link><pubDate>Fri, 30 Jul 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/07/30/kitex-release-v0.0.2/</guid><description>
 &lt;h2 id="improvement">Improvement:&lt;/h2>
 &lt;ul>
 &lt;li>Kitex now disables all stats to improve performance when no tracer is provided.&lt;/li>
@@ -1691,5 +1691,5 @@ In order to meet the growing needs of developers, we are planning to carry out K
 &lt;li>
 &lt;p>Several lint issues and typos are fixed thanks to @rleungx @Huangxuny1 @JeffreyBool.&lt;/p>
 &lt;/li>
-&lt;/ul></description></item><item><title>Blog: Kitex Release v0.0.1</title><link>/blog/2021/07/12/kitex-release-v0.0.1/</link><pubDate>Mon, 12 Jul 2021 00:00:00 +0000</pubDate><guid>/blog/2021/07/12/kitex-release-v0.0.1/</guid><description>
+&lt;/ul></description></item><item><title>Blog: Kitex Release v0.0.1</title><link>https://www.cloudwego.io/blog/2021/07/12/kitex-release-v0.0.1/</link><pubDate>Mon, 12 Jul 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/07/12/kitex-release-v0.0.1/</guid><description>
 &lt;p>Kitex project initialization.&lt;/p></description></item></channel></rss>
