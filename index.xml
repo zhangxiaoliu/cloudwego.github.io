@@ -1,4 +1,16 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Hertz Release v0.4.0</title><link>https://www.cloudwego.io/blog/2022/10/28/hertz-release-v0.4.0/</link><pubDate>Fri, 28 Oct 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/10/28/hertz-release-v0.4.0/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Netpoll Release v0.3.0</title><link>https://www.cloudwego.io/blog/2022/11/09/netpoll-release-v0.3.0/</link><pubDate>Wed, 09 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/11/09/netpoll-release-v0.3.0/</guid><description>
+&lt;h2 id="feat">Feat&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/netpoll/pull/206">#206&lt;/a>] feat: connection flush support write timeout.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/netpoll/pull/182">#182&lt;/a>] feat: dial in ipv6 only.&lt;/li>
+&lt;/ul>
+&lt;h2 id="fix">Fix&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/netpoll/pull/200">#200&lt;/a>] fix: fd not detach when close by user.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/netpoll/pull/196">#196&lt;/a>] fix: limit iovecs max to 2GB(2^31).&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/netpoll/pull/179">#179&lt;/a>] fix: length overflow.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/netpoll/pull/183">#183&lt;/a>] fix: dont check epollout when epollerr.&lt;/li>
+&lt;/ul></description></item><item><title>Blog: Hertz Release v0.4.0</title><link>https://www.cloudwego.io/blog/2022/10/28/hertz-release-v0.4.0/</link><pubDate>Fri, 28 Oct 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/10/28/hertz-release-v0.4.0/</guid><description>
 &lt;h2 id="feature">Feature&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/289">#289&lt;/a>] feat: render support IndentedJSON.&lt;/li>
@@ -1730,4 +1742,73 @@ In order to meet the growing needs of developers, we are planning to carry out K
 &lt;p>Several lint issues and typos are fixed thanks to @rleungx @Huangxuny1 @JeffreyBool.&lt;/p>
 &lt;/li>
 &lt;/ul></description></item><item><title>Blog: Kitex Release v0.0.1</title><link>https://www.cloudwego.io/blog/2021/07/12/kitex-release-v0.0.1/</link><pubDate>Mon, 12 Jul 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2021/07/12/kitex-release-v0.0.1/</guid><description>
-&lt;p>Kitex project initialization.&lt;/p></description></item></channel></rss>
+&lt;p>Kitex project initialization.&lt;/p></description></item><item><title>Blog: Kitex Release v0.4.3</title><link>https://www.cloudwego.io/blog/1/01/01/kitex-release-v0.4.3/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/1/01/01/kitex-release-v0.4.3/</guid><description>
+&lt;h1 id="lite-version">Lite Version&lt;/h1>
+&lt;h2 id="feature">Feature&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>Extend the Generated Code of client/server&lt;/strong>: Add a new feature which can extend generated client.go/server.go with config file. It is applicable to the scenario for customizing the unified suite. See &lt;a href="%5Bhttps://www.cloudwego.io/docs/kitex/tutorials/code-gen/template_extension/%5D">Extend the Templates of Service Generated Code&lt;/a> for details.&lt;/li>
+&lt;li>&lt;strong>Biz Customized Exception&lt;/strong> : Add supporting to return customized biz error which can distinguish with RPC error. See &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/basic-feature/bizstatuserr/">Business Exception&lt;/a>, &lt;a href="https://github.com/cloudwego/kitex/issues/511">Proposal&lt;/a>.&lt;/li>
+&lt;li>&lt;strong>Request Profiler&lt;/strong> : Add a new feature to do profiler for requests which can be used for cost statistics.&lt;/li>
+&lt;li>&lt;strong>Context Middleware&lt;/strong> : Add Context Middleware which is used for adding request-level middlewares.&lt;/li>
+&lt;/ul>
+&lt;h2 id="optimization">&lt;strong>Optimization&lt;/strong>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>Frugal Performance Optimization&lt;/strong> : Support frugal precompile (pretouch) when new client or server, which is to reduce the impact of dynamic compilation on latency.&lt;/li>
+&lt;li>&lt;strong>Connpool Optimiztion&lt;/strong> : Refactor connection pool to improve the idle connections cleanup.&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h1 id="full-version">Full Version&lt;/h1>
+&lt;h2 id="feature-1">Feature&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/691">#691&lt;/a>] feat(client): add context middleware which is used for adding request-level middlewares.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/649">#649&lt;/a>] feat(connpool): new long connection pool with minIdle config and idle connections cleanup.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/672">#672&lt;/a>] feat(grpc): add kitex grpc metadata api to get header, tailer, and peer address metadata.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/613">#613&lt;/a>] feat(exception): support customized biz error which can distinguish with RPC error.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/670">#670&lt;/a>] feat(exception): support error format.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/678">#678&lt;/a>] feat(tool): add git and record param for cmd.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/662">#662&lt;/a>] feat(tool): support frugal precompile (pretouch) when new client or server.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/657">#657&lt;/a>] feat(tool): support template extension.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/527">#527&lt;/a>] feat(profiler): profiler for rpc request which can be used for cost statistics.&lt;/li>
+&lt;/ul>
+&lt;h2 id="optimize">Optimize&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/690">#690&lt;/a>] optimize(meta): remove error logic for adding default metaHandler in #503.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/638">#638&lt;/a>] optimize(generic): httppb generic support map/list elem type as struct.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/641">#641&lt;/a>] optimize(tool): add warnings comments for oneway methods.&lt;/li>
+&lt;/ul>
+&lt;h2 id="fix">Fix&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/611">#611&lt;/a>] fix(client): fix resource leaks caused by Finalizer not being triggered in the scenario where clients are created frequently.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/698">#698&lt;/a>] fix(connpool): adjust globalIdle based on the number of connections decreased during the Get.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/636">#636&lt;/a>] fix(connpool): CloseCallback and statistical reporting of connection pool are invalid when the connection pool is reset in &lt;code>ForwardProxy&lt;/code>.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/647">#647&lt;/a>] fix(grpc): update grpc connection window size when initial and synchronize grpc pr #5459.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/639">#639&lt;/a>] fix(generic): marshalling list&lt;byte> in generic and enabling forJSON reader option for MapThriftGeneric.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/655">#655&lt;/a>] fix(generic): numeric constant parsing fails when used as generic default value.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/654">#654&lt;/a>] fix(frugal): fix compilation error when using lower go version.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/682">#682&lt;/a>] fix(profiler): profiler stops pprof profile.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/637">#637&lt;/a>] fix(tool): fix imports in handler.go template.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/630">#630&lt;/a>] fix(tool): remove redundant kitex comments for file that do not declare an interface.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/627">#627&lt;/a>] fix(tool): fix import missing when having different alias for the same path.&lt;/li>
+&lt;/ul>
+&lt;h2 id="refactor">Refactor&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/651">#651&lt;/a>] refactor(server): server handler read/write interface return new context.&lt;/li>
+&lt;/ul>
+&lt;h2 id="docs">Docs&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/656">#656&lt;/a>] docs: remove wrong message in CONTRIBUTING.md.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/683">#683&lt;/a>] docs(kerrors): fix kerrors WithCauseAndExtraMsg method comment.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/625">#625&lt;/a>] chore: fix grammar of pull request template.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/623">#623&lt;/a>] chore: modify the template of pull request.&lt;/li>
+&lt;/ul>
+&lt;h2 id="test--ci">Test &amp;amp; CI&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/646">#646&lt;/a>] test: fix ut failure caused by InitRPCInfoFunc not setting rpcinfo.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/680">#680&lt;/a>] test: fix retry test race.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/661">#661&lt;/a>] test: make wpool tests more stable.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/643">#643&lt;/a>] test: add test for detection server handler.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/632">#632&lt;/a>] test: replace handwritten mock classes with gomock auto-generated classes.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/697">#697&lt;/a>] chore(ci): fixed skywalking-eyes version.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/652">#652&lt;/a>] chore(ci): delete repeated tests to reduce unit tests cost times.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/588">#588&lt;/a>] chore(ci): support codecov.&lt;/li>
+&lt;/ul></description></item></channel></rss>
