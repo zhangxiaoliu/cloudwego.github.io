@@ -12,7 +12,7 @@
 &lt;li>[&lt;a href="https://github.com/cloudwego/netpoll/pull/183">#183&lt;/a>] fix: 当 EPOLLERR 发生时，跳过检查 EPOLLOUT。&lt;/li>
 &lt;/ul></description></item><item><title>Blog: Kitex Proxyless 之流量路由：配合 Istio 与 OpenTelemetry 实现全链路泳道</title><link>https://www.cloudwego.io/zh/blog/2022/11/08/kitex-proxyless-%E4%B9%8B%E6%B5%81%E9%87%8F%E8%B7%AF%E7%94%B1%E9%85%8D%E5%90%88-istio-%E4%B8%8E-opentelemetry-%E5%AE%9E%E7%8E%B0%E5%85%A8%E9%93%BE%E8%B7%AF%E6%B3%B3%E9%81%93/</link><pubDate>Tue, 08 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/zh/blog/2022/11/08/kitex-proxyless-%E4%B9%8B%E6%B5%81%E9%87%8F%E8%B7%AF%E7%94%B1%E9%85%8D%E5%90%88-istio-%E4%B8%8E-opentelemetry-%E5%AE%9E%E7%8E%B0%E5%85%A8%E9%93%BE%E8%B7%AF%E6%B3%B3%E9%81%93/</guid><description>
 &lt;blockquote>
-&lt;p>导语：本文主要介绍了基于 Kitex Proxyless 实现流量路由，从而在 biz-demo 中使用 Kitex 和 Hertz 重写 bookinfo 项目，实现的目的是以实战的方式演示如何使用 xDS 实现全链路的流量泳道。&lt;/p>
+&lt;p>导语：Kitex Proxyless 是 Kitex 服务能够不借助 envoy sidecar 直接与 istiod 交互，基于 xDS 协议动态获取控制面下发的服务治理规则，并转换为 Kitex 对应规则来实现一些服务治理功能，如流量路由。基于 Kitex Proxyless，能够实现 Kitex 无需代理就可以被 ServiceMesh 统一管理，进而实现多种部署模式下的治理规则 Spec、治理控制面、治理下发协议、异构数据治理能力的统一。本文在 biz-demo 中使用 Kitex 和 Hertz 重写 bookinfo 项目，以实战的方式演示了如何使用 xDS 实现全链路的流量泳道。&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="01-引言">01 引言&lt;/h2>
 &lt;h3 id="kitex-proxyless">&lt;strong>Kitex Proxyless&lt;/strong>&lt;/h3>
@@ -93,7 +93,7 @@
 &lt;p>下面会借助一个&lt;strong>具体的工程案例&lt;/strong>介绍，来介绍并演示如何基于 &lt;a href="https://github.com/cloudwego/kitex">Kitex&lt;/a> Proxyless 和 OpenTelemetry Baggage 实现全链路泳道功能。&lt;/p>
 &lt;h2 id="03-案例介绍bookinfo">03 案例介绍：Bookinfo&lt;/h2>
 &lt;blockquote>
-&lt;p>该案例是使用 Hertz、&lt;a href="https://github.com/cloudwego/kitex">Kitex&lt;/a> 重写经典的 &lt;a href="https://istio.io/latest/zh/docs/examples/bookinfo/">Istio Bookinfo&lt;/a> 项目：&lt;/p>
+&lt;p>该案例是使用 &lt;a href="https://github.com/cloudwego/hertz">Hertz&lt;/a>、&lt;a href="https://github.com/cloudwego/kitex">Kitex&lt;/a> 重写经典的 &lt;a href="https://istio.io/latest/zh/docs/examples/bookinfo/">Istio Bookinfo&lt;/a> 项目：&lt;/p>
 &lt;ul>
 &lt;li>使用 istiod 来作为 &lt;strong>xDS server&lt;/strong>，作为 CRD 配置和下发的入口；&lt;/li>
 &lt;li>使用 wire 来实现&lt;strong>依赖注入&lt;/strong>；&lt;/li>
