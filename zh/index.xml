@@ -176,7 +176,76 @@
 &lt;li>kitex-opentelemetry: &lt;a href="https://github.com/kitex-contrib/obs-opentelemetry">https://github.com/kitex-contrib/obs-opentelemetry&lt;/a>&lt;/li>
 &lt;li>hertz-opentelemetry: &lt;a href="https://github.com/hertz-contrib/obs-opentelemetry">https://github.com/hertz-contrib/obs-opentelemetry&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p>该完整案例已提交在 &lt;a href="https://github.com/cloudwego/biz-demo">biz-demo&lt;/a> 仓库中，感兴趣的同学可以前往查阅。&lt;a href="https://github.com/cloudwego/biz-demo">biz-demo&lt;/a> 会包含一些基于 &lt;a href="https://github.com/cloudwego">CloudWeGo&lt;/a> 技术栈且具备一定业务场景的完整 Demo，初衷是能够为企业用户在生产中使用提供有价值的参考，非常欢迎更多同学能够参与到 &lt;a href="https://github.com/cloudwego">CloudWeGo&lt;/a> 相关场景与案例的贡献中来，一起来做一些有意思的尝试。&lt;/p></description></item><item><title>Blog: HTTP 框架 Hertz 实践入门：性能测试指南</title><link>https://www.cloudwego.io/zh/blog/2022/11/01/http-%E6%A1%86%E6%9E%B6-hertz-%E5%AE%9E%E8%B7%B5%E5%85%A5%E9%97%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8C%87%E5%8D%97/</link><pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/zh/blog/2022/11/01/http-%E6%A1%86%E6%9E%B6-hertz-%E5%AE%9E%E8%B7%B5%E5%85%A5%E9%97%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8C%87%E5%8D%97/</guid><description>
+&lt;p>该完整案例已提交在 &lt;a href="https://github.com/cloudwego/biz-demo">biz-demo&lt;/a> 仓库中，感兴趣的同学可以前往查阅。&lt;a href="https://github.com/cloudwego/biz-demo">biz-demo&lt;/a> 会包含一些基于 &lt;a href="https://github.com/cloudwego">CloudWeGo&lt;/a> 技术栈且具备一定业务场景的完整 Demo，初衷是能够为企业用户在生产中使用提供有价值的参考，非常欢迎更多同学能够参与到 &lt;a href="https://github.com/cloudwego">CloudWeGo&lt;/a> 相关场景与案例的贡献中来，一起来做一些有意思的尝试。&lt;/p></description></item><item><title>Blog: Kitex v0.4.3 版本发布</title><link>https://www.cloudwego.io/zh/blog/2022/11/02/kitex-v0.4.3-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Wed, 02 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/zh/blog/2022/11/02/kitex-v0.4.3-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
+&lt;h1 id="精简版">精简版&lt;/h1>
+&lt;h2 id="feature">Feature&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>扩展 client/server 生成模板&lt;/strong> ：新增 client/server 模板扩展功能，可以通过配置定制，适用于统一定制 suite 场景，详见&lt;a href="https://www.cloudwego.io/zh/docs/kitex/tutorials/code-gen/template_extension/">扩展 Service 代码生成模板&lt;/a>。&lt;/li>
+&lt;li>&lt;strong>业务异常&lt;/strong> ：新增业务自定义异常支持，可区分于 RPC 异常返回 error，使用详见&lt;a href="https://www.cloudwego.io/zh/docs/kitex/tutorials/basic-feature/bizstatuserr/">业务异常&lt;/a>，背景详见&lt;a href="https://github.com/cloudwego/kitex/issues/511">Proposal&lt;/a>。&lt;/li>
+&lt;li>&lt;strong>请求 Profiler&lt;/strong> ：新增功能可用于为不同的 RPC 请求提供成本分析统计的能力。&lt;/li>
+&lt;li>&lt;strong>Context Middleware&lt;/strong> : 新增 Context Middleware，用于请求粒度添加 Middleware。&lt;/li>
+&lt;/ul>
+&lt;h2 id="optimize">Optimize&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>Frugal 性能优化&lt;/strong> ：支持在创建 Client/Server 阶段进行 Frugal “预编译”，减少动态编译对延迟的影响。&lt;/li>
+&lt;li>&lt;strong>连接池优化&lt;/strong> ：重构连接池，完善空闲连接清理能力。&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h1 id="完整版">完整版&lt;/h1>
+&lt;h2 id="feature-1">Feature&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/691">#691&lt;/a>] feat(client): 为 Client 添加上下文中间件，用于请求粒度添加中间件。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/649">#649&lt;/a>] feat(connpool): 长连接池的新实现，支持最小空闲连接数及空闲连接清理。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/672">#672&lt;/a>] feat(grpc): 为 kitex grpc 添加了元信息传递相关 api，包括 header，tailer，以及 peer 远端地址的获取接口。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/613">#613&lt;/a>] feat(exception): 支持用户自定义异常用以区分 RPC 异常。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/670">#670&lt;/a>] feat(exception): 支持 DetailError 格式化。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/678">#678&lt;/a>] feat(tool): 为 kitex cmd 添加 git 和 record 参数。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/662">#662&lt;/a>] feat(tool): 支持在创建 client 或者 server 的时候进行 frugal “预编译” (pretouch)。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/657">#657&lt;/a>] feat(tool): 支持模板拓展。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/527">#527&lt;/a>] feat(profiler): 为不同的 RPC 请求提供成本分析统计的能力。&lt;/li>
+&lt;/ul>
+&lt;h2 id="optimize-1">Optimize&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/690">#690&lt;/a>] optimize(meta): 移除 #503 添加 default metahandler 的错误逻辑。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/638">#638&lt;/a>] optimize(generic): httppb 泛化支持 map/list 元素类型为 struct。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/641">#641&lt;/a>] optimize(tool): 给 oneway 方法增加警告注释。&lt;/li>
+&lt;/ul>
+&lt;h2 id="fix">Fix&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/611">#611&lt;/a>] fix(client): 在频繁重复创建 Client 场景下，修复由于 finalizer 未触发执行导致的资源泄漏。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/698">#698&lt;/a>] fix(connpool): 根据 Get 返回的连接数减少值来调整 globalIdle。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/636">#636&lt;/a>] fix(connpool): 修复当连接池在 &lt;code>ForwardProxy&lt;/code> 实现中被重置后，连接池的 CloseCallback、统计上报失效的问题。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/647">#647&lt;/a>] fix(grpc): 修复 grpc 连接级别窗口初始化时没有通知对端的问题，并同步了 grpc pr #5459。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/639">#639&lt;/a>] fix(generic): 泛化调用支持 list&lt;byte> 类型，map 读泛化增加 forJSON 选项。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/655">#655&lt;/a>] fix(generic): 数值型常量作为泛化默认值时无法被正确解析。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/654">#654&lt;/a>] fix(frugal): 修复较低版本 go 编译失败的问题。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/682">#682&lt;/a>] fix(profiler): 修复 profiler 停止 pprof profile 采集的问题。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/637">#637&lt;/a>] fix(tool): 修复 handler.go 模板里的 imports。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/630">#630&lt;/a>] fix(tool): 对于没有声明 “service” 的 pb 文件，去掉生成文件末尾冗余的 kitex 声明。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/627">#627&lt;/a>] fix(tool): 修复当一个 import 拥有不同的别名时 import 会丢失的问题。&lt;/li>
+&lt;/ul>
+&lt;h2 id="refactor">Refactor&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/651">#651&lt;/a>] refactor(server): 重构 server trans handler 的 read/write 接口，返回新的 context。&lt;/li>
+&lt;/ul>
+&lt;h2 id="docs">Docs&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/656">#656&lt;/a>] docs: 删除 CONTRIBUTING 文档中的错误信息。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/683">#683&lt;/a>] docs(kerrors): 修改了 kerrors WithCauseAndExtraMsg 方法注释。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/625">#625&lt;/a>] chore: 修正 pull request 模板的语法问题。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/623">#623&lt;/a>] chore: 修改 pull request 模板。&lt;/li>
+&lt;/ul>
+&lt;h2 id="test--ci">Test &amp;amp; CI&lt;/h2>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/646">#646&lt;/a>] test: 修复 InitRPCInfoFunc 未设置 rpcinfo 导致的单测失败。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/680">#680&lt;/a>] test: 修复重试单测的 race 问题。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/661">#661&lt;/a>] test: 增强 wpool 测试稳定性。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/643">#643&lt;/a>] test: 为 detection server handler 添加测试。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/632">#632&lt;/a>] test: 用 gomock 自动生成类替换手动编写的 mock 类。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/697">#697&lt;/a>] chore(ci): 固定 skywalking-eyes 版本号。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/652">#652&lt;/a>] chore(ci): 删除重复的测试，以减少单测所花费的时间。&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/588">#588&lt;/a>] chore(ci): 支持 codecov。&lt;/li>
+&lt;/ul></description></item><item><title>Blog: HTTP 框架 Hertz 实践入门：性能测试指南</title><link>https://www.cloudwego.io/zh/blog/2022/11/01/http-%E6%A1%86%E6%9E%B6-hertz-%E5%AE%9E%E8%B7%B5%E5%85%A5%E9%97%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8C%87%E5%8D%97/</link><pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/zh/blog/2022/11/01/http-%E6%A1%86%E6%9E%B6-hertz-%E5%AE%9E%E8%B7%B5%E5%85%A5%E9%97%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8C%87%E5%8D%97/</guid><description>
 &lt;blockquote>
 &lt;p>导语：2021 年 9 月 8 日，字节跳动宣布正式开源 CloudWeGo。CloudWeGo 是一套字节跳动内部微服务中间件集合，具备&lt;strong>高性能、强扩展性和稳定性&lt;/strong>的特点，专注于解决微服务通信与治理的难题，满足不同业务在不同场景的诉求。
 2022 年 6 月 21 日，Hertz 正式开源。日前，CloudWeGo 团队正式开源字节跳动最大的 HTTP 框架 Hertz。Hertz 在发布之后得到了大量用户的关注，开源四个月以来，Hertz 已经收获了 2K+ star。有很多用户自己进行了测试，感谢社区对我们的关注和支持。
@@ -3409,73 +3478,4 @@ go &lt;span style="color:#204a87">test&lt;/span> -gcflags&lt;span style="color:#
 &lt;li>我们在这个版本中更新了一些文档。&lt;/li>
 &lt;li>我们修改了一些拼写错误和错别字。感谢 @rleungx @Huangxuny1 @JeffreyBool 的贡献。&lt;/li>
 &lt;/ul></description></item><item><title>Blog: Kitex v0.0.1 版本发布</title><link>https://www.cloudwego.io/zh/blog/2021/07/12/kitex-v0.0.1-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Mon, 12 Jul 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/zh/blog/2021/07/12/kitex-v0.0.1-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
-&lt;p>Kitex 项目初始化。&lt;/p></description></item><item><title>Blog: Kitex v0.4.3 版本发布</title><link>https://www.cloudwego.io/zh/blog/1/01/01/kitex-v0.4.3-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/zh/blog/1/01/01/kitex-v0.4.3-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
-&lt;h1 id="精简版">精简版&lt;/h1>
-&lt;h2 id="feature">Feature&lt;/h2>
-&lt;ul>
-&lt;li>&lt;strong>扩展 client/server 生成模板&lt;/strong> ：新增 client/server 模板扩展功能，可以通过配置定制，适用于统一定制 suite 场景，详见&lt;a href="https://www.cloudwego.io/zh/docs/kitex/tutorials/code-gen/template_extension/">扩展 Service 代码生成模板&lt;/a>。&lt;/li>
-&lt;li>&lt;strong>业务异常&lt;/strong> ：新增业务自定义异常支持，可区分于 RPC 异常返回 error，使用详见&lt;a href="https://www.cloudwego.io/zh/docs/kitex/tutorials/basic-feature/bizstatuserr/">业务异常&lt;/a>，背景详见&lt;a href="https://github.com/cloudwego/kitex/issues/511">Proposal&lt;/a>。&lt;/li>
-&lt;li>&lt;strong>请求 Profiler&lt;/strong> ：新增功能可用于为不同的 RPC 请求提供成本分析统计的能力。&lt;/li>
-&lt;li>&lt;strong>Context Middleware&lt;/strong> : 新增 Context Middleware，用于请求粒度添加 Middleware。&lt;/li>
-&lt;/ul>
-&lt;h2 id="optimize">Optimize&lt;/h2>
-&lt;ul>
-&lt;li>&lt;strong>Frugal 性能优化&lt;/strong> ：支持在创建 Client/Server 阶段进行 Frugal “预编译”，减少动态编译对延迟的影响。&lt;/li>
-&lt;li>&lt;strong>连接池优化&lt;/strong> ：重构连接池，完善空闲连接清理能力。&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h1 id="完整版">完整版&lt;/h1>
-&lt;h2 id="feature-1">Feature&lt;/h2>
-&lt;ul>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/691">#691&lt;/a>] feat(client): 为 Client 添加上下文中间件，用于请求粒度添加中间件。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/649">#649&lt;/a>] feat(connpool): 长连接池的新实现，支持最小空闲连接数及空闲连接清理。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/672">#672&lt;/a>] feat(grpc): 为 kitex grpc 添加了元信息传递相关 api，包括 header，tailer，以及 peer 远端地址的获取接口。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/613">#613&lt;/a>] feat(exception): 支持用户自定义异常用以区分 RPC 异常。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/670">#670&lt;/a>] feat(exception): 支持 DetailError 格式化。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/678">#678&lt;/a>] feat(tool): 为 kitex cmd 添加 git 和 record 参数。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/662">#662&lt;/a>] feat(tool): 支持在创建 client 或者 server 的时候进行 frugal “预编译” (pretouch)。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/657">#657&lt;/a>] feat(tool): 支持模板拓展。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/527">#527&lt;/a>] feat(profiler): 为不同的 RPC 请求提供成本分析统计的能力。&lt;/li>
-&lt;/ul>
-&lt;h2 id="optimize-1">Optimize&lt;/h2>
-&lt;ul>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/690">#690&lt;/a>] optimize(meta): 移除 #503 添加 default metahandler 的错误逻辑。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/638">#638&lt;/a>] optimize(generic): httppb 泛化支持 map/list 元素类型为 struct。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/641">#641&lt;/a>] optimize(tool): 给 oneway 方法增加警告注释。&lt;/li>
-&lt;/ul>
-&lt;h2 id="fix">Fix&lt;/h2>
-&lt;ul>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/611">#611&lt;/a>] fix(client): 在频繁重复创建 Client 场景下，修复由于 finalizer 未触发执行导致的资源泄漏。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/698">#698&lt;/a>] fix(connpool): 根据 Get 返回的连接数减少值来调整 globalIdle。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/636">#636&lt;/a>] fix(connpool): 修复当连接池在 &lt;code>ForwardProxy&lt;/code> 实现中被重置后，连接池的 CloseCallback、统计上报失效的问题。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/647">#647&lt;/a>] fix(grpc): 修复 grpc 连接级别窗口初始化时没有通知对端的问题，并同步了 grpc pr #5459。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/639">#639&lt;/a>] fix(generic): 泛化调用支持 list&lt;byte> 类型，map 读泛化增加 forJSON 选项。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/655">#655&lt;/a>] fix(generic): 数值型常量作为泛化默认值时无法被正确解析。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/654">#654&lt;/a>] fix(frugal): 修复较低版本 go 编译失败的问题。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/682">#682&lt;/a>] fix(profiler): 修复 profiler 停止 pprof profile 采集的问题。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/637">#637&lt;/a>] fix(tool): 修复 handler.go 模板里的 imports。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/630">#630&lt;/a>] fix(tool): 对于没有声明 “service” 的 pb 文件，去掉生成文件末尾冗余的 kitex 声明。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/627">#627&lt;/a>] fix(tool): 修复当一个 import 拥有不同的别名时 import 会丢失的问题。&lt;/li>
-&lt;/ul>
-&lt;h2 id="refactor">Refactor&lt;/h2>
-&lt;ul>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/651">#651&lt;/a>] refactor(server): 重构 server trans handler 的 read/write 接口，返回新的 context。&lt;/li>
-&lt;/ul>
-&lt;h2 id="docs">Docs&lt;/h2>
-&lt;ul>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/656">#656&lt;/a>] docs: 删除 CONTRIBUTING 文档中的错误信息。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/683">#683&lt;/a>] docs(kerrors): 修改了 kerrors WithCauseAndExtraMsg 方法注释。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/625">#625&lt;/a>] chore: 修正 pull request 模板的语法问题。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/623">#623&lt;/a>] chore: 修改 pull request 模板。&lt;/li>
-&lt;/ul>
-&lt;h2 id="test--ci">Test &amp;amp; CI&lt;/h2>
-&lt;ul>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/646">#646&lt;/a>] test: 修复 InitRPCInfoFunc 未设置 rpcinfo 导致的单测失败。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/680">#680&lt;/a>] test: 修复重试单测的 race 问题。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/661">#661&lt;/a>] test: 增强 wpool 测试稳定性。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/643">#643&lt;/a>] test: 为 detection server handler 添加测试。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/632">#632&lt;/a>] test: 用 gomock 自动生成类替换手动编写的 mock 类。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/697">#697&lt;/a>] chore(ci): 固定 skywalking-eyes 版本号。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/652">#652&lt;/a>] chore(ci): 删除重复的测试，以减少单测所花费的时间。&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/588">#588&lt;/a>] chore(ci): 支持 codecov。&lt;/li>
-&lt;/ul></description></item></channel></rss>
+&lt;p>Kitex 项目初始化。&lt;/p></description></item></channel></rss>
