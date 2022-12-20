@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Kitex Proxyless Practice：Traffic Lane Implementation with Istio and OpenTelemetry</title><link>https://www.cloudwego.io/blog/2022/12/16/kitex-proxyless-practicetraffic-lane-implementation-with-istio-and-opentelemetry/</link><pubDate>Fri, 16 Dec 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/12/16/kitex-proxyless-practicetraffic-lane-implementation-with-istio-and-opentelemetry/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Kitex Proxyless Practice：Traffic Lane Implementation with Istio and OpenTelemetry</title><link>https://www.cloudwego.io/blog/2022/12/20/kitex-proxyless-practicetraffic-lane-implementation-with-istio-and-opentelemetry/</link><pubDate>Tue, 20 Dec 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/12/20/kitex-proxyless-practicetraffic-lane-implementation-with-istio-and-opentelemetry/</guid><description>
 &lt;blockquote>
 &lt;p>Preface: Kitex Proxyless enables the Kitex service to interact directly with istiod without envoy sidecar. It dynamically obtains service governance rules
 delivered by the control plane based on the xDS protocol and converts them to Kitex rules to implement some service governance functions, such as traffic routing.
@@ -137,14 +137,14 @@ so we only need to match the route according to the header. Here is an example o
 &lt;li>Base Lane&lt;/li>
 &lt;/ol>
 &lt;p>Requests without &lt;code>uid=100&lt;/code> header in the inbound traffic are automatically routed to the base lane, which is a round-robin of v1 and v3 of &lt;code>reviews&lt;/code> service resulting in a round-robin score of 0 and 1.&lt;/p>
-&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/11.png" alt="image">&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/bookstore_base.png" alt="image">&lt;/p>
 &lt;ol start="2">
 &lt;li>Branch Lane&lt;/li>
 &lt;/ol>
 &lt;p>We use the &lt;strong>mod-header&lt;/strong> plug-in of the browser to simulate the scenario where the &lt;code>uid=100&lt;/code> is carried in the inbound traffic request header.&lt;/p>
 &lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/12.png" alt="image">&lt;/p>
 &lt;p>Click the refresh button again, you can find that the request hits the branch lane, and the traffic lane takes effect successfully.&lt;/p>
-&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/13.png" alt="image">&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/bookstore_branch.jpeg" alt="image">&lt;/p>
 &lt;h2 id="04-summary-and-outlook">04 Summary and Outlook&lt;/h2>
 &lt;p>So far, we have implemented a complete full-path traffic lane based on Kitex Proxyless and OpenTelemetry.
 And we can set corresponding routing rules for Kitex based on Istio standard governance rule Spec without Envoy sidecar.&lt;/p>
