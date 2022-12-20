@@ -1,4 +1,168 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Netpoll Release v0.3.0</title><link>https://www.cloudwego.io/blog/2022/11/09/netpoll-release-v0.3.0/</link><pubDate>Wed, 09 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/11/09/netpoll-release-v0.3.0/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Kitex Proxyless Practice：Traffic Lane Implementation with Istio and OpenTelemetry</title><link>https://www.cloudwego.io/blog/2022/12/16/kitex-proxyless-practicetraffic-lane-implementation-with-istio-and-opentelemetry/</link><pubDate>Fri, 16 Dec 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/12/16/kitex-proxyless-practicetraffic-lane-implementation-with-istio-and-opentelemetry/</guid><description>
+&lt;blockquote>
+&lt;p>Preface: Kitex Proxyless enables the Kitex service to interact directly with istiod without envoy sidecar. It dynamically obtains service governance rules
+delivered by the control plane based on the xDS protocol and converts them to Kitex rules to implement some service governance functions, such as traffic routing.
+Based on Kitex Proxyless, Kitex can be managed by Service Mesh without sidecar. Besides, the governance rule Spec, governance control plane, governance delivery protocol,
+and heterogeneous data governance capability can be unified under multiple deployment modes. By rewriting the bookinfo project using Kitex and Hertz, it demonstrates how to implement a traffic lane using xDS protocol.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="01-introduction">01 Introduction&lt;/h2>
+&lt;h3 id="kitex-proxyless">&lt;strong>Kitex Proxyless&lt;/strong>&lt;/h3>
+&lt;p>&lt;a href="https://github.com/cloudwego/kitex">Kitex&lt;/a> is a Golang RPC framework open-sourced by ByteDance that already natively supports the xDS standard protocol and can be managed by Service Mesh in Proxyless way.
+Refer to this doc for detailed design: &lt;a href="https://github.com/cloudwego/kitex/issues/461">Proposal: Kitex support xDS Protocol&lt;/a>.
+Official doc is also available here at &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/advanced-feature/xds/">Kitex/Tutorials/Advanced Feature/xDS Support&lt;/a>&lt;/p>
+&lt;p>Kitex Proxyless Simply means that Kitex services can interact directly with istiod without envoy sidecar and dynamically obtain service governance rules delivered by the control plane based on the xDS protocol.
+And those rules will be translated into Kitex corresponding rules to implement some service governance functions (such as traffic routing which is the focus of this blog).&lt;/p>
+&lt;p>Based on Kitex Proxyless, Kitex application can be managed by Service Mesh in a unified manner without sidecar, and thus the governance rule Spec, governance control plane,
+governance delivery protocol, and heterogeneous data governance capability can be unified under multiple deployment modes.&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/unify_architecture.svg" alt="image">&lt;/p>
+&lt;h3 id="traffic-routing">Traffic Routing&lt;/h3>
+&lt;p>Traffic routing refers to the ability to route traffic to a specified destination based on its specific metadata identifier.&lt;/p>
+&lt;p>Traffic routing is one of the core capabilities in service governance and one of the scenarios that Kitex Proxyless supports in the first place.&lt;/p>
+&lt;p>The approach of &lt;a href="https://github.com/cloudwego/kitex">Kitex&lt;/a> implementing traffic routing base on xDS is as follows:&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/2.png" alt="image">&lt;/p>
+&lt;p>Specific procedure:&lt;/p>
+&lt;ol>
+&lt;li>Add an xDS Router MW to Pick Cluster (routing) and watch LDS and RDS of target services.&lt;/li>
+&lt;li>Aware of LDS changes and extract the Filter Chain and inline RDS in the LDS of the target service.&lt;/li>
+&lt;li>Aware of RDS changes and obtain the route configuration of the target service based on VirtualHost and ServiceName matching. (Prefix, suffix, exact, and wildcard are supported)&lt;/li>
+&lt;li>The routing rules in the matched RDS are traversed and processed. The routing rules are divided into two parts (refer to the routing specification definition) :&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>Match:
+&lt;ul>
+&lt;li>Path(required): Extract Method from rpcinfo for matching;&lt;/li>
+&lt;li>HeaderMatcher(optional): Extract the corresponding metadata KeyValue from the metainfo and match it.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Route：
+&lt;ul>
+&lt;li>Cluster ：Standard Cluster.&lt;/li>
+&lt;li>WeightedClusters(Weight routing) : cluster is selected according to weight within MW.&lt;/li>
+&lt;li>Write the selected Cluster to the EndpointInfo.Tag for later service discovery.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>As you can see, traffic routing is a process of selecting the corresponding SubCluster according to certain rules.&lt;/p>
+&lt;h2 id="02-traffic-lane">02 Traffic Lane&lt;/h2>
+&lt;p>Based on traffic routing capability, we can extend many usage scenarios, such as: A/B testing, canary release, blue-green release, etc., and the focus of this paper: Traffic Lane.&lt;/p>
+&lt;p>The traffic lane can be understood as splitting a group of service instances in a certain way (such as deployment environment), and based on the routing capability and global metadata,
+so that traffic can flow in the specified service instance lanes in accordance with the exact rules (logically similar to lanes in a swimming pool). Traffic lane can be used for full-path grey release.&lt;/p>
+&lt;p>In Istio we typically group instances with DestinationRule subset, splitting a service into multiple subsets (e.g. Based on attributes such as version and region)
+and then work with VirtualService to define the corresponding routing rules and route the traffic to the corresponding subset. In this way, the single-hop routing capability in the lane is realized.&lt;/p>
+&lt;p>However, traffic routing capability alone is not enough to realize traffic lane. We need a good mechanism to accurately identify the traffic
+and configure routing rules for each hop traffic based on this feature when a request spans multiple services.&lt;/p>
+&lt;p>As shown in the following figure: Suppose we want to implement a user request that is accurately route to the v1 version of service-b.
+The first thought might be to put a &lt;code>uid = 100&lt;/code> in the request header and configure the corresponding VirtualService to match the &lt;code>uid = 100&lt;/code> in the header.&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/3.png" alt="image">&lt;/p>
+&lt;p>But it has several obvious drawbacks for this approach:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Not common enough&lt;/strong>: If a specific business attribute (such as uid) is used as a traffic route matching rule, the business attribute must be manually transmitted through the full path.
+This is highly intrusive to business and requires business cooperation. In addition, when we want to use other business attributes, all services on the full path need to change to adapt. Therefore, it is a very unusual practice.&lt;/li>
+&lt;li>Routing rules are prone to frequent changes, resulting in &lt;strong>rule overcrowding&lt;/strong>. Routing rules are identified by specific business attributes (for example: uid) is used as a traffic route matching rule.
+If you want to change a business attribute or set a routing rule for other users, you need to modify the original routing rule or repeatedly define multiple routing rules for different business attributes, which easily causes route rule overcrowding and is difficult to maintain.&lt;/li>
+&lt;/ol>
+&lt;p>Therefore, in order to achieve uniform traffic routing across the full path, we also need to use a more general traffic dyeing and the capability to transmit the dye identifier through the full path.&lt;/p>
+&lt;h3 id="traffic-dyeing">Traffic Dyeing&lt;/h3>
+&lt;p>Traffic dyeing refers to marking the request traffic with a special identifier and carrying this identifier in the full request path.
+The so-called traffic lane means that all services in the path sets traffic routing rules based on the uniform gray traffic dyeing identifier so that the traffic can be accurately controlled in different lanes.&lt;/p>
+&lt;p>Usually, traffic dyeing is done at the gateway layer, and the metadata in the original request is converted into corresponding dye identifiers according to certain rules (conditions and proportions).&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Dyeing by conditions&lt;/strong>: when the request metadata meets certain conditions (such as &lt;code>uid = 100&lt;/code> in the request header and cookie matching), the current request is marked with a dye identifier.&lt;/li>
+&lt;li>&lt;strong>Dyeing by proportions&lt;/strong>: the request is marked with a dye identifier in proportion.&lt;/li>
+&lt;/ul>
+&lt;p>With a unified traffic dyeing mechanism, we do not need to care about specific business attribute identifiers when configuring routing rules. We only need to configure routes based on the dye identifiers.
+The specific service attributes are abstracted into conditional dyeing rules to be more universal. Even if the business attributes change, the routing rules do not need to change frequently.&lt;/p>
+&lt;h4 id="dye-identifier-transmitting">Dye Identifier Transmitting&lt;/h4>
+&lt;p>The dyed identifier is usually transmitted through the Tracing Baggage, which is used to pass business custom KV attributes through the entire call chain (full-path), such as traffic dyeing identifiers and business identifiers such as AccountID.&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/4.png" alt="image">&lt;/p>
+&lt;p>We usually use the Tracing Baggage mechanism to transmit the corresponding dye identifiers through the full-path. Most of the Tracing frameworks support the Baggage concept, such as: OpenTelemetry, Skywalking, Jaeger, etc.&lt;/p>
+&lt;p>With a set of universal full-path transmitting mechanism, the service only needs to config the tracing once, and there is no need to adapt every time the service attribute identifier changes.&lt;/p>
+&lt;p>Next part introduces and demonstrates how to implement the traffic lane based on Kitex Proxyless and OpenTelemetry Baggage by using a specific engineering example.&lt;/p>
+&lt;h2 id="03-demo-introductionbookinfo">03 Demo Introduction：Bookinfo&lt;/h2>
+&lt;p>The demo is a rewriting of the &lt;a href="https://istio.io/latest/zh/docs/examples/bookinfo/">Istio Bookinfo&lt;/a> project using &lt;a href="https://github.com/cloudwego/hertz">Hertz&lt;/a> and &lt;a href="https://github.com/cloudwego/kitex">Kitex&lt;/a>:&lt;/p>
+&lt;ul>
+&lt;li>Use &lt;strong>istiod&lt;/strong> as the xDS server and the entry for CRD configuration and delivery.&lt;/li>
+&lt;li>Use &lt;strong>wire&lt;/strong> to implement dependency injection;&lt;/li>
+&lt;li>Use &lt;strong>opentelemetry&lt;/strong> to implement full path tracing;&lt;/li>
+&lt;li>Use &lt;a href="https://github.com/kitex-contrib/xds">Kitex-xds&lt;/a> and &lt;strong>opentelemetry baggage&lt;/strong> to implement a traffic lane in proxyless mode;&lt;/li>
+&lt;li>Implement a &lt;a href="https://github.com/cloudwego/biz-demo/blob/main/bookinfo/README_CN.md">Bookinfo&lt;/a> UI using &lt;strong>arco-design&lt;/strong> and &lt;strong>react&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;h3 id="business-architecture">Business Architecture&lt;/h3>
+&lt;p>In keeping with Bookinfo, the overall business architecture is divided into four separate microservices:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>productpage&lt;/code> - This microservice calls &lt;code>details&lt;/code> and &lt;code>reviews&lt;/code>;&lt;/li>
+&lt;li>&lt;code>details&lt;/code> - This microservice contains information about the book;&lt;/li>
+&lt;li>&lt;code>reviews&lt;/code> - This microservice contains book related reviews. It also calls &lt;code>ratings&lt;/code>;&lt;/li>
+&lt;li>&lt;code>ratings&lt;/code> - This microservice contains ratings information consisting of book reviews.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;code>reviews&lt;/code> are available in three versions:&lt;/p>
+&lt;ul>
+&lt;li>The v1 version calls the ratings service and uses one ⭐️ to display the ratings.&lt;/li>
+&lt;li>The v2 version invokes the ratings services, and use five ⭐⭐⭐⭐⭐⭐ to display the ratings.&lt;/li>
+&lt;li>The v3 version won&amp;rsquo;t call the ratings service&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/bookinfo.svg" alt="image">&lt;/p>
+&lt;h3 id="diagram-of-traffic-lanes">Diagram of Traffic Lanes&lt;/h3>
+&lt;p>The whole call chain is divided into 2 lanes:&lt;/p>
+&lt;ul>
+&lt;li>Base lane: Undyed traffic is routed to the base lane.&lt;/li>
+&lt;li>Branch lane: dyed traffic is routed to the branch lane of reviews-v2 -&amp;gt;ratings-v2.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/lane.svg" alt="image">&lt;/p>
+&lt;h3 id="traffic-dyeing-1">Traffic Dyeing&lt;/h3>
+&lt;p>The gateway is responsible for traffic dyeing. For example, the request with &lt;code>uid=100&lt;/code> in the request header is dyed and carries baggage of &lt;code>env=dev&lt;/code>.&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/dyeing.svg" alt="image">&lt;/p>
+&lt;p>The dye mode may vary according to different gateways. For example, when we select istio ingress as the gateway, we can use &lt;strong>EnvoyFilter + Lua&lt;/strong> to write the gateway dye rules.&lt;/p>
+&lt;h3 id="workload-labeling">Workload Labeling&lt;/h3>
+&lt;ol>
+&lt;li>Label the workload with corresponding version identifier.&lt;/li>
+&lt;/ol>
+&lt;p>Take service &lt;code>reviews&lt;/code> as an example. You only need to label the corresponding pod with &lt;code>version: v1&lt;/code>.&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/8.png" alt="image">&lt;/p>
+&lt;ol start="2">
+&lt;li>Set a series of subsets for the service based on the DestinationRule:&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>Productpage: v1&lt;/li>
+&lt;li>Reviews: v1、v2、v3&lt;/li>
+&lt;li>Ratings: v1、v2&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/9.png" alt="image">&lt;/p>
+&lt;h3 id="traffic-routing-rules">Traffic Routing Rules&lt;/h3>
+&lt;p>The gateway has already dyed the request header with &lt;code>uid=100&lt;/code> and automatically loaded &lt;code>env=dev&lt;/code> baggage,
+so we only need to match the route according to the header. Here is an example of the route rule configuration:&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/10.png" alt="image">&lt;/p>
+&lt;h3 id="check-the-effect">Check the Effect&lt;/h3>
+&lt;ol>
+&lt;li>Base Lane&lt;/li>
+&lt;/ol>
+&lt;p>Requests without &lt;code>uid=100&lt;/code> header in the inbound traffic are automatically routed to the base lane, which is a round-robin of v1 and v3 of &lt;code>reviews&lt;/code> service resulting in a round-robin score of 0 and 1.&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/11.png" alt="image">&lt;/p>
+&lt;ol start="2">
+&lt;li>Branch Lane&lt;/li>
+&lt;/ol>
+&lt;p>We use the &lt;strong>mod-header&lt;/strong> plug-in of the browser to simulate the scenario where the &lt;code>uid=100&lt;/code> is carried in the inbound traffic request header.&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/12.png" alt="image">&lt;/p>
+&lt;p>Click the refresh button again, you can find that the request hits the branch lane, and the traffic lane takes effect successfully.&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Kitex_Proxyless/13.png" alt="image">&lt;/p>
+&lt;h2 id="04-summary-and-outlook">04 Summary and Outlook&lt;/h2>
+&lt;p>So far, we have implemented a complete full-path traffic lane based on Kitex Proxyless and OpenTelemetry.
+And we can set corresponding routing rules for Kitex based on Istio standard governance rule Spec without Envoy sidecar.&lt;/p>
+&lt;p>In addition to traffic routing capabilities, Kitex Proxyless is also continuously iterating and optimizing to meet more requirements for data plane governance capabilities.
+As an exploration and practice of Service Mesh data plane, Proxyless not only can enrich the deployment form of data plane, but also hopes to continuously polish &lt;a href="https://github.com/cloudwego/kitex">Kitex&lt;/a>,
+enhance its ability in open source ecological compatibility, and create a more open and inclusive microservice ecosystem.&lt;/p>
+&lt;h2 id="05-relevant-project">05 Relevant Project&lt;/h2>
+&lt;p>Here is a list of the projects involved in the demo:&lt;/p>
+&lt;ul>
+&lt;li>biz-demo: &lt;a href="https://github.com/cloudwego/biz-demo">https://github.com/cloudwego/biz-demo&lt;/a>&lt;/li>
+&lt;li>kitex: &lt;a href="https://github.com/cloudwego/kitex">https://github.com/cloudwego/kitex&lt;/a>&lt;/li>
+&lt;li>hertz: &lt;a href="https://github.com/cloudwego/hertz">https://github.com/cloudwego/hertz&lt;/a>&lt;/li>
+&lt;li>kitex-xds: &lt;a href="https://github.com/kitex-contrib/xds">https://github.com/kitex-contrib/xds&lt;/a>&lt;/li>
+&lt;li>kitex-opentelemetry: &lt;a href="https://github.com/kitex-contrib/obs-opentelemetry">https://github.com/kitex-contrib/obs-opentelemetry&lt;/a>&lt;/li>
+&lt;li>hertz-opentelemetry: &lt;a href="https://github.com/hertz-contrib/obs-opentelemetry">https://github.com/hertz-contrib/obs-opentelemetry&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>This demo has been submitted in the biz-demo repository, and will be optimised continuously. biz-demo will include some complete demos based on CloudWeGo technology stack with certain business scenarios.
+The original intention is to provide valuable references for enterprise users to use CloudWeGo in production. Contributors are always welcomed to participate in the contribution of CloudWeGo biz-demo. Let&amp;rsquo;s try something fun together.&lt;/p></description></item><item><title>Blog: Netpoll Release v0.3.0</title><link>https://www.cloudwego.io/blog/2022/11/09/netpoll-release-v0.3.0/</link><pubDate>Wed, 09 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/11/09/netpoll-release-v0.3.0/</guid><description>
 &lt;h2 id="feat">Feat&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/netpoll/pull/206">#206&lt;/a>] feat: connection flush support write timeout.&lt;/li>
