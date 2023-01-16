@@ -1,4 +1,65 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/zh/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Volo 0.3.0 版本发布</title><link>https://www.cloudwego.io/zh/blog/2022/12/22/volo-0.3.0-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/zh/blog/2022/12/22/volo-0.3.0-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/zh/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Hertz v0.5.0 版本发布</title><link>https://www.cloudwego.io/zh/blog/2023/01/12/hertz-v0.5.0-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Thu, 12 Jan 2023 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/zh/blog/2023/01/12/hertz-v0.5.0-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
+&lt;p>Hertz 0.5.0 版本中，除了常规迭代优化之外，我们还带来了多个重要 feature。&lt;/p>
+&lt;h2 id="网络层和协议层支持基于流的接口">网络层和协议层支持基于流的接口&lt;/h2>
+&lt;blockquote>
+&lt;p>&lt;a href="https://github.com/cloudwego/hertz/pull/467">https://github.com/cloudwego/hertz/pull/467&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>在 Hertz v0.5.0 版本中，我们进一步加强了 Hertz 传输层 &amp;amp; 协议层可扩展能力，支持无缝对接基于流的传输层协议 QUIC，以及在此之上构建的 &lt;a href="https://github.com/cloudwego/hertz/issues/458">HTTP3 协议。&lt;/a>
+此外，我们在此基础上还增加和完善了 &amp;ldquo;ALPN&amp;rdquo;(应用层协议协商)、&amp;ldquo;QUIC/TLS parallel monitoring&amp;rdquo;(QUIC/TLS并行监听)、&amp;ldquo;Alt-Svc&amp;rdquo;(备选服务) 等功能。&lt;/p>
+&lt;h3 id="主要变更">主要变更&lt;/h3>
+&lt;h4 id="传输层">传输层&lt;/h4>
+&lt;p>我们在保证兼容性能的基础之上增加了一个针对基于流（stream-based）的网络连接接口抽象&lt;code>StreamConn&lt;/code>，同时调整传输层和协议层的交互逻辑，实现针对连接类型的分发正确的协议层处理（protocol server）。
+针对需要同时监听监听 TCP（TLS）以及 UDP(QUIC)的场景我们提供了一个&lt;code>WithAltTransporter&lt;/code>选项，方便将备用 transporter 传递到主 transporter 中，便于实现 QUIC/TLS 并行监听的能力。&lt;/p>
+&lt;h4 id="协议层">协议层&lt;/h4>
+&lt;p>支持添加基于流的协议层实现（protocol server）&lt;code>StreamServer&lt;/code>，以便于在新增的基于流的传输层扩展之上构建对应处理协议（HTTP/3）。
+为了便捷的实现为某个主协议（HTTP/3）配置备选服务元信息，&lt;code>ProtocolSuite&lt;/code>对外暴露&lt;code>SetAltHeader&lt;/code>接口。
+同时，我们也为&lt;code>StreamConn&lt;/code>设计了 ALPN 能力，以便于在 QUIC 内提供协议协商的能力。&lt;/p>
+&lt;h4 id="通用层">通用层&lt;/h4>
+&lt;p>同时我们在通用层中新增了能够与 Golang 标准 Handler 进行转换的辅助函数，以便于快速的将基于 Golang 标准 Handler 实现移植到 Hertz 中来。在之后提供的基于 &lt;a href="https://github.com/lucas-clemente/quic-go">quic-go&lt;/a> 的 &lt;a href="https://github.com/hertz-contrib/http3/pull/1">QUIC &amp;amp; HTTP/3 扩展&lt;/a>中，就用到了这个函数提供的能力。&lt;/p>
+&lt;h4 id="feature-状态">Feature 状态&lt;/h4>
+&lt;p>Hertz 核心库能力已经发布，具体实现后续将以&lt;a href="https://github.com/hertz-contrib/http3/pull/1">扩展包&lt;/a>的形式发布，欢迎试用~&lt;/p>
+&lt;p>更多详细的设计说明可以参考：&lt;a href="https://www.cloudwego.io/zh/docs/hertz/reference/stream_based_design/">Hertz 支持 QUIC &amp;amp; HTTP/3&lt;/a>&lt;/p>
+&lt;h2 id="脚手架工具支持生成-hertz-client-代码">脚手架工具支持生成 hertz client 代码&lt;/h2>
+&lt;blockquote>
+&lt;p>&lt;a href="https://github.com/cloudwego/hertz/pull/471">https://github.com/cloudwego/hertz/pull/471&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>在脚手架工具(Hz)的 v0.5.0 的版本，我们支持了基于 IDL 自动生成 hertz client 代码的功能，并实现了类 RPC 调用形式的 HTTP 请求一键调用。
+使用方法：&lt;/p>
+&lt;blockquote>
+&lt;p>具体详见：https://github.com/cloudwego/hertz-examples/tree/main/hz_client&lt;/p>
+&lt;/blockquote>
+&lt;ol>
+&lt;li>定义 IDL&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#000">namespace&lt;/span> &lt;span style="color:#204a87;font-weight:bold">go&lt;/span> &lt;span style="color:#000">toutiao&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">middleware&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">hzClient&lt;/span>
+&lt;span style="color:#204a87;font-weight:bold">struct&lt;/span> &lt;span style="color:#000">QueryReq&lt;/span> &lt;span style="color:#000;font-weight:bold">{&lt;/span>
+&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span> &lt;span style="color:#204a87;font-weight:bold">string&lt;/span> &lt;span style="color:#000">QueryValue&lt;/span> &lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#000">api&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">query&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;query1&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">);&lt;/span>
+&lt;span style="color:#000;font-weight:bold">}&lt;/span>
+&lt;span style="color:#204a87;font-weight:bold">struct&lt;/span> &lt;span style="color:#000">Resp&lt;/span> &lt;span style="color:#000;font-weight:bold">{&lt;/span>
+&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span> &lt;span style="color:#204a87;font-weight:bold">string&lt;/span> &lt;span style="color:#000">Resp&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">}&lt;/span>
+&lt;span style="color:#000">service&lt;/span> &lt;span style="color:#000">Hertz121&lt;/span> &lt;span style="color:#000;font-weight:bold">{&lt;/span>
+&lt;span style="color:#000">Resp&lt;/span> &lt;span style="color:#000">QueryMethod&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span> &lt;span style="color:#000">QueryReq&lt;/span> &lt;span style="color:#000">request&lt;/span>&lt;span style="color:#000;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#000">api&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">get&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;/query&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span> &lt;span style="color:#000">api&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">handler_path&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;get&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">);&lt;/span>
+&lt;span style="color:#000;font-weight:bold">}(&lt;/span>
+&lt;span style="color:#000">api&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">base_domain&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;http://127.0.0.1:8888&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">)&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>生成代码&lt;/li>
+&lt;/ol>
+&lt;p>可基于上述 IDL，分别生成 server 和 client 端代码：&lt;/p>
+&lt;p>server：&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#000">hz&lt;/span> &lt;span style="color:#000">new&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">--&lt;/span>&lt;span style="color:#000">idl&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#000">psm&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">thrift&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">--&lt;/span>&lt;span style="color:#000">handler_by_method&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">-&lt;/span>&lt;span style="color:#000">t&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#000">template&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#000">slim&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>client：&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#000">hz&lt;/span> &lt;span style="color:#000">client&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">--&lt;/span>&lt;span style="color:#000">idl&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#000">psm&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">thrift&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">--&lt;/span>&lt;span style="color:#000">model_dir&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#000">hertz_gen&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">-&lt;/span>&lt;span style="color:#000">t&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#000">template&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#000">slim&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">--&lt;/span>&lt;span style="color:#000">client_dir&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#000">hz_client&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>调用 client 代码发起 HTTP 请求，实现 client 端和 server 端的互通&lt;/li>
+&lt;/ol>
+&lt;h2 id="完整-release-note">完整 Release Note&lt;/h2>
+&lt;p>完整的 Release Note 可以参考：&lt;/p>
+&lt;ul>
+&lt;li>Hertz: &lt;a href="https://github.com/cloudwego/hertz/releases/tag/v0.5.0">https://github.com/cloudwego/hertz/releases/tag/v0.5.0&lt;/a>&lt;/li>
+&lt;li>Hz(脚手架): &lt;a href="https://github.com/cloudwego/hertz/releases/tag/cmd%2Fhz%2Fv0.5.0">https://github.com/cloudwego/hertz/releases/tag/cmd%2Fhz%2Fv0.5.0&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Blog: Volo 0.3.0 版本发布</title><link>https://www.cloudwego.io/zh/blog/2022/12/22/volo-0.3.0-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/zh/blog/2022/12/22/volo-0.3.0-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
 &lt;p>Volo 0.3.0 版本中，除了常规 bugfix 之外，我们还带来了多个重要 feature。&lt;/p>
 &lt;h2 id="service-trait-重构">Service Trait 重构&lt;/h2>
 &lt;p>Volo 0.3.0 版本中，我们对 Service Trait 进行了重构，使得 Service Trait 的实现更加简单，同时也提供了更多的灵活性。&lt;/p>
