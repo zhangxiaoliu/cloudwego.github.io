@@ -1,4 +1,65 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Volo Release 0.3.0</title><link>https://www.cloudwego.io/blog/2022/12/22/volo-release-0.3.0/</link><pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/12/22/volo-release-0.3.0/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Hertz Release v0.5.0</title><link>https://www.cloudwego.io/blog/2023/01/12/hertz-release-v0.5.0/</link><pubDate>Thu, 12 Jan 2023 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2023/01/12/hertz-release-v0.5.0/</guid><description>
+&lt;p>In version 0.5.0 of Hertz, in addition to regular iterative optimization, we also brought several important features.&lt;/p>
+&lt;h2 id="network-layer-and-protocol-layer-support-stream-based-interface">Network layer and protocol layer support stream-based interface&lt;/h2>
+&lt;blockquote>
+&lt;p>&lt;a href="https://github.com/cloudwego/hertz/pull/467">https://github.com/cloudwego/hertz/pull/467&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>In the Hertz v0.5.0 version, we have further enhanced the scalability of the Hertz transport layer &amp;amp; protocol layer, supporting the seamless connection of the stream-based transport layer protocol QUIC, and the &lt;a href="https://github.com/cloudwego/hertz/issues/458">HTTP3 protocol&lt;/a> built on top of it.
+In addition, on this basis, we have added and improved functions such as &amp;ldquo;ALPN&amp;rdquo; (application layer protocol negotiation), &amp;ldquo;QUIC/TLS parallel monitoring&amp;rdquo; (QUIC/TLS parallel monitoring), &amp;ldquo;Alt-Svc&amp;rdquo; (alternative service).&lt;/p>
+&lt;h3 id="major-changes">Major Changes&lt;/h3>
+&lt;h4 id="transport-layer">Transport layer&lt;/h4>
+&lt;p>On the basis of ensuring compatibility performance, we have added an abstract stream-based network connection interface &lt;code>StreamConn&lt;/code>, and adjusted the interaction logic between the transport layer and the protocol layer to achieve the correct protocol layer for the distribution of connection types Processing (protocol server).
+For scenarios that need to monitor TCP (TLS) and UDP (QUIC) at the same time, we provide a &lt;code>WithAltTransporter&lt;/code> option, which facilitates passing the backup transporter to the main transporter, and facilitates the ability to monitor QUIC/TLS in parallel.&lt;/p>
+&lt;h4 id="protocol-layer">Protocol Layer&lt;/h4>
+&lt;p>Support adding a stream-based protocol layer implementation (protocol server) &lt;code>StreamServer&lt;/code>, so as to build a corresponding processing protocol (HTTP/3) on top of the newly added stream-based transport layer extension.
+In order to facilitate the configuration of alternative service meta-information for a main protocol (HTTP/3), &lt;code>ProtocolSuite&lt;/code> exposes the &lt;code>SetAltHeader&lt;/code> interface.
+At the same time, we also designed the ALPN capability for &lt;code>StreamConn&lt;/code>, so as to provide the ability of protocol negotiation in QUIC.&lt;/p>
+&lt;h4 id="common-layer">Common layer&lt;/h4>
+&lt;p>At the same time, we have added an auxiliary function that can convert with the Golang standard Handler in the general layer, so as to quickly port the implementation based on the Golang standard Handler to Hertz. The &lt;a href="https://github.com/hertz-contrib/http3">QUIC &amp;amp; HTTP/3 extension&lt;/a> based on &lt;a href="https://github.com/lucas-clemente/quic-go">quic-go&lt;/a> provided later /pull/1), the capabilities provided by this function are used.&lt;/p>
+&lt;h4 id="feature-status">Feature Status&lt;/h4>
+&lt;p>The Hertz core library capability has been released, and the specific implementation will be released in the form of &lt;a href="https://github.com/hertz-contrib/http3/pull/1">extension package&lt;/a>, welcome to try~&lt;/p>
+&lt;p>For more detailed design instructions, please refer to: &lt;a href="https://www.cloudwego.io/zh/docs/hertz/reference/stream_based_design/">Hertz supports QUIC &amp;amp; HTTP/3&lt;/a>&lt;/p>
+&lt;h2 id="scaffolding-tools-support-generating-hertz-client-code">Scaffolding tools support generating hertz client code&lt;/h2>
+&lt;blockquote>
+&lt;p>&lt;a href="https://github.com/cloudwego/hertz/pull/471">https://github.com/cloudwego/hertz/pull/471&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>In the v0.5.0 version of the scaffolding tool (Hz), we support the function of automatically generating the hertz client code based on IDL, and realize the one-click call of the HTTP request in the form of an RPC call.
+Instructions:&lt;/p>
+&lt;blockquote>
+&lt;p>For details, see: &lt;a href="https://github.com/cloudwego/hertz-examples/tree/main/hz_client">https://github.com/cloudwego/hertz-examples/tree/main/hz_client&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;ol>
+&lt;li>Define the IDL&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#000">namespace&lt;/span> &lt;span style="color:#204a87;font-weight:bold">go&lt;/span> &lt;span style="color:#000">toutiao&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">middleware&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">hzClient&lt;/span>
+&lt;span style="color:#204a87;font-weight:bold">struct&lt;/span> &lt;span style="color:#000">QueryReq&lt;/span> &lt;span style="color:#000;font-weight:bold">{&lt;/span>
+&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span> &lt;span style="color:#204a87;font-weight:bold">string&lt;/span> &lt;span style="color:#000">QueryValue&lt;/span> &lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#000">api&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span> &lt;span style="color:#000">query&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;query1&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">);&lt;/span>
+&lt;span style="color:#000;font-weight:bold">}&lt;/span>
+&lt;span style="color:#204a87;font-weight:bold">struct&lt;/span> &lt;span style="color:#000">Resp&lt;/span> &lt;span style="color:#000;font-weight:bold">{&lt;/span>
+&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span> &lt;span style="color:#204a87;font-weight:bold">string&lt;/span> &lt;span style="color:#000">Resp&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">}&lt;/span>
+&lt;span style="color:#000">service&lt;/span> &lt;span style="color:#000">Hertz121&lt;/span> &lt;span style="color:#000;font-weight:bold">{&lt;/span>
+&lt;span style="color:#000">Resp&lt;/span> &lt;span style="color:#000">QueryMethod&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span> &lt;span style="color:#000">QueryReq&lt;/span> &lt;span style="color:#000">request&lt;/span>&lt;span style="color:#000;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#000">api&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span> &lt;span style="color:#000">get&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;/query&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span> &lt;span style="color:#000">api&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span> &lt;span style="color:#000">handler_path&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;get&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">);&lt;/span>
+&lt;span style="color:#000;font-weight:bold">}(&lt;/span>
+&lt;span style="color:#000">api&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">base_domain&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;http://127.0.0.1:8888&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">)&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>Generate code&lt;/li>
+&lt;/ol>
+&lt;p>Based on the above IDL, the server and client codes can be generated separately:&lt;/p>
+&lt;p>Server:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#000">hz&lt;/span> &lt;span style="color:#000">new&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">--&lt;/span>&lt;span style="color:#000">idl&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#000">psm&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">thrift&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">--&lt;/span>&lt;span style="color:#000">handler_by_method&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">-&lt;/span>&lt;span style="color:#000">t&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#000">template&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#000">slim&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Client:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#000">hz&lt;/span> &lt;span style="color:#000">client&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">--&lt;/span>&lt;span style="color:#000">idl&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#000">psm&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">thrift&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">--&lt;/span>&lt;span style="color:#000">model_dir&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#000">hertz_gen&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">-&lt;/span>&lt;span style="color:#000">t&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#000">template&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#000">slim&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">--&lt;/span>&lt;span style="color:#000">client_dir&lt;/span>&lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#000">hz_client&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>Call the client code to initiate an HTTP request to realize the intercommunication between the client end and the server end&lt;/li>
+&lt;/ol>
+&lt;h2 id="full-release-note">Full Release Note&lt;/h2>
+&lt;p>The complete Release Note can refer to:&lt;/p>
+&lt;ul>
+&lt;li>Hertz: &lt;a href="https://github.com/cloudwego/hertz/releases/tag/v0.5.0">https://github.com/cloudwego/hertz/releases/tag/v0.5.0&lt;/a>&lt;/li>
+&lt;li>Hz(scaffolding): &lt;a href="https://github.com/cloudwego/hertz/releases/tag/cmd%2Fhz%2Fv0.5.0">https://github.com/cloudwego/hertz/releases/tag/cmd%2Fhz%2Fv0.5.0&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Blog: Volo Release 0.3.0</title><link>https://www.cloudwego.io/blog/2022/12/22/volo-release-0.3.0/</link><pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/12/22/volo-release-0.3.0/</guid><description>
 &lt;p>In Volo 0.3.0 version, in addition to regular bugfixes, we also brought several important features.&lt;/p>
 &lt;h2 id="service-trait-refactoring">Service Trait refactoring&lt;/h2>
 &lt;p>In version 0.3.0 of Volo, we refactored &lt;code>Service&lt;/code> Trait to make the implementation of &lt;code>Service&lt;/code> Trait easier and provide more flexibility.&lt;/p>
