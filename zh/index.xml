@@ -150,7 +150,22 @@
 &lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>除此之外，Pilota 还支持了其它的 Annotation，详情可以参考：https://www.cloudwego.io/zh/docs/pilota/guide/annotation/&lt;/p>
 &lt;h2 id="完整-release-note">完整 Release Note&lt;/h2>
-&lt;p>完整的 Release Note 可以参考：https://github.com/cloudwego/volo/releases/tag/volo-0.3.0&lt;/p></description></item><item><title>Blog: Netpoll v0.3.0 版本发布</title><link>https://www.cloudwego.io/zh/blog/2022/11/09/netpoll-v0.3.0-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Wed, 09 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/zh/blog/2022/11/09/netpoll-v0.3.0-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
+&lt;p>完整的 Release Note 可以参考：https://github.com/cloudwego/volo/releases/tag/volo-0.3.0&lt;/p></description></item><item><title>Blog: Volo 0.3.2 版本发布</title><link>https://www.cloudwego.io/zh/blog/2022/12/22/volo-0.3.2-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/zh/blog/2022/12/22/volo-0.3.2-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
+&lt;p>Volo 0.3.2 版本中，除了常规 bugfix 之外，还有多处改进。尤其是，有社区贡献者为我们带来了重要的 feature，非常感谢他们。&lt;/p>
+&lt;h2 id="thrift-异步编解码-trait-支持">Thrift 异步编解码 Trait 支持&lt;/h2>
+&lt;p>&lt;a href="https://github.com/ii64">@ii64&lt;/a> 在 &lt;a href="https://github.com/cloudwego/volo/pull/123">#123&lt;/a> 中为我们带来了 Thrift 异步编解码 Trait 的定义和 Binary、Apache Compact Protocol 的实现，在此之前他还为 Pilota 贡献了编解码的底层实现！&lt;/p>
+&lt;h2 id="grpc-graceful-shutdown-支持">gRPC graceful shutdown 支持&lt;/h2>
+&lt;p>&lt;a href="https://github.com/iGxnon">@iGxnon&lt;/a> 在 &lt;a href="https://github.com/cloudwego/volo/pull/127">#127&lt;/a> 中为我们带来了 gRPC graceful shutdown 的支持！&lt;/p>
+&lt;h2 id="metainfo-与-faststr-版本更新">metainfo 与 faststr 版本更新&lt;/h2>
+&lt;p>在这个版本中，我们更新了 metainfo 和 faststr 的版本，使得 metainfo 也支持了 faststr，以在尽可能多的场景下减少内存分配和拷贝，以优化性能。&lt;/p>
+&lt;p>faststr 是我们参考 smol_str 改进的一个 string 库，实现了 immutable string 的零开销 clone。&lt;/p>
+&lt;p>同时 FastStr 有一个不兼容变更：之前是为所有&lt;code>AsRef&amp;lt;str&amp;gt;&lt;/code>实现了&lt;code>From&lt;/code>，但是这样做会导致直接使用&lt;code>into&lt;/code>会带来额外的内存分配和拷贝开销。在新的 0.2 版本中，我们只为 &lt;code>'static str&lt;/code>、&lt;code>String&lt;/code>、&lt;code>Arc&amp;lt;str&amp;gt;&lt;/code>、&lt;code>Arc&amp;lt;String&amp;gt;&lt;/code>四种类型实现了&lt;code>From&lt;/code>，这四种类型 into 到 FastStr 是零开销的，通过这种形式避免用户不经意间带来的内存分配和拷贝问题。&lt;/p>
+&lt;p>旧版本的&lt;code>From&lt;/code>本质上就是调用了&lt;code>FastStr::new(s)&lt;/code>，因此出现不兼容问题的话，直接改为显式调用&lt;code>FastStr::new&lt;/code>即可。&lt;/p>
+&lt;h2 id="pilota-中-protobuf-编解码支持生成-faststr">Pilota 中 Protobuf 编解码支持生成 FastStr&lt;/h2>
+&lt;p>通过在 Pilota 中支持为 Protobuf 编解码生成 FastStr，我们可以将我们的性能优化能力带到 PB 和 gRPC 中。&lt;/p>
+&lt;p>升级后，需要把原先引入的&lt;code>use prost::Message;&lt;/code>改为&lt;code>use pilota::prost::message::Message;&lt;/code>即可。&lt;/p>
+&lt;h2 id="完整-release-note">完整 Release Note&lt;/h2>
+&lt;p>完整的 Release Note 可以参考：&lt;a href="https://github.com/cloudwego/volo/compare/volo-0.3.0...volo-0.3.2">Volo Changelog&lt;/a>&lt;/p></description></item><item><title>Blog: Netpoll v0.3.0 版本发布</title><link>https://www.cloudwego.io/zh/blog/2022/11/09/netpoll-v0.3.0-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Wed, 09 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/zh/blog/2022/11/09/netpoll-v0.3.0-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
 &lt;h2 id="feat">Feat&lt;/h2>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/netpoll/pull/206">#206&lt;/a>] feat: 连接 Flush 接口支持写超时设置。&lt;/li>
