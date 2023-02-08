@@ -3,12 +3,12 @@
 自定义 layout 模板  用户可根据默认模板来修改或重写，从而满足自身需求
  hz 利用了 go template 支持以 &ldquo;yaml&rdquo; 的格式定义模板，并使用 &ldquo;json&rdquo; 定义模板渲染数据。
 所谓的 layout 模板是指整个项目的结构，这些结构与具体的 idl 定义无关，不需要 idl 也可以直接生成，默认的结构如下：
-. ├── biz │ ├── handler │ │ └── ping.go │ │ └── ****.go // 按照服务划分的 handler 集合，位置可根据 handler_dir 改变 │ ├── model │ │ └── model.go // idl 生成的 struct，位置可根据 model_dir 改变 │ └── router // 未开发自定义 dir │ └── register."><meta property="og:type" content="article"><meta property="og:url" content="https://www.cloudwego.io/zh/docs/hertz/tutorials/toolkit/template/"><meta property="article:section" content="docs"><meta property="article:published_time" content="2022-06-18T00:00:00+00:00"><meta property="article:modified_time" content="2023-02-07T14:28:54+08:00"><meta property="og:site_name" content="CloudWeGo"><meta itemprop=name content="hz 自定义模板使用"><meta itemprop=description content="Hertz 提供的命令行工具(以下称为&#34;hz&#34;)支持自定义模板功能，包括：
+. ├── biz │ ├── handler │ │ └── ping.go │ │ └── ****.go // 按照服务划分的 handler 集合，位置可根据 handler_dir 改变 │ ├── model │ │ └── model.go // idl 生成的 struct，位置可根据 model_dir 改变 │ └── router // 未开发自定义 dir │ └── register."><meta property="og:type" content="article"><meta property="og:url" content="https://www.cloudwego.io/zh/docs/hertz/tutorials/toolkit/template/"><meta property="article:section" content="docs"><meta property="article:published_time" content="2022-06-18T00:00:00+00:00"><meta property="article:modified_time" content="2023-02-08T10:51:30+08:00"><meta property="og:site_name" content="CloudWeGo"><meta itemprop=name content="hz 自定义模板使用"><meta itemprop=description content="Hertz 提供的命令行工具(以下称为&#34;hz&#34;)支持自定义模板功能，包括：
  自定义 layout 模板(即生成代码的目录结构) 自定义 package 模板(即与 service 相关的代码结构，包括 handler、router 等)  用户可自己提供模板以及渲染参数，并结合 hz 的能力，来完成自定义的代码生成结构。
 自定义 layout 模板  用户可根据默认模板来修改或重写，从而满足自身需求
  hz 利用了 go template 支持以 &ldquo;yaml&rdquo; 的格式定义模板，并使用 &ldquo;json&rdquo; 定义模板渲染数据。
 所谓的 layout 模板是指整个项目的结构，这些结构与具体的 idl 定义无关，不需要 idl 也可以直接生成，默认的结构如下：
-. ├── biz │ ├── handler │ │ └── ping.go │ │ └── ****.go // 按照服务划分的 handler 集合，位置可根据 handler_dir 改变 │ ├── model │ │ └── model.go // idl 生成的 struct，位置可根据 model_dir 改变 │ └── router // 未开发自定义 dir │ └── register."><meta itemprop=datePublished content="2022-06-18T00:00:00+00:00"><meta itemprop=dateModified content="2023-02-07T14:28:54+08:00"><meta itemprop=wordCount content="1867"><meta itemprop=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="hz 自定义模板使用"><meta name=twitter:description content="Hertz 提供的命令行工具(以下称为&#34;hz&#34;)支持自定义模板功能，包括：
+. ├── biz │ ├── handler │ │ └── ping.go │ │ └── ****.go // 按照服务划分的 handler 集合，位置可根据 handler_dir 改变 │ ├── model │ │ └── model.go // idl 生成的 struct，位置可根据 model_dir 改变 │ └── router // 未开发自定义 dir │ └── register."><meta itemprop=datePublished content="2022-06-18T00:00:00+00:00"><meta itemprop=dateModified content="2023-02-08T10:51:30+08:00"><meta itemprop=wordCount content="1580"><meta itemprop=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="hz 自定义模板使用"><meta name=twitter:description content="Hertz 提供的命令行工具(以下称为&#34;hz&#34;)支持自定义模板功能，包括：
  自定义 layout 模板(即生成代码的目录结构) 自定义 package 模板(即与 service 相关的代码结构，包括 handler、router 等)  用户可自己提供模板以及渲染参数，并结合 hz 的能力，来完成自定义的代码生成结构。
 自定义 layout 模板  用户可根据默认模板来修改或重写，从而满足自身需求
  hz 利用了 go template 支持以 &ldquo;yaml&rdquo; 的格式定义模板，并使用 &ldquo;json&rdquo; 定义模板渲染数据。
@@ -24,7 +24,7 @@
 <a class=dropdown-item href=/zh/community/meeting_notes/>会议记录</a>
 <a class=dropdown-item href=/zh/community/weekly_report/>周报</a>
 <a class=dropdown-item href=/zh/community/past_activities/>往期活动</a></div></li><li class="nav-item mr-4 mb-2 mb-lg-0"><a class=nav-link href=/zh/cooperation/><span>用户案例</span></a></li><li class="dropdown sub-menu"><a class="nav-link dropdown-toggle" href=# id=navbarDropdown role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false><span>安全</span></a><div class=dropdown-menu aria-labelledby=navbarDropdownMenuLink><a class=dropdown-item href=/zh/security/safety-bulletin/>安全公告</a>
-<a class=dropdown-item href=/zh/security/vulnerability-reporting/>漏洞管理</a></div></li><li class="nav-item dropdown mr-4"><a class="nav-link dropdown-toggle" href=# id=navbarDropdown role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>中文</a><div class=dropdown-menu aria-labelledby=navbarDropdownMenuLink><a class=dropdown-item href=/docs/hertz/tutorials/toolkit/template/>English</a></div></li></ul></div><div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; 站内搜索…" aria-label=站内搜索… autocomplete=off data-offline-search-index-json-src=/offline-search-index.61a1adc52fa2dbccd678a514a84964af.json data-offline-search-base-href=/ data-offline-search-max-results=10></div></nav></header><div class="container-fluid td-outer"><div class=td-main><div class="row flex-xl-nowrap"><aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none"><div id=td-sidebar-menu class=td-sidebar__inner><div id=content-mobile><form class="td-sidebar__search d-flex align-items-center"><input type=search class="form-control td-search-input" placeholder="&#xf002; 站内搜索…" aria-label=站内搜索… autocomplete=off data-offline-search-index-json-src=/offline-search-index.61a1adc52fa2dbccd678a514a84964af.json data-offline-search-base-href=/ data-offline-search-max-results=10>
+<a class=dropdown-item href=/zh/security/vulnerability-reporting/>漏洞管理</a></div></li><li class="nav-item dropdown mr-4"><a class="nav-link dropdown-toggle" href=# id=navbarDropdown role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>中文</a><div class=dropdown-menu aria-labelledby=navbarDropdownMenuLink><a class=dropdown-item href=/docs/hertz/tutorials/toolkit/template/>English</a></div></li></ul></div><div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; 站内搜索…" aria-label=站内搜索… autocomplete=off data-offline-search-index-json-src=/offline-search-index.a0ddfba9bd15994ac460c9edb1105c71.json data-offline-search-base-href=/ data-offline-search-max-results=10></div></nav></header><div class="container-fluid td-outer"><div class=td-main><div class="row flex-xl-nowrap"><aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none"><div id=td-sidebar-menu class=td-sidebar__inner><div id=content-mobile><form class="td-sidebar__search d-flex align-items-center"><input type=search class="form-control td-search-input" placeholder="&#xf002; 站内搜索…" aria-label=站内搜索… autocomplete=off data-offline-search-index-json-src=/offline-search-index.a0ddfba9bd15994ac460c9edb1105c71.json data-offline-search-base-href=/ data-offline-search-max-results=10>
 <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type=button data-toggle=collapse data-target=#td-section-nav aria-controls=td-docs-nav aria-expanded=false aria-label="Toggle section navigation"></button></form></div><div id=content-desktop></div><nav class="collapse td-sidebar-nav foldable-nav" id=td-section-nav><div class="nav-item dropdown d-block d-lg-none"><a class="nav-link dropdown-toggle" href=# id=navbarDropdown role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>中文</a><div class=dropdown-menu aria-labelledby=navbarDropdownMenuLink><a class=dropdown-item href=/docs/hertz/tutorials/toolkit/template/>English</a></div></div><ul class="td-sidebar-nav__section pr-md-3 ul-0"><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-zhdocs-li><a href=/zh/docs/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id=m-zhdocs><span>文档</span></a><ul class=ul-1><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-zhdocshertz-li><input type=checkbox id=m-zhdocshertz-check checked>
 <label for=m-zhdocshertz-check><a href=/zh/docs/hertz/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-zhdocshertz><span>Hertz</span></a></label><ul class="ul-2 foldable"><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zhdocshertzoverview-li><input type=checkbox id=m-zhdocshertzoverview-check>
 <label for=m-zhdocshertzoverview-check><a href=/zh/docs/hertz/overview/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-zhdocshertzoverview><span>概览</span></a></label></li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zhdocshertzgetting-started-li><input type=checkbox id=m-zhdocshertzgetting-started-check>
@@ -105,167 +105,167 @@
 ├── main.go                       // 启动入口
 ├── router.go                     // 用户自定义路由写入位置
 └── router_gen.go                 // hz 生成的路由注册调用
-</code></pre><h2 id=idl>IDL</h2><pre><code>// hello.thrift
-namespace go hello.example
-
-struct HelloReq {
-    1: string Name (api.query=&quot;name&quot;);
-}
-
-struct HelloResp {
-    1: string RespBody;
-}
-
-
-service HelloService {
-    HelloResp HelloMethod(1: HelloReq request) (api.get=&quot;/hello&quot;);
-}
-</code></pre><h2 id=命令>命令</h2><pre><code>hz new --mod=github.com/hertz/hello --idl=./hertzDemo/hello.thrift --customize_layout=template/layout.yaml:template/data.json
-</code></pre><h2 id=默认-layout-模板的含义>默认 layout 模板的含义</h2><blockquote><p>注：以下的 body 均为 go template</p></blockquote><pre><code>layouts:
-  # 生成的 handler 的目录，只有目录下有文件才会生成
-  - path: biz/handler/
-    delims:
-      - &quot;&quot;
-      - &quot;&quot;
-    body: &quot;&quot;
-  # 生成的 model 的目录，只有目录下有文件才会生成
-  - path: biz/model/
-    delims:
-      - &quot;&quot;
-      - &quot;&quot;
-    body: &quot;&quot;
-  # 项目 main 文件，
-  - path: main.go
-    delims:
-      - &quot;&quot;
-      - &quot;&quot;
-    body: |-
-      // Code generated by hertz generator.
-
-      package main
-
-      import (
-      	&quot;github.com/cloudwego/hertz/pkg/app/server&quot;
-      )
-
-      func main() {
-      	h := server.Default()
-
-      	register(h)
-      	h.Spin()
-      }
-  # go.mod 文件，需要模板渲染数据{{.GoModule}}才能生成
-  - path: go.mod
-    delims:
-      - '{{'
-      - '}}'
-    body: |-
-      module {{.GoModule}}
-      {{- if .UseApacheThrift}}
-      replace github.com/apache/thrift =&gt; github.com/apache/thrift v0.13.0
-      {{- end}}
-  # .gitignore 文件
-  - path: .gitignore
-    delims:
-      - &quot;&quot;
-      - &quot;&quot;
-    body: &quot;*.o\n*.a\n*.so\n_obj\n_test\n*.[568vq]\n[568vq].out\n*.cgo1.go\n*.cgo2.c\n_cgo_defun.c\n_cgo_gotypes.go\n_cgo_export.*\n_testmain.go\n*.exe\n*.exe~\n*.test\n*.prof\n*.rar\n*.zip\n*.gz\n*.psd\n*.bmd\n*.cfg\n*.pptx\n*.log\n*nohup.out\n*settings.pyc\n*.sublime-project\n*.sublime-workspace\n!.gitkeep\n.DS_Store\n/.idea\n/.vscode\n/output\n*.local.yml\ndumped_hertz_remote_config.json\n\t\t
-    \ &quot;
-  # .hz 文件，包含 hz 版本，是 hz 创建的项目的标志，不需要传渲染数据
-  - path: .hz
-    delims:
-      - '{{'
-      - '}}'
-    body: |-
-      // Code generated by hz. DO NOT EDIT.
-
-      hz version: {{.hzVersion}}
-  # ping 自带 ping 的 handler
-  - path: biz/handler/ping.go
-    delims:
-      - &quot;&quot;
-      - &quot;&quot;
-    body: |-
-      // Code generated by hertz generator.
-
-      package handler
-
-      import (
-      	&quot;context&quot;
-
-      	&quot;github.com/cloudwego/hertz/pkg/app&quot;
-      	&quot;github.com/cloudwego/hertz/pkg/common/utils&quot;
-      )
-
-      // Ping .
-      func Ping(ctx context.Context, c *app.RequestContext) {
-      	c.JSON(200, utils.H{
-      		&quot;message&quot;: &quot;pong&quot;,
-      	})
-      }
-  # 定义路由注册的文件，需要模板渲染数据{{.RouterPkgPath}}才能生成
-  - path: router_gen.go
-    delims:
-      - &quot;&quot;
-      - &quot;&quot;
-    body: |-
-      // Code generated by hertz generator. DO NOT EDIT.
-
-      package main
-
-      import (
-      	&quot;github.com/cloudwego/hertz/pkg/app/server&quot;
-      	router &quot;{{.RouterPkgPath}}&quot;
-      )
-
-      // register registers all routers.
-      func register(r *server.Hertz) {
-
-      	router.GeneratedRegister(r)
-
-      	customizedRegister(r)
-      }
-  # 自定义路由注册的文件
-  - path: router.go
-    delims:
-      - &quot;&quot;
-      - &quot;&quot;
-    body: |-
-      // Code generated by hertz generator.
-
-      package main
-
-      import (
-      	&quot;github.com/cloudwego/hertz/pkg/app/server&quot;
-      	handler &quot;{{.HandlerPkgPath}}&quot;
-      )
-
-      // customizeRegister registers customize routers.
-      func customizedRegister(r *server.Hertz){
-      	r.GET(&quot;/ping&quot;, handler.Ping)
-
-      	// your code ...
-      }
-  # 默认路由注册文件，不要修改
-  - path: biz/router/register.go
-    delims:
-      - &quot;&quot;
-      - &quot;&quot;
-    body: |-
-      // Code generated by hertz generator. DO NOT EDIT.
-
-      package router
-
-      import (
-      	&quot;github.com/cloudwego/hertz/pkg/app/server&quot;
-      )
-
-      // GeneratedRegister registers routers generated by IDL.
-      func GeneratedRegister(r *server.Hertz){
-      	//INSERT_POINT: DO NOT DELETE THIS LINE!
-      }
-
-</code></pre><h2 id=模板渲染参数文件的含义>模板渲染参数文件的含义</h2><p>当指定了自定义模板以及渲染数据后，此时命令行指定的选项将不会被作为渲染数据，因此，模板中的渲染数据需要用户自己定义。</p><p>hz 使用了"json"来指定渲染数据，下面进行介绍</p><pre><code>{
+</code></pre><h2 id=idl>IDL</h2><div class=highlight><pre style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-thrift data-lang=thrift><span style=color:#8f5902;font-style:italic>// hello.thrift
+</span><span style=color:#8f5902;font-style:italic></span><span style=color:#204a87;font-weight:700>namespace</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>go</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>hello.example</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>struct</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>HelloReq</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>{</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#0000cf;font-weight:700>1</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#204a87;font-weight:700>string</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>Name</span> <span style=color:#ce5c00;font-weight:700>(</span><span style=color:#000>api.query</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#4e9a06>&#34;name&#34;</span><span style=color:#000;font-weight:700>);</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#000;font-weight:700>}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>struct</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>HelloResp</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>{</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#0000cf;font-weight:700>1</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#204a87;font-weight:700>string</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>RespBody</span><span style=color:#000;font-weight:700>;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#000;font-weight:700>}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>service</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>HelloService</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>{</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#000>HelloResp</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>HelloMethod</span><span style=color:#ce5c00;font-weight:700>(</span><span style=color:#0000cf;font-weight:700>1</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>HelloReq</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>request</span><span style=color:#000;font-weight:700>)</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>(</span><span style=color:#000>api.get</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#4e9a06>&#34;/hello&#34;</span><span style=color:#000;font-weight:700>);</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#000;font-weight:700>}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><h2 id=命令>命令</h2><div class=highlight><pre style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>hz new --mod<span style=color:#ce5c00;font-weight:700>=</span>github.com/hertz/hello --idl<span style=color:#ce5c00;font-weight:700>=</span>./hertzDemo/hello.thrift --customize_layout<span style=color:#ce5c00;font-weight:700>=</span>template/layout.yaml:template/data.json
+</code></pre></div><h2 id=默认-layout-模板的含义>默认 layout 模板的含义</h2><blockquote><p>注：以下的 body 均为 go template</p></blockquote><div class=highlight><pre style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>layouts</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># 生成的 handler 的目录，只有目录下有文件才会生成</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>biz/handler/</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># 生成的 model 的目录，只有目录下有文件才会生成</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>biz/model/</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># 项目 main 文件，</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>main.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hertz generator.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package main
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/app/server&#34;
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      func main() {
+</span><span style=color:#8f5902;font-style:italic>      	h := server.Default()
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      	register(h)
+</span><span style=color:#8f5902;font-style:italic>      	h.Spin()
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># go.mod 文件，需要模板渲染数据{{.GoModule}}才能生成</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>go.mod</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;{{&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;}}&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      module {{.GoModule}}
+</span><span style=color:#8f5902;font-style:italic>      {{- if .UseApacheThrift}}
+</span><span style=color:#8f5902;font-style:italic>      replace github.com/apache/thrift =&gt; github.com/apache/thrift v0.13.0
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># .gitignore 文件</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>.gitignore</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;*.o\n*.a\n*.so\n_obj\n_test\n*.[568vq]\n[568vq].out\n*.cgo1.go\n*.cgo2.c\n_cgo_defun.c\n_cgo_gotypes.go\n_cgo_export.*\n_testmain.go\n*.exe\n*.exe~\n*.test\n*.prof\n*.rar\n*.zip\n*.gz\n*.psd\n*.bmd\n*.cfg\n*.pptx\n*.log\n*nohup.out\n*settings.pyc\n*.sublime-project\n*.sublime-workspace\n!.gitkeep\n.DS_Store\n/.idea\n/.vscode\n/output\n*.local.yml\ndumped_hertz_remote_config.json\n\t\t
+</span><span style=color:#4e9a06>    \ &#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># .hz 文件，包含 hz 版本，是 hz 创建的项目的标志，不需要传渲染数据</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>.hz</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;{{&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;}}&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hz. DO NOT EDIT.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      hz version: {{.hzVersion}}</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># ping 自带 ping 的 handler</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>biz/handler/ping.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hertz generator.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package handler
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>      	&#34;context&#34;
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/app&#34;
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/common/utils&#34;
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Ping .
+</span><span style=color:#8f5902;font-style:italic>      func Ping(ctx context.Context, c *app.RequestContext) {
+</span><span style=color:#8f5902;font-style:italic>      	c.JSON(200, utils.H{
+</span><span style=color:#8f5902;font-style:italic>      		&#34;message&#34;: &#34;pong&#34;,
+</span><span style=color:#8f5902;font-style:italic>      	})
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># 定义路由注册的文件，需要模板渲染数据{{.RouterPkgPath}}才能生成</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>router_gen.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hertz generator. DO NOT EDIT.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package main
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/app/server&#34;
+</span><span style=color:#8f5902;font-style:italic>      	router &#34;{{.RouterPkgPath}}&#34;
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // register registers all routers.
+</span><span style=color:#8f5902;font-style:italic>      func register(r *server.Hertz) {
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      	router.GeneratedRegister(r)
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      	customizedRegister(r)
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># 自定义路由注册的文件</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>router.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hertz generator.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package main
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/app/server&#34;
+</span><span style=color:#8f5902;font-style:italic>      	handler &#34;{{.HandlerPkgPath}}&#34;
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // customizeRegister registers customize routers.
+</span><span style=color:#8f5902;font-style:italic>      func customizedRegister(r *server.Hertz){
+</span><span style=color:#8f5902;font-style:italic>      	r.GET(&#34;/ping&#34;, handler.Ping)
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      	// your code ...
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># 默认路由注册文件，不要修改</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>biz/router/register.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hertz generator. DO NOT EDIT.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package router
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/app/server&#34;
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // GeneratedRegister registers routers generated by IDL.
+</span><span style=color:#8f5902;font-style:italic>      func GeneratedRegister(r *server.Hertz){
+</span><span style=color:#8f5902;font-style:italic>      	//INSERT_POINT: DO NOT DELETE THIS LINE!
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><h2 id=模板渲染参数文件的含义>模板渲染参数文件的含义</h2><p>当指定了自定义模板以及渲染数据后，此时命令行指定的选项将不会被作为渲染数据，因此，模板中的渲染数据需要用户自己定义。</p><p>hz 使用了"json"来指定渲染数据，下面进行介绍</p><pre><code class=language-json5 data-lang=json5>{
   // 全局的渲染参数
   &quot;*&quot;: {
     &quot;GoModule&quot;: &quot;github.com/hz/test&quot;, // 要和命令行指定的一致，否则后续生成model、handler等代码将使用命令行指定的mod，导致出现不一致。
@@ -278,518 +278,518 @@ service HelloService {
     &quot;RouterPkgPath&quot;: &quot;github.com/hz/test/biz/router&quot;
   }
 }
-</code></pre><h2 id=自定义一个-layout-模板>自定义一个 layout 模板</h2><blockquote><p>目前，hz 生成的项目 layout 已经是一个 hertz 项目最最最基础的骨架了，所以不建议删除现有的模板里的文件。</p><p>不过如果用户想要一个别的 layout ，当然也可以根据自身需求来删除相应的文件(除"biz/register.go"外，其余都可以动)</p><p>我们十分欢迎用户来贡献自己的模板</p></blockquote><p>下面假设用户只想要 &ldquo;main.go&rdquo; 以及 &ldquo;go.mod&rdquo; 文件，那么我们对默认模板进行修改，如下：</p><h3 id=template>template:</h3><pre><code>// layout.yaml
-layouts:
-  # 项目 main 文件，
-  - path: main.go
-    delims:
-      - &quot;&quot;
-      - &quot;&quot;
-    body: |-
-      // Code generated by hertz generator.
-
-      package main
-
-      import (
-      	&quot;github.com/cloudwego/hertz/pkg/app/server&quot;
-        &quot;{{.GoModule}}/biz/router&quot;
-      )
-
-      func main() {
-      	h := server.Default()
-
-        router.GeneratedRegister(h)
-        // do what you wanted
-        // add some render data: {{.MainData}}
-
-      	h.Spin()
-      }
-
-  # go.mod 文件，需要模板渲染数据{{.GoModule}}才能生成
-  - path: go.mod
-    delims:
-      - '{{'
-      - '}}'
-    body: |-
-      module {{.GoModule}}
-      {{- if .UseApacheThrift}}
-      replace github.com/apache/thrift =&gt; github.com/apache/thrift v0.13.0
-      {{- end}}
-  # 默认路由注册文件，没必要修改
-  - path: biz/router/register.go
-    delims:
-      - &quot;&quot;
-      - &quot;&quot;
-    body: |-
-      // Code generated by hertz generator. DO NOT EDIT.
-
-      package router
-
-      import (
-      	&quot;github.com/cloudwego/hertz/pkg/app/server&quot;
-      )
-
-      // GeneratedRegister registers routers generated by IDL.
-      func GeneratedRegister(r *server.Hertz){
-      	//INSERT_POINT: DO NOT DELETE THIS LINE!
-      }
-</code></pre><h3 id=render-data>render data:</h3><pre><code>{
-  &quot;*&quot;: {
-    &quot;GoModule&quot;: &quot;github.com/hertz/hello&quot;,
-    &quot;ServiceName&quot;: &quot;hello&quot;,
-    &quot;UseApacheThrift&quot;: true
-  },
-  &quot;main.go&quot;: {
-    &quot;MainData&quot;: &quot;this is customized render data&quot;
-  }
-}
-</code></pre><p>命令：</p><pre><code>hz new --mod=github.com/hertz/hello --idl=./hertzDemo/hello.thrift --customize_layout=template/layout.yaml:template/data.json
-</code></pre><h1 id=自定义-package-模板>自定义 package 模板</h1><blockquote><p>hz 模板的模板地址：</p><p>用户可根据默认模板来修改或重写，从而符合自身需求</p></blockquote><ul><li>所谓的 package 模板是指与 idl 定义相关的服务代码，这部分代码涉及到定义 idl 时指定的service、go_package/namespace等，主要包括以下几部分：</li><li>handler.go : 处理函数逻辑</li><li>router.go：具体的 idl 定义的服务的路由注册逻辑</li><li>register.go：调用router.go中内容的逻辑</li><li><del>model代码：生成的 go struct；不过由于目前使用插件来生成model代码工具没权限来修改model的模板，所以这部分功能先不开放</del></li></ul><h2 id=命令-1>命令</h2><pre><code># 之后会提供 package 模板渲染数据，所以输入命令的时候先保留了&quot;k-v&quot;的形式，customize_package 后需要加&quot;:&quot;
-hz new --mod=github.com/hertz/hello --handler_dir=handler_test --idl=hertzDemo/hello.thrift --customize_package=template/package.yaml:
-</code></pre><h2 id=默认-package-模板>默认 package 模板</h2><p>注意：自定义 package 模板没有提供渲染数据的功能，这里主要是因为这些渲染数据是 hz 工具解析生成的，所以暂时不提供自己写渲染数据的功能。可以修改下模板里面与渲染数据无关的部分，以满足自身需求。</p><pre><code># 以下数据都是 yaml marshal 得到的，所以可能看起来比较乱
-layouts:
-  # path只表示handler.go的模板，具体的handler路径由默认路径和handler_dir决定
-  - path: handler.go
-    delims:
-      - '{{'
-      - '}}'
-    body: |-
-      // Code generated by hertz generator.
-
-      package {{.PackageName}}
-
-      import (
-      	&quot;context&quot;
-
-      	&quot;github.com/cloudwego/hertz/pkg/app&quot;
-
-      {{- range $k, $v := .Imports}}
-      	{{$k}} &quot;{{$v.Package}}&quot;
-      {{- end}}
-      )
-
-      {{range $_, $MethodInfo := .Methods}}
-      {{$MethodInfo.Comment}}
-      func {{$MethodInfo.Name}}(ctx context.Context, c *app.RequestContext) {
-      	var err error
-      	{{if ne $MethodInfo.RequestTypeName &quot;&quot; -}}
-      	var req {{$MethodInfo.RequestTypeName}}
-      	err = c.BindAndValidate(&amp;req)
-      	if err != nil {
-      		c.String(400, err.Error())
-      		return
-      	}
-      	{{end}}
-      	resp := new({{$MethodInfo.ReturnTypeName}})
-
-      	c.{{.Serializer}}(200, resp)
-      }
-      {{end}}
-  # path只表示router.go的模板，其路径固定在：biz/router/namespace/
-  - path: router.go
-    delims:
-      - '{{'
-      - '}}'
-    body: |-
-      // Code generated by hertz generator. DO NOT EDIT.
-
-      package {{$.PackageName}}
-
-      import (
-      	&quot;github.com/cloudwego/hertz/pkg/app/server&quot;
-
-      	{{range $k, $v := .HandlerPackages}}{{$k}} &quot;{{$v}}&quot;{{end}}
-      )
-
-      /*
-       This file will register all the routes of the services in the master idl.
-       And it will update automatically when you use the &quot;update&quot; command for the idl.
-       So don't modify the contents of the file, or your code will be deleted when it is updated.
-       */
-
-      {{define &quot;g&quot;}}
-      {{- if eq .Path &quot;/&quot;}}r
-      {{- else}}{{.GroupName}}{{end}}
-      {{- end}}
-
-      {{define &quot;G&quot;}}
-      {{- if ne .Handler &quot;&quot;}}
-      	{{- .GroupName}}.{{.HttpMethod}}(&quot;{{.Path}}&quot;, append({{.MiddleWare}}Mw(), {{.Handler}})...)
-      {{- end}}
-      {{- if ne (len .Children) 0}}
-      {{.MiddleWare}} := {{template &quot;g&quot; .}}.Group(&quot;{{.Path}}&quot;, {{.MiddleWare}}Mw()...)
-      {{- end}}
-      {{- range $_, $router := .Children}}
-      {{- if ne .Handler &quot;&quot;}}
-      	{{template &quot;G&quot; $router}}
-      {{- else}}
-      	{	{{template &quot;G&quot; $router}}
-      	}
-      {{- end}}
-      {{- end}}
-      {{- end}}
-
-      // Register register routes based on the IDL 'api.${HTTP Method}' annotation.
-      func Register(r *server.Hertz) {
-      {{template &quot;G&quot; .Router}}
-      }
-  # path只表示register.go的模板，register的路径固定为biz/router/register.go
-  - path: register.go
-    delims:
-      - &quot;&quot;
-      - &quot;&quot;
-    body: |-
-      // Code generated by hertz generator. DO NOT EDIT.
-
-      package router
-
-      import (
-      	&quot;github.com/cloudwego/hertz/pkg/app/server&quot;
-      	{{$.PkgAlias}} &quot;{{$.Pkg}}&quot;
-      )
-
-      // GeneratedRegister registers routers generated by IDL.
-      func GeneratedRegister(r *server.Hertz){
-      	//INSERT_POINT: DO NOT DELETE THIS LINE!
-      	{{$.PkgAlias}}.Register(r)
-      }
-  - path: model.go
-    delims:
-      - &quot;&quot;
-      - &quot;&quot;
-    body: &quot;&quot;
-  # path只表示middleware.go的模板，middleware的路径和router.go一样为：biz/router/namespace/
-  - path: middleware.go
-    delims:
-      - '{{'
-      - '}}'
-    body: |-
-      // Code generated by hertz generator.
-
-      package {{$.PackageName}}
-
-      import (
-      	&quot;github.com/cloudwego/hertz/pkg/app&quot;
-      )
-
-      {{define &quot;M&quot;}}
-      func {{.MiddleWare}}Mw() []app.HandlerFunc {
-      	// your code...
-      	return nil
-      }
-      {{range $_, $router := $.Children}}{{template &quot;M&quot; $router}}{{end}}
-      {{- end}}
-
-      {{template &quot;M&quot; .Router}}
-  # path只表示client.go的模板，client代码的生成路径由用户指定&quot;${client_dir}&quot;
-  - path: client.go
-    delims:
-      - '{{'
-      - '}}'
-    body: |-
-      // Code generated by hertz generator.
-
-      package {{$.PackageName}}
-
-      import (
-          &quot;github.com/cloudwego/hertz/pkg/app/client&quot;
-      	&quot;github.com/cloudwego/hertz/pkg/common/config&quot;
-      )
-
-      type {{.ServiceName}}Client struct {
-      	client * client.Client
-      }
-
-      func New{{.ServiceName}}Client(opt ...config.ClientOption) (*{{.ServiceName}}Client, error) {
-      	c, err := client.NewClient(opt...)
-      	if err != nil {
-      		return nil, err
-      	}
-
-      	return &amp;{{.ServiceName}}Client{
-      		client: c,
-      	}, nil
-      }
-  # handler_single表示单独的handler模板，用于update的时候更新每一个新增的handler
-  - path: handler_single.go
-    delims:
-      - '{{'
-      - '}}'
-    body: |+
-      {{.Comment}}
-      func {{.Name}}(ctx context.Context, c *app.RequestContext) {
-      // this my demo
-      	var err error
-      	{{if ne .RequestTypeName &quot;&quot; -}}
-      	var req {{.RequestTypeName}}
-      	err = c.BindAndValidate(&amp;req)
-      	if err != nil {
-      		c.String(400, err.Error())
-      		return
-      	}
-      	{{end}}
-      	resp := new({{.ReturnTypeName}})
-
-      	c.{{.Serializer}}(200, resp)
-      }
-  # middleware_single表示单独的middleware模板，用于update的时候更新每一个新增的middleware_single
-  - path: middleware_single.go
-    delims:
-      - '{{'
-      - '}}'
-    body: |+
-      func {{.MiddleWare}}Mw() []app.HandlerFunc {
-      	// your code...
-      	return nil
-      }
-
-</code></pre><h2 id=自定义一个-package-模板>自定义一个 package 模板</h2><blockquote><p>与 layout 模板一样，用户同样可以自定义 package 模板。</p><p>就 package 提供的模板来说，一般用户可能只有自定义 handler.go 的模板的需求，因为router.go/middleware.go/register.go 一般与 idl 定义相关而用户无需关心，因此 hz 目前也将这些模板生成的位置固定了，一般也无需修改。</p><p>因此，用户可根据自身的需求来自定义生成的 handler 模板，加速开发速度；但是由于默认的 handler 模板集成了一些 model 的信息以及 package 信息，所以需要 hz 工具来提供渲染数据。这部分用户可根据自身情况酌情来修改，一般建议留下 model 信息。</p></blockquote><p>下面给出一个简单的自定义 handler 模板的示例，在 handler 里加入一些注释：</p><h3 id=template-1>template:</h3><pre><code># 以下数据都是 yaml marshal 得到的，所以可能看起来比较乱
-layouts:
-  # path只表示handler.go的模板，具体的handler路径由默认路径和handler_dir决定
-  - path: handler.go
-    delims:
-      - '{{'
-      - '}}'
-    body: |-
-      // this is my custom handler.
-
-      package {{.PackageName}}
-
-      import (
-      	&quot;context&quot;
-
-      	&quot;github.com/cloudwego/hertz/pkg/app&quot;
-
-      {{- range $k, $v := .Imports}}
-      	{{$k}} &quot;{{$v.Package}}&quot;
-      {{- end}}
-      )
-
-      {{range $_, $MethodInfo := .Methods}}
-      {{$MethodInfo.Comment}}
-      func {{$MethodInfo.Name}}(ctx context.Context, c *app.RequestContext) {
-        //  you can code something
-      	var err error
-      	{{if ne $MethodInfo.RequestTypeName &quot;&quot; -}}
-      	var req {{$MethodInfo.RequestTypeName}}
-      	err = c.BindAndValidate(&amp;req)
-      	if err != nil {
-      		c.String(400, err.Error())
-      		return
-      	}
-      	{{end}}
-      	resp := new({{$MethodInfo.ReturnTypeName}})
-
-      	c.{{.Serializer}}(200, resp)
-      }
-      {{end}}
-  # path只表示router.go的模板，其路径固定在：biz/router/namespace/
-  - path: router.go
-    delims:
-      - '{{'
-      - '}}'
-    body: |-
-      // Code generated by hertz generator. DO NOT EDIT.
-
-      package {{$.PackageName}}
-
-      import (
-      	&quot;github.com/cloudwego/hertz/pkg/app/server&quot;
-
-      	{{range $k, $v := .HandlerPackages}}{{$k}} &quot;{{$v}}&quot;{{end}}
-      )
-
-      /*
-       This file will register all the routes of the services in the master idl.
-       And it will update automatically when you use the &quot;update&quot; command for the idl.
-       So don't modify the contents of the file, or your code will be deleted when it is updated.
-       */
-
-      {{define &quot;g&quot;}}
-      {{- if eq .Path &quot;/&quot;}}r
-      {{- else}}{{.GroupName}}{{end}}
-      {{- end}}
-
-      {{define &quot;G&quot;}}
-      {{- if ne .Handler &quot;&quot;}}
-      	{{- .GroupName}}.{{.HttpMethod}}(&quot;{{.Path}}&quot;, append({{.MiddleWare}}Mw(), {{.Handler}})...)
-      {{- end}}
-      {{- if ne (len .Children) 0}}
-      {{.MiddleWare}} := {{template &quot;g&quot; .}}.Group(&quot;{{.Path}}&quot;, {{.MiddleWare}}Mw()...)
-      {{- end}}
-      {{- range $_, $router := .Children}}
-      {{- if ne .Handler &quot;&quot;}}
-      	{{template &quot;G&quot; $router}}
-      {{- else}}
-      	{	{{template &quot;G&quot; $router}}
-      	}
-      {{- end}}
-      {{- end}}
-      {{- end}}
-
-      // Register register routes based on the IDL 'api.${HTTP Method}' annotation.
-      func Register(r *server.Hertz) {
-      {{template &quot;G&quot; .Router}}
-      }
-  # path只表示register.go的模板，register的路径固定为biz/router/register.go
-  - path: register.go
-    delims:
-      - &quot;&quot;
-      - &quot;&quot;
-    body: |-
-      // Code generated by hertz generator. DO NOT EDIT.
-
-      package router
-
-      import (
-      	&quot;github.com/cloudwego/hertz/pkg/app/server&quot;
-      	{{$.PkgAlias}} &quot;{{$.Pkg}}&quot;
-      )
-
-      // GeneratedRegister registers routers generated by IDL.
-      func GeneratedRegister(r *server.Hertz){
-      	//INSERT_POINT: DO NOT DELETE THIS LINE!
-      	{{$.PkgAlias}}.Register(r)
-      }
-  - path: model.go
-    delims:
-      - &quot;&quot;
-      - &quot;&quot;
-    body: &quot;&quot;
-  # path只表示middleware.go的模板，middleware的路径和router.go一样为：biz/router/namespace/
-  - path: middleware.go
-    delims:
-      - '{{'
-      - '}}'
-    body: |-
-      // Code generated by hertz generator.
-
-      package {{$.PackageName}}
-
-      import (
-      	&quot;github.com/cloudwego/hertz/pkg/app&quot;
-      )
-
-      {{define &quot;M&quot;}}
-      func {{.MiddleWare}}Mw() []app.HandlerFunc {
-      	// your code...
-      	return nil
-      }
-      {{range $_, $router := $.Children}}{{template &quot;M&quot; $router}}{{end}}
-      {{- end}}
-
-      {{template &quot;M&quot; .Router}}
-  # path只表示client.go的模板，client代码的生成路径由用户指定&quot;${client_dir}&quot;
-  - path: client.go
-    delims:
-      - '{{'
-      - '}}'
-    body: |-
-      // Code generated by hertz generator.
-
-      package {{$.PackageName}}
-
-      import (
-          &quot;github.com/cloudwego/hertz/pkg/app/client&quot;
-      	&quot;github.com/cloudwego/hertz/pkg/common/config&quot;
-      )
-
-      type {{.ServiceName}}Client struct {
-      	client * client.Client
-      }
-
-      func New{{.ServiceName}}Client(opt ...config.ClientOption) (*{{.ServiceName}}Client, error) {
-      	c, err := client.NewClient(opt...)
-      	if err != nil {
-      		return nil, err
-      	}
-
-      	return &amp;{{.ServiceName}}Client{
-      		client: c,
-      	}, nil
-      }
-  # handler_single表示单独的handler模板，用于update的时候更新每一个新增的handler
-  - path: handler_single.go
-    delims:
-      - '{{'
-      - '}}'
-    body: |+
-      {{.Comment}}
-      func {{.Name}}(ctx context.Context, c *app.RequestContext) {
-      // this my demo
-      	var err error
-      	{{if ne .RequestTypeName &quot;&quot; -}}
-      	var req {{.RequestTypeName}}
-      	err = c.BindAndValidate(&amp;req)
-      	if err != nil {
-      		c.String(400, err.Error())
-      		return
-      	}
-      	{{end}}
-      	resp := new({{.ReturnTypeName}})
-
-      	c.{{.Serializer}}(200, resp)
-      }
-  # middleware_single表示单独的middleware模板，用于update的时候更新每一个新增的middleware_single
-  - path: middleware_single.go
-    delims:
-      - '{{'
-      - '}}'
-    body: |+
-      func {{.MiddleWare}}Mw() []app.HandlerFunc {
-      	// your code...
-      	return nil
-      }
-</code></pre><p>命令：</p><pre><code># 之后会提供 package 模板渲染数据，所以输入命令的时候先保留了&quot;k-v&quot;的形式，customize_package 后需要加&quot;:&quot;
-hz new --mod=github.com/hertz/hello --handler_dir=handler_test --idl=hertzDemo/hello.thrift --customize_package=template/package.yaml:
-</code></pre><p>生成handler如下：</p><pre><code>// this is my custom handler.
-
-package example
-
-import (
-	&quot;context&quot;
-
-	&quot;github.com/cloudwego/hertz/pkg/app&quot;
-	example &quot;test/test2/biz/model/hello/example&quot;
-)
-
-// HelloMethod .
-// @router /hello [GET]
-func HelloMethod(ctx context.Context, c *app.RequestContext) {
-	//  you can code something
-	var err error
-	var req example.HelloReq
-	err = c.BindAndValidate(&amp;req)
-	if err != nil {
-		c.String(400, err.Error())
-		return
-	}
-
-	resp := new(example.HelloResp)
-
-	c.JSON(200, resp)
-}
-
-// OtherMethod .
-// @router /other [POST]
-func OtherMethod(ctx context.Context, c *app.RequestContext) {
-	//  you can code something
-	var err error
-	var req example.OtherReq
-	err = c.BindAndValidate(&amp;req)
-	if err != nil {
-		c.String(400, err.Error())
-		return
-	}
-
-	resp := new(example.OtherResp)
-
-	c.JSON(200, resp)
-}
-
-</code></pre><h1 id=注意事项>注意事项</h1><h2 id=使用-layout-模板的注意事项>使用 layout 模板的注意事项</h2><p>当用户使用了 layout 自定义模板后，那么生成的 layout 和渲染数据都由用户接管，所以用户需要提供其定义的 layout 的渲染数据。</p><h2 id=使用-package-模板的注意事项>使用 package 模板的注意事项</h2><p>一般来说，用户使用 package 模板的时候大多数是为了修改默认的 handler 模板；不过，目前 hz 没有提供单个 handler 的模板，所以当 update 已经存在的 handler 文件时，会使用默认 handler 模板在 handler 文件尾追加新的 handler function。当对应的 handler 文件不存在的时候，才会使用自定义模板来生成 handler 文件。</p><style>.feedback--answer{display:inline-block}.feedback--answer-no{margin-left:1em}.feedback--response{display:none;margin-top:1em}.feedback--response__visible{display:block}</style><div class=d-print-none><h2 class=feedback--title>反馈</h2><p class=feedback--question>当前页面对你有帮助吗？</p><button class="btn btn-primary mb-4 feedback--answer feedback--answer-yes">是</button>
+</code></pre><h2 id=自定义一个-layout-模板>自定义一个 layout 模板</h2><blockquote><p>目前，hz 生成的项目 layout 已经是一个 hertz 项目最最最基础的骨架了，所以不建议删除现有的模板里的文件。</p><p>不过如果用户想要一个别的 layout ，当然也可以根据自身需求来删除相应的文件(除"biz/register.go"外，其余都可以动)</p><p>我们十分欢迎用户来贡献自己的模板</p></blockquote><p>下面假设用户只想要 &ldquo;main.go&rdquo; 以及 &ldquo;go.mod&rdquo; 文件，那么我们对默认模板进行修改，如下：</p><h3 id=template>template:</h3><div class=highlight><pre style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#000>// layout.yaml</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>layouts</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># 项目 main 文件，</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>main.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hertz generator.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package main
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/app/server&#34;
+</span><span style=color:#8f5902;font-style:italic>        &#34;{{.GoModule}}/biz/router&#34;
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      func main() {
+</span><span style=color:#8f5902;font-style:italic>      	h := server.Default()
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>        router.GeneratedRegister(h)
+</span><span style=color:#8f5902;font-style:italic>        // do what you wanted
+</span><span style=color:#8f5902;font-style:italic>        // add some render data: {{.MainData}}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      	h.Spin()
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># go.mod 文件，需要模板渲染数据{{.GoModule}}才能生成</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>go.mod</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;{{&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;}}&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      module {{.GoModule}}
+</span><span style=color:#8f5902;font-style:italic>      {{- if .UseApacheThrift}}
+</span><span style=color:#8f5902;font-style:italic>      replace github.com/apache/thrift =&gt; github.com/apache/thrift v0.13.0
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># 默认路由注册文件，没必要修改</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>biz/router/register.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hertz generator. DO NOT EDIT.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package router
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/app/server&#34;
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // GeneratedRegister registers routers generated by IDL.
+</span><span style=color:#8f5902;font-style:italic>      func GeneratedRegister(r *server.Hertz){
+</span><span style=color:#8f5902;font-style:italic>      	//INSERT_POINT: DO NOT DELETE THIS LINE!
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span></code></pre></div><h3 id=render-data>render data:</h3><div class=highlight><pre style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=color:#000;font-weight:700>{</span>
+  <span style=color:#204a87;font-weight:700>&#34;*&#34;</span><span style=color:#000;font-weight:700>:</span> <span style=color:#000;font-weight:700>{</span>
+    <span style=color:#204a87;font-weight:700>&#34;GoModule&#34;</span><span style=color:#000;font-weight:700>:</span> <span style=color:#4e9a06>&#34;github.com/hertz/hello&#34;</span><span style=color:#000;font-weight:700>,</span>
+    <span style=color:#204a87;font-weight:700>&#34;ServiceName&#34;</span><span style=color:#000;font-weight:700>:</span> <span style=color:#4e9a06>&#34;hello&#34;</span><span style=color:#000;font-weight:700>,</span>
+    <span style=color:#204a87;font-weight:700>&#34;UseApacheThrift&#34;</span><span style=color:#000;font-weight:700>:</span> <span style=color:#204a87;font-weight:700>true</span>
+  <span style=color:#000;font-weight:700>},</span>
+  <span style=color:#204a87;font-weight:700>&#34;main.go&#34;</span><span style=color:#000;font-weight:700>:</span> <span style=color:#000;font-weight:700>{</span>
+    <span style=color:#204a87;font-weight:700>&#34;MainData&#34;</span><span style=color:#000;font-weight:700>:</span> <span style=color:#4e9a06>&#34;this is customized render data&#34;</span>
+  <span style=color:#000;font-weight:700>}</span>
+<span style=color:#000;font-weight:700>}</span>
+</code></pre></div><p>命令：</p><div class=highlight><pre style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>hz new --mod<span style=color:#ce5c00;font-weight:700>=</span>github.com/hertz/hello --idl<span style=color:#ce5c00;font-weight:700>=</span>./hertzDemo/hello.thrift --customize_layout<span style=color:#ce5c00;font-weight:700>=</span>template/layout.yaml:template/data.json
+</code></pre></div><h1 id=自定义-package-模板>自定义 package 模板</h1><blockquote><p>hz 模板的模板地址：</p><p>用户可根据默认模板来修改或重写，从而符合自身需求</p></blockquote><ul><li>所谓的 package 模板是指与 idl 定义相关的服务代码，这部分代码涉及到定义 idl 时指定的service、go_package/namespace等，主要包括以下几部分：</li><li>handler.go : 处理函数逻辑</li><li>router.go：具体的 idl 定义的服务的路由注册逻辑</li><li>register.go：调用router.go中内容的逻辑</li><li><del>model代码：生成的 go struct；不过由于目前使用插件来生成model代码工具没权限来修改model的模板，所以这部分功能先不开放</del></li></ul><h2 id=命令-1>命令</h2><div class=highlight><pre style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#8f5902;font-style:italic># 之后会提供 package 模板渲染数据，所以输入命令的时候先保留了&#34;k-v&#34;的形式，customize_package 后需要加&#34;:&#34;</span>
+hz new --mod<span style=color:#ce5c00;font-weight:700>=</span>github.com/hertz/hello --handler_dir<span style=color:#ce5c00;font-weight:700>=</span>handler_test --idl<span style=color:#ce5c00;font-weight:700>=</span>hertzDemo/hello.thrift --customize_package<span style=color:#ce5c00;font-weight:700>=</span>template/package.yaml:
+</code></pre></div><h2 id=默认-package-模板>默认 package 模板</h2><p>注意：自定义 package 模板没有提供渲染数据的功能，这里主要是因为这些渲染数据是 hz 工具解析生成的，所以暂时不提供自己写渲染数据的功能。可以修改下模板里面与渲染数据无关的部分，以满足自身需求。</p><div class=highlight><pre style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#8f5902;font-style:italic># 以下数据都是 yaml marshal 得到的，所以可能看起来比较乱</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>layouts</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># path只表示handler.go的模板，具体的handler路径由默认路径和handler_dir决定</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>handler.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;{{&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;}}&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hertz generator.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package {{.PackageName}}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>      	&#34;context&#34;
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/app&#34;
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      {{- range $k, $v := .Imports}}
+</span><span style=color:#8f5902;font-style:italic>      	{{$k}} &#34;{{$v.Package}}&#34;
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      {{range $_, $MethodInfo := .Methods}}
+</span><span style=color:#8f5902;font-style:italic>      {{$MethodInfo.Comment}}
+</span><span style=color:#8f5902;font-style:italic>      func {{$MethodInfo.Name}}(ctx context.Context, c *app.RequestContext) {
+</span><span style=color:#8f5902;font-style:italic>      	var err error
+</span><span style=color:#8f5902;font-style:italic>      	{{if ne $MethodInfo.RequestTypeName &#34;&#34; -}}
+</span><span style=color:#8f5902;font-style:italic>      	var req {{$MethodInfo.RequestTypeName}}
+</span><span style=color:#8f5902;font-style:italic>      	err = c.BindAndValidate(&amp;req)
+</span><span style=color:#8f5902;font-style:italic>      	if err != nil {
+</span><span style=color:#8f5902;font-style:italic>      		c.String(400, err.Error())
+</span><span style=color:#8f5902;font-style:italic>      		return
+</span><span style=color:#8f5902;font-style:italic>      	}
+</span><span style=color:#8f5902;font-style:italic>      	{{end}}
+</span><span style=color:#8f5902;font-style:italic>      	resp := new({{$MethodInfo.ReturnTypeName}})
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      	c.{{.Serializer}}(200, resp)
+</span><span style=color:#8f5902;font-style:italic>      }
+</span><span style=color:#8f5902;font-style:italic>      {{end}}</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># path只表示router.go的模板，其路径固定在：biz/router/namespace/</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>router.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;{{&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;}}&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hertz generator. DO NOT EDIT.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package {{$.PackageName}}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/app/server&#34;
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      	{{range $k, $v := .HandlerPackages}}{{$k}} &#34;{{$v}}&#34;{{end}}
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      /*
+</span><span style=color:#8f5902;font-style:italic>       This file will register all the routes of the services in the master idl.
+</span><span style=color:#8f5902;font-style:italic>       And it will update automatically when you use the &#34;update&#34; command for the idl.
+</span><span style=color:#8f5902;font-style:italic>       So don&#39;t modify the contents of the file, or your code will be deleted when it is updated.
+</span><span style=color:#8f5902;font-style:italic>       */
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      {{define &#34;g&#34;}}
+</span><span style=color:#8f5902;font-style:italic>      {{- if eq .Path &#34;/&#34;}}r
+</span><span style=color:#8f5902;font-style:italic>      {{- else}}{{.GroupName}}{{end}}
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      {{define &#34;G&#34;}}
+</span><span style=color:#8f5902;font-style:italic>      {{- if ne .Handler &#34;&#34;}}
+</span><span style=color:#8f5902;font-style:italic>      	{{- .GroupName}}.{{.HttpMethod}}(&#34;{{.Path}}&#34;, append({{.MiddleWare}}Mw(), {{.Handler}})...)
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}
+</span><span style=color:#8f5902;font-style:italic>      {{- if ne (len .Children) 0}}
+</span><span style=color:#8f5902;font-style:italic>      {{.MiddleWare}} := {{template &#34;g&#34; .}}.Group(&#34;{{.Path}}&#34;, {{.MiddleWare}}Mw()...)
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}
+</span><span style=color:#8f5902;font-style:italic>      {{- range $_, $router := .Children}}
+</span><span style=color:#8f5902;font-style:italic>      {{- if ne .Handler &#34;&#34;}}
+</span><span style=color:#8f5902;font-style:italic>      	{{template &#34;G&#34; $router}}
+</span><span style=color:#8f5902;font-style:italic>      {{- else}}
+</span><span style=color:#8f5902;font-style:italic>      	{	{{template &#34;G&#34; $router}}
+</span><span style=color:#8f5902;font-style:italic>      	}
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Register register routes based on the IDL &#39;api.${HTTP Method}&#39; annotation.
+</span><span style=color:#8f5902;font-style:italic>      func Register(r *server.Hertz) {
+</span><span style=color:#8f5902;font-style:italic>      {{template &#34;G&#34; .Router}}
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># path只表示register.go的模板，register的路径固定为biz/router/register.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>register.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hertz generator. DO NOT EDIT.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package router
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/app/server&#34;
+</span><span style=color:#8f5902;font-style:italic>      	{{$.PkgAlias}} &#34;{{$.Pkg}}&#34;
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // GeneratedRegister registers routers generated by IDL.
+</span><span style=color:#8f5902;font-style:italic>      func GeneratedRegister(r *server.Hertz){
+</span><span style=color:#8f5902;font-style:italic>      	//INSERT_POINT: DO NOT DELETE THIS LINE!
+</span><span style=color:#8f5902;font-style:italic>      	{{$.PkgAlias}}.Register(r)
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>model.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># path只表示middleware.go的模板，middleware的路径和router.go一样为：biz/router/namespace/</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>middleware.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;{{&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;}}&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hertz generator.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package {{$.PackageName}}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/app&#34;
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      {{define &#34;M&#34;}}
+</span><span style=color:#8f5902;font-style:italic>      func {{.MiddleWare}}Mw() []app.HandlerFunc {
+</span><span style=color:#8f5902;font-style:italic>      	// your code...
+</span><span style=color:#8f5902;font-style:italic>      	return nil
+</span><span style=color:#8f5902;font-style:italic>      }
+</span><span style=color:#8f5902;font-style:italic>      {{range $_, $router := $.Children}}{{template &#34;M&#34; $router}}{{end}}
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      {{template &#34;M&#34; .Router}}</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># path只表示client.go的模板，client代码的生成路径由用户指定&#34;${client_dir}&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>client.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;{{&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;}}&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hertz generator.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package {{$.PackageName}}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>          &#34;github.com/cloudwego/hertz/pkg/app/client&#34;
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/common/config&#34;
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      type {{.ServiceName}}Client struct {
+</span><span style=color:#8f5902;font-style:italic>      	client * client.Client
+</span><span style=color:#8f5902;font-style:italic>      }
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      func New{{.ServiceName}}Client(opt ...config.ClientOption) (*{{.ServiceName}}Client, error) {
+</span><span style=color:#8f5902;font-style:italic>      	c, err := client.NewClient(opt...)
+</span><span style=color:#8f5902;font-style:italic>      	if err != nil {
+</span><span style=color:#8f5902;font-style:italic>      		return nil, err
+</span><span style=color:#8f5902;font-style:italic>      	}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      	return &amp;{{.ServiceName}}Client{
+</span><span style=color:#8f5902;font-style:italic>      		client: c,
+</span><span style=color:#8f5902;font-style:italic>      	}, nil
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># handler_single表示单独的handler模板，用于update的时候更新每一个新增的handler</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>handler_single.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;{{&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;}}&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      {{.Comment}}
+</span><span style=color:#8f5902;font-style:italic>      func {{.Name}}(ctx context.Context, c *app.RequestContext) {
+</span><span style=color:#8f5902;font-style:italic>      // this my demo
+</span><span style=color:#8f5902;font-style:italic>      	var err error
+</span><span style=color:#8f5902;font-style:italic>      	{{if ne .RequestTypeName &#34;&#34; -}}
+</span><span style=color:#8f5902;font-style:italic>      	var req {{.RequestTypeName}}
+</span><span style=color:#8f5902;font-style:italic>      	err = c.BindAndValidate(&amp;req)
+</span><span style=color:#8f5902;font-style:italic>      	if err != nil {
+</span><span style=color:#8f5902;font-style:italic>      		c.String(400, err.Error())
+</span><span style=color:#8f5902;font-style:italic>      		return
+</span><span style=color:#8f5902;font-style:italic>      	}
+</span><span style=color:#8f5902;font-style:italic>      	{{end}}
+</span><span style=color:#8f5902;font-style:italic>      	resp := new({{.ReturnTypeName}})
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      	c.{{.Serializer}}(200, resp)
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># middleware_single表示单独的middleware模板，用于update的时候更新每一个新增的middleware_single</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>middleware_single.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;{{&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;}}&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      func {{.MiddleWare}}Mw() []app.HandlerFunc {
+</span><span style=color:#8f5902;font-style:italic>      	// your code...
+</span><span style=color:#8f5902;font-style:italic>      	return nil
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><h2 id=自定义一个-package-模板>自定义一个 package 模板</h2><blockquote><p>与 layout 模板一样，用户同样可以自定义 package 模板。</p><p>就 package 提供的模板来说，一般用户可能只有自定义 handler.go 的模板的需求，因为router.go/middleware.go/register.go 一般与 idl 定义相关而用户无需关心，因此 hz 目前也将这些模板生成的位置固定了，一般也无需修改。</p><p>因此，用户可根据自身的需求来自定义生成的 handler 模板，加速开发速度；但是由于默认的 handler 模板集成了一些 model 的信息以及 package 信息，所以需要 hz 工具来提供渲染数据。这部分用户可根据自身情况酌情来修改，一般建议留下 model 信息。</p></blockquote><p>下面给出一个简单的自定义 handler 模板的示例，在 handler 里加入一些注释：</p><h3 id=template-1>template:</h3><div class=highlight><pre style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#8f5902;font-style:italic># 以下数据都是 yaml marshal 得到的，所以可能看起来比较乱</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>layouts</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># path只表示handler.go的模板，具体的handler路径由默认路径和handler_dir决定</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>handler.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;{{&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;}}&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // this is my custom handler.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package {{.PackageName}}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>      	&#34;context&#34;
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/app&#34;
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      {{- range $k, $v := .Imports}}
+</span><span style=color:#8f5902;font-style:italic>      	{{$k}} &#34;{{$v.Package}}&#34;
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      {{range $_, $MethodInfo := .Methods}}
+</span><span style=color:#8f5902;font-style:italic>      {{$MethodInfo.Comment}}
+</span><span style=color:#8f5902;font-style:italic>      func {{$MethodInfo.Name}}(ctx context.Context, c *app.RequestContext) {
+</span><span style=color:#8f5902;font-style:italic>        //  you can code something
+</span><span style=color:#8f5902;font-style:italic>      	var err error
+</span><span style=color:#8f5902;font-style:italic>      	{{if ne $MethodInfo.RequestTypeName &#34;&#34; -}}
+</span><span style=color:#8f5902;font-style:italic>      	var req {{$MethodInfo.RequestTypeName}}
+</span><span style=color:#8f5902;font-style:italic>      	err = c.BindAndValidate(&amp;req)
+</span><span style=color:#8f5902;font-style:italic>      	if err != nil {
+</span><span style=color:#8f5902;font-style:italic>      		c.String(400, err.Error())
+</span><span style=color:#8f5902;font-style:italic>      		return
+</span><span style=color:#8f5902;font-style:italic>      	}
+</span><span style=color:#8f5902;font-style:italic>      	{{end}}
+</span><span style=color:#8f5902;font-style:italic>      	resp := new({{$MethodInfo.ReturnTypeName}})
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      	c.{{.Serializer}}(200, resp)
+</span><span style=color:#8f5902;font-style:italic>      }
+</span><span style=color:#8f5902;font-style:italic>      {{end}}</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># path只表示router.go的模板，其路径固定在：biz/router/namespace/</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>router.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;{{&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;}}&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hertz generator. DO NOT EDIT.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package {{$.PackageName}}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/app/server&#34;
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      	{{range $k, $v := .HandlerPackages}}{{$k}} &#34;{{$v}}&#34;{{end}}
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      /*
+</span><span style=color:#8f5902;font-style:italic>       This file will register all the routes of the services in the master idl.
+</span><span style=color:#8f5902;font-style:italic>       And it will update automatically when you use the &#34;update&#34; command for the idl.
+</span><span style=color:#8f5902;font-style:italic>       So don&#39;t modify the contents of the file, or your code will be deleted when it is updated.
+</span><span style=color:#8f5902;font-style:italic>       */
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      {{define &#34;g&#34;}}
+</span><span style=color:#8f5902;font-style:italic>      {{- if eq .Path &#34;/&#34;}}r
+</span><span style=color:#8f5902;font-style:italic>      {{- else}}{{.GroupName}}{{end}}
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      {{define &#34;G&#34;}}
+</span><span style=color:#8f5902;font-style:italic>      {{- if ne .Handler &#34;&#34;}}
+</span><span style=color:#8f5902;font-style:italic>      	{{- .GroupName}}.{{.HttpMethod}}(&#34;{{.Path}}&#34;, append({{.MiddleWare}}Mw(), {{.Handler}})...)
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}
+</span><span style=color:#8f5902;font-style:italic>      {{- if ne (len .Children) 0}}
+</span><span style=color:#8f5902;font-style:italic>      {{.MiddleWare}} := {{template &#34;g&#34; .}}.Group(&#34;{{.Path}}&#34;, {{.MiddleWare}}Mw()...)
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}
+</span><span style=color:#8f5902;font-style:italic>      {{- range $_, $router := .Children}}
+</span><span style=color:#8f5902;font-style:italic>      {{- if ne .Handler &#34;&#34;}}
+</span><span style=color:#8f5902;font-style:italic>      	{{template &#34;G&#34; $router}}
+</span><span style=color:#8f5902;font-style:italic>      {{- else}}
+</span><span style=color:#8f5902;font-style:italic>      	{	{{template &#34;G&#34; $router}}
+</span><span style=color:#8f5902;font-style:italic>      	}
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Register register routes based on the IDL &#39;api.${HTTP Method}&#39; annotation.
+</span><span style=color:#8f5902;font-style:italic>      func Register(r *server.Hertz) {
+</span><span style=color:#8f5902;font-style:italic>      {{template &#34;G&#34; .Router}}
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># path只表示register.go的模板，register的路径固定为biz/router/register.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>register.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hertz generator. DO NOT EDIT.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package router
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/app/server&#34;
+</span><span style=color:#8f5902;font-style:italic>      	{{$.PkgAlias}} &#34;{{$.Pkg}}&#34;
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // GeneratedRegister registers routers generated by IDL.
+</span><span style=color:#8f5902;font-style:italic>      func GeneratedRegister(r *server.Hertz){
+</span><span style=color:#8f5902;font-style:italic>      	//INSERT_POINT: DO NOT DELETE THIS LINE!
+</span><span style=color:#8f5902;font-style:italic>      	{{$.PkgAlias}}.Register(r)
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>model.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># path只表示middleware.go的模板，middleware的路径和router.go一样为：biz/router/namespace/</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>middleware.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;{{&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;}}&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hertz generator.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package {{$.PackageName}}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/app&#34;
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      {{define &#34;M&#34;}}
+</span><span style=color:#8f5902;font-style:italic>      func {{.MiddleWare}}Mw() []app.HandlerFunc {
+</span><span style=color:#8f5902;font-style:italic>      	// your code...
+</span><span style=color:#8f5902;font-style:italic>      	return nil
+</span><span style=color:#8f5902;font-style:italic>      }
+</span><span style=color:#8f5902;font-style:italic>      {{range $_, $router := $.Children}}{{template &#34;M&#34; $router}}{{end}}
+</span><span style=color:#8f5902;font-style:italic>      {{- end}}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      {{template &#34;M&#34; .Router}}</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># path只表示client.go的模板，client代码的生成路径由用户指定&#34;${client_dir}&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>client.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;{{&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;}}&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|-</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      // Code generated by hertz generator.
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      package {{$.PackageName}}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      import (
+</span><span style=color:#8f5902;font-style:italic>          &#34;github.com/cloudwego/hertz/pkg/app/client&#34;
+</span><span style=color:#8f5902;font-style:italic>      	&#34;github.com/cloudwego/hertz/pkg/common/config&#34;
+</span><span style=color:#8f5902;font-style:italic>      )
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      type {{.ServiceName}}Client struct {
+</span><span style=color:#8f5902;font-style:italic>      	client * client.Client
+</span><span style=color:#8f5902;font-style:italic>      }
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      func New{{.ServiceName}}Client(opt ...config.ClientOption) (*{{.ServiceName}}Client, error) {
+</span><span style=color:#8f5902;font-style:italic>      	c, err := client.NewClient(opt...)
+</span><span style=color:#8f5902;font-style:italic>      	if err != nil {
+</span><span style=color:#8f5902;font-style:italic>      		return nil, err
+</span><span style=color:#8f5902;font-style:italic>      	}
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      	return &amp;{{.ServiceName}}Client{
+</span><span style=color:#8f5902;font-style:italic>      		client: c,
+</span><span style=color:#8f5902;font-style:italic>      	}, nil
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># handler_single表示单独的handler模板，用于update的时候更新每一个新增的handler</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>handler_single.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;{{&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;}}&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      {{.Comment}}
+</span><span style=color:#8f5902;font-style:italic>      func {{.Name}}(ctx context.Context, c *app.RequestContext) {
+</span><span style=color:#8f5902;font-style:italic>      // this my demo
+</span><span style=color:#8f5902;font-style:italic>      	var err error
+</span><span style=color:#8f5902;font-style:italic>      	{{if ne .RequestTypeName &#34;&#34; -}}
+</span><span style=color:#8f5902;font-style:italic>      	var req {{.RequestTypeName}}
+</span><span style=color:#8f5902;font-style:italic>      	err = c.BindAndValidate(&amp;req)
+</span><span style=color:#8f5902;font-style:italic>      	if err != nil {
+</span><span style=color:#8f5902;font-style:italic>      		c.String(400, err.Error())
+</span><span style=color:#8f5902;font-style:italic>      		return
+</span><span style=color:#8f5902;font-style:italic>      	}
+</span><span style=color:#8f5902;font-style:italic>      	{{end}}
+</span><span style=color:#8f5902;font-style:italic>      	resp := new({{.ReturnTypeName}})
+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      	c.{{.Serializer}}(200, resp)
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#8f5902;font-style:italic># middleware_single表示单独的middleware模板，用于update的时候更新每一个新增的middleware_single</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>path</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>middleware_single.go</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>delims</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;{{&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#4e9a06>&#39;}}&#39;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>body</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|+</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      func {{.MiddleWare}}Mw() []app.HandlerFunc {
+</span><span style=color:#8f5902;font-style:italic>      	// your code...
+</span><span style=color:#8f5902;font-style:italic>      	return nil
+</span><span style=color:#8f5902;font-style:italic>      }</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span></code></pre></div><p>命令：</p><div class=highlight><pre style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#8f5902;font-style:italic># 之后会提供 package 模板渲染数据，所以输入命令的时候先保留了&#34;k-v&#34;的形式，customize_package 后需要加&#34;:&#34;</span>
+hz new --mod<span style=color:#ce5c00;font-weight:700>=</span>github.com/hertz/hello --handler_dir<span style=color:#ce5c00;font-weight:700>=</span>handler_test --idl<span style=color:#ce5c00;font-weight:700>=</span>hertzDemo/hello.thrift --customize_package<span style=color:#ce5c00;font-weight:700>=</span>template/package.yaml:
+</code></pre></div><p>生成handler如下：</p><div class=highlight><pre style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#8f5902;font-style:italic>// this is my custom handler.
+</span><span style=color:#8f5902;font-style:italic></span>
+<span style=color:#204a87;font-weight:700>package</span> <span style=color:#000>example</span>
+
+<span style=color:#204a87;font-weight:700>import</span> <span style=color:#000;font-weight:700>(</span>
+	<span style=color:#4e9a06>&#34;context&#34;</span>
+
+	<span style=color:#4e9a06>&#34;github.com/cloudwego/hertz/pkg/app&#34;</span>
+	<span style=color:#000>example</span> <span style=color:#4e9a06>&#34;test/test2/biz/model/hello/example&#34;</span>
+<span style=color:#000;font-weight:700>)</span>
+
+<span style=color:#8f5902;font-style:italic>// HelloMethod .
+</span><span style=color:#8f5902;font-style:italic>// @router /hello [GET]
+</span><span style=color:#8f5902;font-style:italic></span><span style=color:#204a87;font-weight:700>func</span> <span style=color:#000>HelloMethod</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>ctx</span> <span style=color:#000>context</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>Context</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>c</span> <span style=color:#ce5c00;font-weight:700>*</span><span style=color:#000>app</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>RequestContext</span><span style=color:#000;font-weight:700>)</span> <span style=color:#000;font-weight:700>{</span>
+	<span style=color:#8f5902;font-style:italic>//  you can code something
+</span><span style=color:#8f5902;font-style:italic></span>	<span style=color:#204a87;font-weight:700>var</span> <span style=color:#000>err</span> <span style=color:#204a87;font-weight:700>error</span>
+	<span style=color:#204a87;font-weight:700>var</span> <span style=color:#000>req</span> <span style=color:#000>example</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>HelloReq</span>
+	<span style=color:#000>err</span> <span style=color:#000;font-weight:700>=</span> <span style=color:#000>c</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>BindAndValidate</span><span style=color:#000;font-weight:700>(</span><span style=color:#ce5c00;font-weight:700>&amp;</span><span style=color:#000>req</span><span style=color:#000;font-weight:700>)</span>
+	<span style=color:#204a87;font-weight:700>if</span> <span style=color:#000>err</span> <span style=color:#ce5c00;font-weight:700>!=</span> <span style=color:#204a87;font-weight:700>nil</span> <span style=color:#000;font-weight:700>{</span>
+		<span style=color:#000>c</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>String</span><span style=color:#000;font-weight:700>(</span><span style=color:#0000cf;font-weight:700>400</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>err</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>Error</span><span style=color:#000;font-weight:700>())</span>
+		<span style=color:#204a87;font-weight:700>return</span>
+	<span style=color:#000;font-weight:700>}</span>
+
+	<span style=color:#000>resp</span> <span style=color:#ce5c00;font-weight:700>:=</span> <span style=color:#204a87>new</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>example</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>HelloResp</span><span style=color:#000;font-weight:700>)</span>
+
+	<span style=color:#000>c</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>JSON</span><span style=color:#000;font-weight:700>(</span><span style=color:#0000cf;font-weight:700>200</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>resp</span><span style=color:#000;font-weight:700>)</span>
+<span style=color:#000;font-weight:700>}</span>
+
+<span style=color:#8f5902;font-style:italic>// OtherMethod .
+</span><span style=color:#8f5902;font-style:italic>// @router /other [POST]
+</span><span style=color:#8f5902;font-style:italic></span><span style=color:#204a87;font-weight:700>func</span> <span style=color:#000>OtherMethod</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>ctx</span> <span style=color:#000>context</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>Context</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>c</span> <span style=color:#ce5c00;font-weight:700>*</span><span style=color:#000>app</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>RequestContext</span><span style=color:#000;font-weight:700>)</span> <span style=color:#000;font-weight:700>{</span>
+	<span style=color:#8f5902;font-style:italic>//  you can code something
+</span><span style=color:#8f5902;font-style:italic></span>	<span style=color:#204a87;font-weight:700>var</span> <span style=color:#000>err</span> <span style=color:#204a87;font-weight:700>error</span>
+	<span style=color:#204a87;font-weight:700>var</span> <span style=color:#000>req</span> <span style=color:#000>example</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>OtherReq</span>
+	<span style=color:#000>err</span> <span style=color:#000;font-weight:700>=</span> <span style=color:#000>c</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>BindAndValidate</span><span style=color:#000;font-weight:700>(</span><span style=color:#ce5c00;font-weight:700>&amp;</span><span style=color:#000>req</span><span style=color:#000;font-weight:700>)</span>
+	<span style=color:#204a87;font-weight:700>if</span> <span style=color:#000>err</span> <span style=color:#ce5c00;font-weight:700>!=</span> <span style=color:#204a87;font-weight:700>nil</span> <span style=color:#000;font-weight:700>{</span>
+		<span style=color:#000>c</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>String</span><span style=color:#000;font-weight:700>(</span><span style=color:#0000cf;font-weight:700>400</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>err</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>Error</span><span style=color:#000;font-weight:700>())</span>
+		<span style=color:#204a87;font-weight:700>return</span>
+	<span style=color:#000;font-weight:700>}</span>
+
+	<span style=color:#000>resp</span> <span style=color:#ce5c00;font-weight:700>:=</span> <span style=color:#204a87>new</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>example</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>OtherResp</span><span style=color:#000;font-weight:700>)</span>
+
+	<span style=color:#000>c</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>JSON</span><span style=color:#000;font-weight:700>(</span><span style=color:#0000cf;font-weight:700>200</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>resp</span><span style=color:#000;font-weight:700>)</span>
+<span style=color:#000;font-weight:700>}</span>
+
+</code></pre></div><h1 id=注意事项>注意事项</h1><h2 id=使用-layout-模板的注意事项>使用 layout 模板的注意事项</h2><p>当用户使用了 layout 自定义模板后，那么生成的 layout 和渲染数据都由用户接管，所以用户需要提供其定义的 layout 的渲染数据。</p><h2 id=使用-package-模板的注意事项>使用 package 模板的注意事项</h2><p>一般来说，用户使用 package 模板的时候大多数是为了修改默认的 handler 模板；不过，目前 hz 没有提供单个 handler 的模板，所以当 update 已经存在的 handler 文件时，会使用默认 handler 模板在 handler 文件尾追加新的 handler function。当对应的 handler 文件不存在的时候，才会使用自定义模板来生成 handler 文件。</p><style>.feedback--answer{display:inline-block}.feedback--answer-no{margin-left:1em}.feedback--response{display:none;margin-top:1em}.feedback--response__visible{display:block}</style><div class=d-print-none><h2 class=feedback--title>反馈</h2><p class=feedback--question>当前页面对你有帮助吗？</p><button class="btn btn-primary mb-4 feedback--answer feedback--answer-yes">是</button>
 <button class="btn btn-primary mb-4 feedback--answer feedback--answer-no">否</button><p class="feedback--response feedback--response-yes"><a href=https://github.com/cloudwego/cloudwego.github.io/issues/new>请告诉我们如何改进</a>.</p><p class="feedback--response feedback--response-no"><a href=https://github.com/cloudwego/cloudwego.github.io/issues/new>请告诉我们如何改进</a>.</p></div><script>const yesButton=document.querySelector('.feedback--answer-yes'),noButton=document.querySelector('.feedback--answer-no'),yesResponse=document.querySelector('.feedback--response-yes'),noResponse=document.querySelector('.feedback--response-no'),disableButtons=()=>{yesButton.disabled=!0,noButton.disabled=!0},sendFeedback=b=>{if(typeof ga!='function')return;const a={command:'send',hitType:'event',category:'Helpful',action:'click',label:window.location.pathname,value:b};ga(a.command,a.hitType,a.category,a.action,a.label,a.value)};yesButton.addEventListener('click',()=>{yesResponse.classList.add('feedback--response__visible'),disableButtons(),sendFeedback(1)}),noButton.addEventListener('click',()=>{noResponse.classList.add('feedback--response__visible'),disableButtons(),sendFeedback(0)})</script><br><div class="text-muted mt-5 pt-3 border-top">最后修改
-February 7, 2023
-: <a href=https://github.com/cloudwego/cloudwego.github.io/commit/03b16e06fa74f5710481852cbf166de534d39e02>fix: date error (#525) (03b16e0)</a></div></div></main></div></div><footer class="bg-dark py-5 row d-print-none"><div class="container-fluid mx-sm-5"><div class=row><div class="col-6 col-sm-4 text-xs-center order-sm-2"><ul class="list-inline mb-0"><li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Lark aria-label=Lark><a class=text-white target=_blank rel=noopener href="https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=693v2544-2664-4421-b50f-7f1912p745r6" aria-label=Lark><img src=/webfonts/lark.svg alt style=width:26px;line-height:32.5px;margin-bottom:6px></a></li><li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Twitter aria-label=Twitter><a class=text-white target=_blank rel=noopener href=https://twitter.com/CloudWeGo aria-label=Twitter><i class="fab fa-twitter"></i></a></li></ul></div><div class="col-6 col-sm-4 text-right text-xs-center order-sm-3"><ul class="list-inline mb-0"><li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=GitHub aria-label=GitHub><a class=text-white target=_blank rel=noopener href=https://github.com/cloudwego aria-label=GitHub><i class="fab fa-github"></i></a></li><li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Slack aria-label=Slack><a class=text-white target=_blank rel=noopener href=https://join.slack.com/t/cloudwego/shared_invite/zt-tmcbzewn-UjXMF3ZQsPhl7W3tEDZboA aria-label=Slack><i class="fab fa-slack"></i></a></li></ul></div><div class="col-12 col-sm-4 text-center py-2 order-sm-2"><small class=text-white>&copy; 2023 The CloudWeGo Authors</small><p class="mt-2 text-white"><a class=cloudwego-link href=/about/ target=_blank rel=noopener>About</a>
+February 8, 2023
+: <a href=https://github.com/cloudwego/cloudwego.github.io/commit/a13af2dbdc9834421bbc47f947ab539d93aef26d>docs: add file type tags for better display of docs (#524) (a13af2d)</a></div></div></main></div></div><footer class="bg-dark py-5 row d-print-none"><div class="container-fluid mx-sm-5"><div class=row><div class="col-6 col-sm-4 text-xs-center order-sm-2"><ul class="list-inline mb-0"><li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Lark aria-label=Lark><a class=text-white target=_blank rel=noopener href="https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=693v2544-2664-4421-b50f-7f1912p745r6" aria-label=Lark><img src=/webfonts/lark.svg alt style=width:26px;line-height:32.5px;margin-bottom:6px></a></li><li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Twitter aria-label=Twitter><a class=text-white target=_blank rel=noopener href=https://twitter.com/CloudWeGo aria-label=Twitter><i class="fab fa-twitter"></i></a></li></ul></div><div class="col-6 col-sm-4 text-right text-xs-center order-sm-3"><ul class="list-inline mb-0"><li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=GitHub aria-label=GitHub><a class=text-white target=_blank rel=noopener href=https://github.com/cloudwego aria-label=GitHub><i class="fab fa-github"></i></a></li><li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Slack aria-label=Slack><a class=text-white target=_blank rel=noopener href=https://join.slack.com/t/cloudwego/shared_invite/zt-tmcbzewn-UjXMF3ZQsPhl7W3tEDZboA aria-label=Slack><i class="fab fa-slack"></i></a></li></ul></div><div class="col-12 col-sm-4 text-center py-2 order-sm-2"><small class=text-white>&copy; 2023 The CloudWeGo Authors</small><p class="mt-2 text-white"><a class=cloudwego-link href=/about/ target=_blank rel=noopener>About</a>
 |
 <a class=cloudwego-link href=https://github.com/cloudwego/cloudwego.github.io/blob/main/LICENSE target=_blank rel=noopener>License</a></p></div></div></div></footer></div><script src=https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js integrity=sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN crossorigin=anonymous></script><script src=https://cdn.staticfile.org/bootstrap/4.6.0/js/bootstrap.min.js integrity=sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF crossorigin=anonymous></script><script src=/js/main.min.cc7c4d018c27afc5b5c4e9ddd9f5b1fca60e2005312b12b5bec0518202c51314.js integrity="sha256-zHxNAYwnr8W1xOnd2fWx/KYOIAUxKxK1vsBRggLFExQ=" crossorigin=anonymous></script><script src=/js/prism.js></script><script src=/js/outbound-link.js></script></body></html>
