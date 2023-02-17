@@ -1,4 +1,23 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Hertz Release v0.5.0</title><link>https://www.cloudwego.io/blog/2023/01/12/hertz-release-v0.5.0/</link><pubDate>Thu, 12 Jan 2023 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2023/01/12/hertz-release-v0.5.0/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Volo Release 0.3.2</title><link>https://www.cloudwego.io/blog/2023/02/07/volo-release-0.3.2/</link><pubDate>Tue, 07 Feb 2023 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2023/02/07/volo-release-0.3.2/</guid><description>
+&lt;p>In Volo 0.3.2 version, in addition to general bugfixes, there are many improvements.
+In particular, it is very much appreciated that there are community contributors who have brought us important features.&lt;/p>
+&lt;h2 id="trait-support-for-thrift-asynchronous-codec">Trait support for Thrift asynchronous codec&lt;/h2>
+&lt;p>&lt;a href="https://github.com/ii64">@ii64&lt;/a> brought us the definition of Thrift asynchronous codec Trait in &lt;a href="https://github.com/cloudwego/volo/pull/123">#123&lt;/a> as well as the implementation of Binary and Apache Compact Protocol.
+Before that he also contributed the underlying implementation of codec to Pilota!&lt;/p>
+&lt;h2 id="support-for-grpc-graceful-shutdown">Support for gRPC graceful shutdown&lt;/h2>
+&lt;p>&lt;a href="https://github.com/iGxnon">@iGxnon&lt;/a> brought us support for gRPC graceful shutdown in &lt;a href="https://github.com/cloudwego/volo/pull/127">#127&lt;/a>!&lt;/p>
+&lt;h2 id="version-update-for-metainfo-and-faststr">Version update for metainfo and faststr&lt;/h2>
+&lt;p>In this release, we updated the versions of metainfo and faststr so that metainfo also supports faststr to minimize memory allocation and copy in as many scenarios as possible to optimize performance.&lt;/p>
+&lt;p>faststr is a string library we modify with reference to smol_str, which implements a zero-cost clone of immutable string.&lt;/p>
+&lt;p>In addition, FastStr has an incompatible change: previously it implemented &lt;code>From&lt;/code> for all &lt;code>AsRef&amp;lt;str&amp;gt;&lt;/code>, but doing so causes the additional memory allocation and copy overhead when using &lt;code>into&lt;/code> directly.
+In the new version of 0.2, we only implement &lt;code>From&lt;/code> for &lt;code>'static str&lt;/code>、&lt;code>String&lt;/code>、&lt;code>Arc&amp;lt;str&amp;gt;&lt;/code>、&lt;code>Arc&amp;lt;String&amp;gt;&lt;/code>.
+There&amp;rsquo;s no overhead for these four types to use &lt;code>into&lt;/code> to convert to FastStr, in a form that avoids memory allocation and copy problems inadvertently brought on by the user.&lt;/p>
+&lt;p>The old version of &lt;code>From&lt;/code> essentially called &lt;code>FastStr::new(s)&lt;/code>, so if there was an incompatibility problem, you could simply call &lt;code>FastStr::new&lt;/code> explicitly instead.&lt;/p>
+&lt;h2 id="pilota-supports-faststr-generation-for-protobuf-codec">Pilota supports FastStr generation for Protobuf codec&lt;/h2>
+&lt;p>By supporting FastStr generation for Protobuf codec in Pilota, we can bring our performance optimization capabilities to PB and gRPC.&lt;/p>
+&lt;p>After upgrading, we need to use &lt;code>use pilota::prost::message::Message;&lt;/code> instead of &lt;code>use prost::Message;&lt;/code> introduced previously.&lt;/p>
+&lt;h2 id="full-release-notes">Full Release Notes&lt;/h2>
+&lt;p>For the full Release Notes, please refer to: &lt;a href="https://github.com/cloudwego/volo/compare/volo-0.3.0...volo-0.3.2">Volo Changelog&lt;/a>&lt;/p></description></item><item><title>Blog: Hertz Release v0.5.0</title><link>https://www.cloudwego.io/blog/2023/01/12/hertz-release-v0.5.0/</link><pubDate>Thu, 12 Jan 2023 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2023/01/12/hertz-release-v0.5.0/</guid><description>
 &lt;p>In version 0.5.0 of Hertz, in addition to regular iterative optimization, we also brought several important features.&lt;/p>
 &lt;h2 id="network-layer-and-protocol-layer-support-stream-based-interface">Network layer and protocol layer support stream-based interface&lt;/h2>
 &lt;blockquote>

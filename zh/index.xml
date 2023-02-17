@@ -7,7 +7,8 @@
 &lt;h2 id="metainfo-与-faststr-版本更新">metainfo 与 faststr 版本更新&lt;/h2>
 &lt;p>在这个版本中，我们更新了 metainfo 和 faststr 的版本，使得 metainfo 也支持了 faststr，以在尽可能多的场景下减少内存分配和拷贝，以优化性能。&lt;/p>
 &lt;p>faststr 是我们参考 smol_str 改进的一个 string 库，实现了 immutable string 的零开销 clone。&lt;/p>
-&lt;p>同时 FastStr 有一个不兼容变更：之前是为所有&lt;code>AsRef&amp;lt;str&amp;gt;&lt;/code>实现了&lt;code>From&lt;/code>，但是这样做会导致直接使用&lt;code>into&lt;/code>会带来额外的内存分配和拷贝开销。在新的 0.2 版本中，我们只为 &lt;code>'static str&lt;/code>、&lt;code>String&lt;/code>、&lt;code>Arc&amp;lt;str&amp;gt;&lt;/code>、&lt;code>Arc&amp;lt;String&amp;gt;&lt;/code>四种类型实现了&lt;code>From&lt;/code>，这四种类型 into 到 FastStr 是零开销的，通过这种形式避免用户不经意间带来的内存分配和拷贝问题。&lt;/p>
+&lt;p>同时 FastStr 有一个不兼容变更：之前是为所有&lt;code>AsRef&amp;lt;str&amp;gt;&lt;/code>实现了&lt;code>From&lt;/code>，但是这样做会导致直接使用&lt;code>into&lt;/code>会带来额外的内存分配和拷贝开销。
+在新的 0.2 版本中，我们只为 &lt;code>'static str&lt;/code>、&lt;code>String&lt;/code>、&lt;code>Arc&amp;lt;str&amp;gt;&lt;/code>、&lt;code>Arc&amp;lt;String&amp;gt;&lt;/code>四种类型实现了&lt;code>From&lt;/code>，这四种类型调用 &lt;code>into&lt;/code> 到 FastStr 是零开销的，通过这种形式避免用户不经意间带来的内存分配和拷贝问题。&lt;/p>
 &lt;p>旧版本的&lt;code>From&lt;/code>本质上就是调用了&lt;code>FastStr::new(s)&lt;/code>，因此出现不兼容问题的话，直接改为显式调用&lt;code>FastStr::new&lt;/code>即可。&lt;/p>
 &lt;h2 id="pilota-中-protobuf-编解码支持生成-faststr">Pilota 中 Protobuf 编解码支持生成 FastStr&lt;/h2>
 &lt;p>通过在 Pilota 中支持为 Protobuf 编解码生成 FastStr，我们可以将我们的性能优化能力带到 PB 和 gRPC 中。&lt;/p>
