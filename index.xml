@@ -1,4 +1,98 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Volo Release 0.3.2</title><link>https://www.cloudwego.io/blog/2023/02/07/volo-release-0.3.2/</link><pubDate>Tue, 07 Feb 2023 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2023/02/07/volo-release-0.3.2/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Getting Started with Hertz: Performance Testing Guide</title><link>https://www.cloudwego.io/blog/2023/02/24/getting-started-with-hertz-performance-testing-guide/</link><pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2023/02/24/getting-started-with-hertz-performance-testing-guide/</guid><description>
+&lt;h2 id="background">Background&lt;/h2>
+&lt;p>On September 8, 2021, ByteDance officially announced the open-sourcing of &lt;a href="https://github.com/cloudwego">CloudWeGo&lt;/a>.
+CloudWeGo is a set of microservices middleware developed by ByteDance, characterized by high performance, strong scalability, and high stability.
+It focuses on solving the difficulties of microservices communication and governance, and meets the demands of different businesses in different scenarios.
+On June 21, 2022, the CloudWeGo team has officially open-sourced &lt;a href="https://github.com/cloudwego/hertz">Hertz&lt;/a>, ByteDance&amp;rsquo;s largest HTTP framework. Hertz has gained a lot of attention from users since its release,
+and has received 3K+ stars by now. Many users have tested it themselves, and we are very grateful for your attention and support.
+This blog aims to share the scenarios and technical issues that developers need to be aware of when conducting load testing on Hertz.
+These suggestions can help users better optimize Hertz based on real HTTP scenarios to better fit their business needs and achieve optimal performance.
+Users can also refer to the official load testing project &lt;a href="https://github.com/cloudwego/hertz-benchmark">hertz-benchmark&lt;/a> for more details.&lt;/p>
+&lt;h2 id="characteristics-of-http-microservices">Characteristics of HTTP Microservices&lt;/h2>
+&lt;p>&lt;a href="https://github.com/cloudwego/hertz">Hertz&lt;/a> was born out of large-scale microservices practice at ByteDance, and is naturally designed for microservices scenarios.
+Therefore, in the following, we will first introduce the characteristics of the HTTP microservices to facilitate developers' deeper understanding of &lt;a href="https://github.com/cloudwego/hertz">Hertz&lt;/a>&amp;rsquo;s design considerations.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>HTTP Communication Model&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;p>Communication between microservices typically follows a Ping-Pong model. In addition to conventional throughput performance metrics, developers also need to consider the average latency of each HTTP request.
+While increasing the number of machines can quickly resolve throughput bottlenecks, reducing latency, which significantly affects user experience, is not as easy.&lt;/p>
+&lt;p>In the environment of microservices, a single call often requires collaboration from multiple microservices. Even if each node has low latency, the final latency on the entire chain can be amplified.
+Therefore, latency is a more critical metric for developers to pay attention to in microservices. &lt;a href="https://github.com/cloudwego/hertz">Hertz&lt;/a> has made certain optimizations for latency while ensuring throughput.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>The Use of Long and Short Connections&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;p>Since establishing a TCP connection requires a three-way handshake, the overhead of creating a new connection for each request can be very high for latency-sensitive services.
+Therefore, it is recommended to use persistent connections to complete requests whenever possible. In HTTP 1.1, Long connections are also the default option.
+However, there is no silver bullet, as maintaining connections also consumes resources, and the horizontal scalability of persistent connections is not as good as that of short connections.
+Therefore, in some scenarios, long connections may not be suitable. For example, in a scenario where configurations need to be pulled periodically,
+the connection establishment delay may not have a significant impact on configurations, and it may be more appropriate to use short connections if horizontal scalability is a concern when the configuration center is under high load.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Packet Size&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;p>The package size of a service depends on the actual business scenario. In HTTP scenarios, data can be placed in query, path, header, body, etc., and different locations have different effects on parsing.
+HTTP header is an identifier protocol, and the framework does not know how many headers there are until it finds a specific identifier. Therefore, the framework needs to receive all the headers before it can complete the parsing,
+which is not very friendly to the framework&amp;rsquo;s memory model. &lt;a href="https://github.com/cloudwego/hertz">Hertz&lt;/a> has also made special optimizations for header parsing, allocating enough buffer space for headers to reduce the overhead of cross-package copying during header processing.&lt;/p>
+&lt;p>Meanwhile, in the internal statistics of online services at ByteDance, it was found that most packages are within 1K (but too small packages have no practical significance, such as a fixed return of &amp;ldquo;hello world&amp;rdquo;).
+At the same time, there is no upper limit on the size of large packages, and various package sizes are involved. Therefore, &lt;a href="https://github.com/cloudwego/hertz">Hertz&lt;/a> has focused on optimizing the performance (throughput and latency) of packages within the most commonly used range of 128k or less.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Concurrency Quantity&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;p>Each instance may have multiple upstreams and will not only accept requests from a single instance. Moreover, HTTP 1 doesn&amp;rsquo;t support multiplexing,
+and each connection can only handle one request at a time. Therefore, the Server needs to accept multiple connections and process them simultaneously.&lt;/p>
+&lt;p>Different services have different connection utilization rates. For example, load testing services have high connection utilization rates, and a new request is made immediately after the completion of the previous request.
+Some services have low connection utilization rates, even though they are long-lived, they are only used once. The connection models used by these two services are not the same.&lt;/p>
+&lt;p>For the former, the goroutine per connection model should be used to reduce the overhead of context switching. For the latter, a coroutine pool should be used to reduce the scheduling overhead of too many goroutines.
+&lt;a href="https://github.com/cloudwego/hertz">Hertz&lt;/a> supports both models, and users can choose the appropriate configuration based on their business needs.&lt;/p>
+&lt;h2 id="load-testing-for-http-scenarios">Load Testing for HTTP Scenarios&lt;/h2>
+&lt;h3 id="using-scenarios-that-resemble-real-usage">Using Scenarios That Resemble Real Usage&lt;/h3>
+&lt;p>There are many load testing projects on GitHub and performance testing reports available online, but they may not be tailored to your specific needs.
+For example, in a real-world scenario, would you create a project that only responds with &lt;strong>&lt;code>hello world&lt;/code>&lt;/strong> no matter what the client sends? Unfortunately, many load testing projects do just that.&lt;/p>
+&lt;p>Before conducting load testing, consider your actual usage scenarios, such as:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Long vs Short Connections&lt;/strong>: Determine whether using long or short connections is more suitable for your scenario.&lt;/li>
+&lt;li>&lt;strong>Estimating Connection Usage&lt;/strong>: If using long connections and connection usage is high (which is the case in most scenarios), use the default configuration.
+If connection usage is low, consider adding the configuration option &lt;strong>&lt;code>server.WithIdleTimeout(0)&lt;/code>&lt;/strong> to modify the goroutine per connection model to a coroutine pool model and conduct comparative testing.&lt;/li>
+&lt;li>&lt;strong>Determining Data Location and Size&lt;/strong>: As mentioned earlier, data in different locations (such as query, header, body, etc.) and of different sizes can affect the framework&amp;rsquo;s performance.
+If the performance of all frameworks is similar, consider using a different data transmission location.&lt;/li>
+&lt;li>&lt;strong>Determining Concurrency Quantity&lt;/strong>: Some services are lightweight on business logic but heavy on framework, resulting in high framework concurrency.
+Conversely, some services are heavy on business logic but light on framework, resulting in low framework concurrency.&lt;/li>
+&lt;/ul>
+&lt;p>If you just want to test the performance of the framework, you can use the common scenario: &lt;strong>long connection, high connection usage, 1k body, 100 concurrency&lt;/strong>, and so on.
+The &lt;a href="https://github.com/cloudwego/hertz-benchmark">hertz-benchmark&lt;/a> repository also uses this default load test configuration.
+At the same time, the &lt;a href="https://github.com/cloudwego/hertz-benchmark">hertz-benchmark&lt;/a> repository also provides configuration options for users to modify headers, body, and concurrency, making it easy to customize the load test to fit their own needs.&lt;/p>
+&lt;h3 id="determine-the-target-of-load-testing">Determine the Target of Load Testing&lt;/h3>
+&lt;p>Measuring the performance of an RPC framework requires thinking from two perspectives: the Client perspective and the Server perspective. In a large-scale business architecture,
+the upstream Client may not necessarily use the downstream framework, and the downstream services called by developers are also likely to be different. This is even more complicated when considering the situation of Service Mesh.&lt;/p>
+&lt;p>Some load testing projects usually conduct load testing for Client and Server processes in a hybrid deployment, and then obtain performance data for the &lt;strong>entire framework&lt;/strong>, which may not be consistent with the actual operation in production.&lt;/p>
+&lt;p>If you want to conduct load testing the Server, you should give the Client as many resources as possible and push the Server to the limit, and vice versa.
+If both the Client and Server are only given 4 cores for load testing, developers will not be able to determine the performance data under which perspective, let alone provide actual reference for online services.&lt;/p>
+&lt;h3 id="use-dedicated-cpus">Use Dedicated CPUs&lt;/h3>
+&lt;p>Although online applications usually share CPUs among multiple processes, in a load testing scenario, both the Client and Server processes are extremely busy. Sharing CPUs at this time will result in a large number of context switches, which will make the data less reliable and prone to large fluctuations.&lt;/p>
+&lt;p>Therefore, we recommend isolating Client and Server processes on different CPUs or different dedicated machines. If you want to further avoid the impact of other processes, you can also use the nice -n -20 command to increase the scheduling priority of the load testing process.&lt;/p>
+&lt;p>In addition, if conditions permit, using physical machines instead of virtual machines on cloud platforms will make the test results more rigorous and reproducible.&lt;/p>
+&lt;h2 id="performance-data-reference">Performance Data Reference&lt;/h2>
+&lt;p>On the premise of meeting the above requirements, we compared the load testing result of multiple frameworks based on the latest version. The pressure test code is in the &lt;a href="https://github.com/cloudwego/hertz-benchmark">hertz-benchmark&lt;/a> repository.
+With the goal of fully filling the load of Server, &lt;a href="https://github.com/cloudwego/hertz">Hertz&lt;/a> has the lowest P99 latency of all the frameworks tested, and the throughput is also in the first tier and under continuous optimization.&lt;/p>
+&lt;ul>
+&lt;li>CPU: AMD EPYC 7Y83 64-Core Processor 2.7GHz
+&lt;ul>
+&lt;li>limits: server 4-CPUs，client 16-CPUS&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>OS：Debian GNU/Linux 10 (buster)&lt;/li>
+&lt;li>Go 1.19&lt;/li>
+&lt;li>&lt;a href="https://github.com/cloudwego/hertz/releases/tag/v0.3.2">hertz v0.3.2&lt;/a>，&lt;a href="https://github.com/valyala/fasthttp/releases/tag/v1.40.0">fasthttp v1.40.0&lt;/a>，
+&lt;a href="https://github.com/gin-gonic/gin/releases/tag/v1.8.1">gin v1.8.1&lt;/a>，&lt;a href="https://github.com/gofiber/fiber/releases/tag/v2.38.1">fiber v2.38.1&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Hertz-benchmark/1.png" alt="image">&lt;/p>
+&lt;p align="center">Comparison of throughput and latency of four frameworks&lt;/p>
+&lt;p>&lt;img src="https://www.cloudwego.io/img/blog/Hertz-benchmark/2.png" alt="image">&lt;/p>
+&lt;p align="center">Comparison of throughput and latency of three frameworks&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>As a very large scale enterprise microservices HTTP framework, &lt;a href="https://github.com/cloudwego/hertz">Hertz&lt;/a> was designed to solve a variety of problems in the large-scale microservices scenario.
+In the process of promotion, we encountered all kinds of services and solved many kinds of problem.
+Based on those experience, we wrote this blog. As a developer, you are always welcome to choose the right tool for your own scenario based on the testing guide provided above.
+If you have any questions, feel free to raise an &lt;a href="https://github.com/cloudwego/hertz/issues">Issue&lt;/a>.&lt;/p></description></item><item><title>Blog: Volo Release 0.3.2</title><link>https://www.cloudwego.io/blog/2023/02/07/volo-release-0.3.2/</link><pubDate>Tue, 07 Feb 2023 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2023/02/07/volo-release-0.3.2/</guid><description>
 &lt;p>In Volo 0.3.2 version, in addition to general bugfixes, there are many improvements.
 In particular, it is very much appreciated that there are community contributors who have brought us important features.&lt;/p>
 &lt;h2 id="trait-support-for-thrift-asynchronous-codec">Trait support for Thrift asynchronous codec&lt;/h2>
