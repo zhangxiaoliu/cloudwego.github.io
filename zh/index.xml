@@ -1,4 +1,83 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/zh/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: HTTP 框架 Hertz 实践入门：性能测试指南</title><link>https://www.cloudwego.io/zh/blog/2023/02/24/http-%E6%A1%86%E6%9E%B6-hertz-%E5%AE%9E%E8%B7%B5%E5%85%A5%E9%97%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/zh/blog/2023/02/24/http-%E6%A1%86%E6%9E%B6-hertz-%E5%AE%9E%E8%B7%B5%E5%85%A5%E9%97%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8C%87%E5%8D%97/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/zh/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Hertz v0.6.0 版本发布</title><link>https://www.cloudwego.io/zh/blog/2023/03/02/hertz-v0.6.0-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/zh/blog/2023/03/02/hertz-v0.6.0-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
+&lt;p>Hertz 0.6.0 版本中，除了常规迭代优化之外，我们还带来了多个重要 feature。&lt;/p>
+&lt;h2 id="支持-http-trailer">支持 HTTP Trailer&lt;/h2>
+&lt;p>在 Hertz v0.6.0 版本中，我们支持了 HTTP Trailer 的编码和解析。&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;a href="https://github.com/cloudwego/hertz-examples/tree/main/trailer">https://github.com/cloudwego/hertz-examples/tree/main/trailer&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>写 Trailer&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#8f5902;font-style:italic">// server 端
+&lt;/span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">func&lt;/span> &lt;span style="color:#000">handler&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#000">c&lt;/span> &lt;span style="color:#000">context&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Context&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span> &lt;span style="color:#000">ctx&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">*&lt;/span>&lt;span style="color:#000">app&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">RequestContext&lt;/span>&lt;span style="color:#000;font-weight:bold">){&lt;/span>
+&lt;span style="color:#000">ctx&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Response&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Header&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Trailer&lt;/span>&lt;span style="color:#000;font-weight:bold">().&lt;/span>&lt;span style="color:#000">Set&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Hertz&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Good&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">)&lt;/span>
+&lt;span style="color:#000;font-weight:bold">}&lt;/span>
+&lt;span style="color:#8f5902;font-style:italic">// client 端
+&lt;/span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span>&lt;span style="color:#000">req&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Header&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Trailer&lt;/span>&lt;span style="color:#000;font-weight:bold">().&lt;/span>&lt;span style="color:#000">Set&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Hertz&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Good&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">)&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>读 Trailer&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#8f5902;font-style:italic">// server 端
+&lt;/span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">func&lt;/span> &lt;span style="color:#000">handler&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#000">c&lt;/span> &lt;span style="color:#000">context&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Context&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span> &lt;span style="color:#000">ctx&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">*&lt;/span>&lt;span style="color:#000">app&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">RequestContext&lt;/span>&lt;span style="color:#000;font-weight:bold">){&lt;/span>
+&lt;span style="color:#000">ctx&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Request&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Header&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Trailer&lt;/span>&lt;span style="color:#000;font-weight:bold">().&lt;/span>&lt;span style="color:#000">Get&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Hertz&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">)&lt;/span>
+&lt;span style="color:#000;font-weight:bold">}&lt;/span>
+&lt;span style="color:#8f5902;font-style:italic">// client 端
+&lt;/span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span>&lt;span style="color:#000">resp&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Header&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Trailer&lt;/span>&lt;span style="color:#000;font-weight:bold">().&lt;/span>&lt;span style="color:#000">Get&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Hertz&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">)&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="http11-支持-response-writer-劫持">HTTP/1.1 支持 Response Writer 劫持&lt;/h2>
+&lt;p>在 Hertz v0.6.0 版本中，我们扩展了 HTTP/1.1 写请求的方式，在原来写请求流程的基础之上，支持用户在业务 handler/中间件中劫持 Response Writer，实现更加灵活的写请求方式。
+简单来说，原来所有的“底层写”逻辑统一放到 handler/中间件返回之后，这个带来两个比较明显的局限性：&lt;/p>
+&lt;ol>
+&lt;li>用户无法控制请求真正 flush 到对端的时机&lt;/li>
+&lt;li>针对 chunk 方式增量产生数据 &amp;amp; 实时写到对端的场景，在老的架构之上用法相对复杂，限制相对较多&lt;/li>
+&lt;/ol>
+&lt;p>基于此我们扩展出一套能够提供自行 flush 请求头和请求体的能力，同时提供了一个支持用户按需发送 chunk 数据的 Writer。详细实现参考：https://github.com/cloudwego/hertz/pull/610&lt;/p>
+&lt;h3 id="主要变更">主要变更&lt;/h3>
+&lt;ol>
+&lt;li>增加了一个扩展 Writer 的接口定义，实现了这个接口的 Writer 都可以用作劫持 Response Writer：
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#204a87;font-weight:bold">type&lt;/span> &lt;span style="color:#000">ExtWriter&lt;/span> &lt;span style="color:#204a87;font-weight:bold">interface&lt;/span> &lt;span style="color:#000;font-weight:bold">{&lt;/span>
+&lt;span style="color:#000">io&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Writer&lt;/span>
+&lt;span style="color:#000">Flush&lt;/span>&lt;span style="color:#000;font-weight:bold">()&lt;/span> &lt;span style="color:#204a87;font-weight:bold">error&lt;/span>
+&lt;span style="color:#8f5902;font-style:italic">// Finalize will be called by framework before the writer is released.
+&lt;/span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#8f5902;font-style:italic">// Implementations must guarantee that Finalize is safe for multiple calls.
+&lt;/span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">Finalize&lt;/span>&lt;span style="color:#000;font-weight:bold">()&lt;/span> &lt;span style="color:#204a87;font-weight:bold">error&lt;/span>
+&lt;span style="color:#000;font-weight:bold">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>提供了一个实现了上述接口的 Chunk Writer（有类似需求都可以参考这个来实现）：&lt;code>chunkedBodyWrite&lt;/code>&lt;/li>
+&lt;li>HTTP/1.1 具体写请求的地方针对被劫持了 Writer 的 Response 写操作做了对应的处理（跳过默认写请求逻辑），最后调用&lt;code>ExtWriter&lt;/code>接口的&lt;code>Finalize()&lt;/code>方法完成一次请求写回&lt;/li>
+&lt;/ol>
+&lt;h3 id="使用方法">使用方法&lt;/h3>
+&lt;p>如上，Hertz 提供了一个默认的&lt;code>ExtWriter&lt;/code>实现满足用户在 handler/中间件中的主动 flush 需求，使用方式也非常简单：&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#000">h&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">GET&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;/flush/chunk&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span> &lt;span style="color:#204a87;font-weight:bold">func&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#000">c&lt;/span> &lt;span style="color:#000">context&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Context&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span> &lt;span style="color:#000">ctx&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">*&lt;/span>&lt;span style="color:#000">app&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">RequestContext&lt;/span>&lt;span style="color:#000;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">{&lt;/span>
+&lt;span style="color:#8f5902;font-style:italic">// Hijack the writer of response
+&lt;/span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">ctx&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Response&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">HijackWriter&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#000">resp&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">NewChunkedBodyWriter&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">&amp;amp;&lt;/span>&lt;span style="color:#000">ctx&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Response&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span> &lt;span style="color:#000">ctx&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">GetWriter&lt;/span>&lt;span style="color:#000;font-weight:bold">()))&lt;/span>
+&lt;span style="color:#204a87;font-weight:bold">for&lt;/span> &lt;span style="color:#000">i&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">:=&lt;/span> &lt;span style="color:#0000cf;font-weight:bold">0&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#000">i&lt;/span> &lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span> &lt;span style="color:#0000cf;font-weight:bold">10&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span> &lt;span style="color:#000">i&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">++&lt;/span> &lt;span style="color:#000;font-weight:bold">{&lt;/span>
+&lt;span style="color:#000">ctx&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Write&lt;/span>&lt;span style="color:#000;font-weight:bold">([]&lt;/span>&lt;span style="color:#204a87">byte&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#000">fmt&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Sprintf&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;chunk %d: %s&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span> &lt;span style="color:#000">i&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span> &lt;span style="color:#000">strings&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Repeat&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;hi~&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span> &lt;span style="color:#000">i&lt;/span>&lt;span style="color:#000;font-weight:bold">))))&lt;/span> &lt;span style="color:#8f5902;font-style:italic">// nolint: errcheck
+&lt;/span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">ctx&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Flush&lt;/span>&lt;span style="color:#000;font-weight:bold">()&lt;/span> &lt;span style="color:#8f5902;font-style:italic">// nolint: errcheck
+&lt;/span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">time&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Sleep&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">200&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">*&lt;/span> &lt;span style="color:#000">time&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Millisecond&lt;/span>&lt;span style="color:#000;font-weight:bold">)&lt;/span>
+&lt;span style="color:#000;font-weight:bold">}&lt;/span>
+&lt;span style="color:#000;font-weight:bold">})&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="脚手架使用优化--最佳实践">脚手架使用优化 &amp;amp; 最佳实践&lt;/h2>
+&lt;p>在 hz v0.6.0 版本中，我们对生成代码的组织结构进行一系列的优化，从而可生成更加灵活的代码组织结构&lt;/p>
+&lt;h3 id="主要优化">主要优化&lt;/h3>
+&lt;ul>
+&lt;li>&lt;code>new&lt;/code> 命令支持 &amp;ldquo;router_dir&amp;rdquo; 选项，并配合已有的 &amp;ldquo;handler_dir&amp;rdquo;、&amp;ldquo;model_dir&amp;rdquo;，可完全自定义 IDL 生成产物的路径；并且会将这些自定义选项持久化到 &amp;ldquo;.hz&amp;rdquo; 文件中，可在 &lt;code>update&lt;/code> 时自动读取，减少命令的复杂度&lt;/li>
+&lt;li>增加向上搜索 &amp;ldquo;go.mod&amp;rdquo; 文件的能力，从而使得 hertz 在作为一个子项目时可以和其他项目共享同一个 &amp;ldquo;go module&amp;rdquo;&lt;/li>
+&lt;li>增加 &amp;ldquo;handler&amp;rdquo; 中引用第三方 IDL 产物的能力，可将 IDL 产物放到第三方仓库单独维护，使其不在项目目录中存放，进一步增强 IDL 管理能力&lt;/li>
+&lt;/ul>
+&lt;h3 id="最佳实践">最佳实践&lt;/h3>
+&lt;p>我们利用 &amp;ldquo;hz v0.6.0&amp;rdquo; 重写了 &amp;ldquo;&lt;a href="https://github.com/cloudwego/biz-demo/pull/26">biz-demo/easy-note&lt;/a>&amp;quot;，主要利用了如下 hz 的特性&lt;/p>
+&lt;ul>
+&lt;li>利用 &amp;ldquo;hz client&amp;rdquo; 的能力，基于 IDL 生成访问 &amp;ldquo;api server&amp;rdquo; 的 hertz client 调用代码&lt;/li>
+&lt;li>利用自定义 &amp;ldquo;router_dir&amp;rdquo;、 &amp;ldquo;handler_dir&amp;rdquo;、&amp;ldquo;model_dir&amp;rdquo; 选项，重新调整 &amp;ldquo;api server&amp;rdquo; 代码的组织结构，去掉 &amp;ldquo;biz&amp;rdquo; 目录的限制&lt;/li>
+&lt;li>利用 &amp;ldquo;向上搜索 go.mod&amp;rdquo; 的能力，使得 &amp;ldquo;api server&amp;rdquo; 可以作为 &amp;ldquo;easy-note&amp;rdquo; 的子项目共享同一个 &amp;ldquo;go module&amp;rdquo;&lt;/li>
+&lt;li>利用 &amp;ldquo;handler 引用第三方 IDL 产物&amp;rdquo; 的能力并配合 &amp;ldquo;hz model&amp;rdquo; 的能力，使得 IDL 产物单独存到到 &amp;ldquo;easy-note&amp;rdquo; 项目里，而并不存放到 &amp;ldquo;api server&amp;rdquo; 子项目里&lt;/li>
+&lt;/ul>
+&lt;h2 id="完整-release-note">完整 Release Note&lt;/h2>
+&lt;p>完整的 Release Note 可以参考：&lt;/p>
+&lt;ul>
+&lt;li>Hertz: &lt;a href="https://github.com/cloudwego/hertz/releases/tag/v0.6.0">https://github.com/cloudwego/hertz/releases/tag/v0.6.0&lt;/a>&lt;/li>
+&lt;li>Hz(脚手架): &lt;a href="https://github.com/cloudwego/hertz/releases/tag/cmd%2Fhz%2Fv0.6.0">https://github.com/cloudwego/hertz/releases/tag/cmd%2Fhz%2Fv0.6.0&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Blog: HTTP 框架 Hertz 实践入门：性能测试指南</title><link>https://www.cloudwego.io/zh/blog/2023/02/24/http-%E6%A1%86%E6%9E%B6-hertz-%E5%AE%9E%E8%B7%B5%E5%85%A5%E9%97%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/zh/blog/2023/02/24/http-%E6%A1%86%E6%9E%B6-hertz-%E5%AE%9E%E8%B7%B5%E5%85%A5%E9%97%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%8C%87%E5%8D%97/</guid><description>
 &lt;h2 id="背景">背景&lt;/h2>
 &lt;p>2021 年 9 月 8 日，字节跳动宣布正式开源 &lt;a href="https://github.com/cloudwego">CloudWeGo&lt;/a>。CloudWeGo 是一套字节跳动内部微服务中间件集合，具备&lt;strong>高性能、强扩展性和稳定性&lt;/strong>的特点，专注于解决微服务通信与治理的难题，满足不同业务在不同场景的诉求。
 2022 年 6 月 21 日，&lt;a href="https://github.com/cloudwego/hertz">Hertz&lt;/a> 正式开源。日前，CloudWeGo 团队正式开源字节跳动最大的 HTTP 框架 Hertz。Hertz 自发布以来，得到了大量用户的关注，累计收获了 3K+ star。有很多用户自己进行了测试，感谢大家对我们的关注和支持。
@@ -3644,5 +3723,4 @@ go &lt;span style="color:#204a87">test&lt;/span> -gcflags&lt;span style="color:#
 &lt;ul>
 &lt;li>我们在这个版本中更新了一些文档。&lt;/li>
 &lt;li>我们修改了一些拼写错误和错别字。感谢 @rleungx @Huangxuny1 @JeffreyBool 的贡献。&lt;/li>
-&lt;/ul></description></item><item><title>Blog: Kitex v0.0.1 版本发布</title><link>https://www.cloudwego.io/zh/blog/2021/07/12/kitex-v0.0.1-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</link><pubDate>Mon, 12 Jul 2021 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/zh/blog/2021/07/12/kitex-v0.0.1-%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83/</guid><description>
-&lt;p>Kitex 项目初始化。&lt;/p></description></item></channel></rss>
+&lt;/ul></description></item></channel></rss>
