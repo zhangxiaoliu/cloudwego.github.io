@@ -1,4 +1,84 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Hertz Release v0.6.0</title><link>https://www.cloudwego.io/blog/2023/03/02/hertz-release-v0.6.0/</link><pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2023/03/02/hertz-release-v0.6.0/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CloudWeGo – CloudWeGo</title><link>https://www.cloudwego.io/</link><description>Recent content on CloudWeGo</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://www.cloudwego.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Kitex Release v0.5.0</title><link>https://www.cloudwego.io/blog/2023/03/08/kitex-release-v0.5.0/</link><pubDate>Wed, 08 Mar 2023 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2023/03/08/kitex-release-v0.5.0/</guid><description>
+&lt;h2 id="introduction-to-key-changes">&lt;strong>Introduction to Key Changes&lt;/strong>&lt;/h2>
+&lt;h3 id="feature">&lt;strong>Feature&lt;/strong>&lt;/h3>
+&lt;p>&lt;strong>1. Fallback: Support fallback for client-side&lt;/strong>&lt;/p>
+&lt;p>When the RPC requests fail, users usually have some degradation measures to ensure the effective response (for example, construct the default response after the request timeout or circuit breaker).
+Kitex&amp;rsquo;s Fallback supports the processing of all error requests. At the same time, because business errors are usually returned through the Resp (BaseResp field), Kitex also supports the processing of Resp.
+Refer to &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/basic-feature/fallback/">Fallback&lt;/a>.&lt;/p>
+&lt;p>&lt;strong>2. Kitex - gRPC: Client add TLS option configuration&lt;/strong>&lt;/p>
+&lt;p>Setup via client.WithGRPCTLSConfig option.&lt;/p>
+&lt;p>&lt;strong>3. Kitex - Tool&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Support customized scaffold templates&lt;/strong>, refer to &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/code-gen/custom_tpl/">自定义脚手架模板&lt;/a>&lt;/li>
+&lt;li>&lt;strong>Support specifying the directory for generating code&lt;/strong>, refer to &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/code-gen/code_generation/#-gen-path">代码生成工具 -gen-path&lt;/a>&lt;/li>
+&lt;li>&lt;strong>Support using protoc plugin&lt;/strong>, refer to &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/code-gen/code_generation/#-protobuf-plugin">代码生成工具 -protobuf-plugin&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="optimization">&lt;strong>Optimization&lt;/strong>&lt;/h3>
+&lt;p>&lt;strong>1. Loadbalance：Use Weighted Round Robin algo as default Loadbalance policy&lt;/strong>&lt;/p>
+&lt;p>The old version uses Weight Random to do the loadbalance by default. Random can achieve the global balance. However, in the case of a small number of server instances, there is a large probability of random continuous access to the same instance, resulting in an increase in the maximum concurrent requests of downstream nodes. Therefore, the new version adjusts the default policy to Weight Round Robin.
+Refer to &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/basic-feature/loadbalance/">Loadbalance&lt;/a>&lt;/p>
+&lt;p>&lt;strong>2. Goroutine Resource of Connection Pool&lt;/strong>&lt;/p>
+&lt;p>When the old version uses a long connection, each client corresponds to a goroutine resource cleaning connection. When there are many clients, it will cause too many goroutines. The new version changes to share the goroutine to avoid the number of goroutines increasing with the number of clients.&lt;/p>
+&lt;h3 id="other">&lt;strong>Other&lt;/strong>&lt;/h3>
+&lt;p>Upgrade the frugal and pid dependency lib to support go 1.20.&lt;/p>
+&lt;hr>
+&lt;h2 id="full-release-log">&lt;strong>Full Release Log&lt;/strong>&lt;/h2>
+&lt;h3 id="feature-1">Feature&lt;/h3>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/840">#840&lt;/a>] feat(fallback): support fallback ability for kitex client-side, usage guide refer to &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/basic-feature/fallback">Fallback&lt;/a>&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/841">#841&lt;/a>] feat(tool): add GetResult() and GetFirstArgument() methods for service params of protobuf&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/791">#791&lt;/a>] feat(tool): merge two ways of passing extensions, to support two ways at sametime&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/797">#797&lt;/a>] feat(loadbalance): use smooth weighted round robin algo as default Loadbalance policy&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/760">#760&lt;/a>] feat(grpc): support TLS config in kitex grpc client&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/781">#781&lt;/a>] feat(tool): supports custom templates&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/783">#783&lt;/a>] feat(ttheader): add encode logic for gdpr token in TransInfo&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/775">#775&lt;/a>] feat(tool): support custom generate path&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/687">#687&lt;/a>] feat(tool): add protoc plugin flag&lt;/li>
+&lt;/ul>
+&lt;h3 id="optimize">Optimize&lt;/h3>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/750">#750&lt;/a>] optimize(generic): generic call write zero value for required and default fields to meet the specification of apache thrift and keep consistent with normal thrift encode of Kitex.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/739">#739&lt;/a>] optimize(generic): modify the url routing to align with Hertz for HTTP generic call&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/752">#752&lt;/a>] optimize(ttheader): attach part of ttheader binary into error when readKVInfo failed, which is useful for troubleshooting&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/821">#821&lt;/a>] optimize(config): add DeepCopy() &amp;amp; Equals() to circuitbreaker.CBConfig and retry.Policy&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/827">#827&lt;/a>] optimize: revise the remoteInfo of retry call, using the remoteInfo of the RPCCall that returns&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/762">#762&lt;/a>] optimize(tool): add go mod auto replace to thrift 0.13 in thrift mode&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/755">#755&lt;/a>] optimize: improve client error msg when ctx cancel or timeout&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/756">#756&lt;/a>] optimize: use sync.Cond as the profiler event trigger&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/753">#753&lt;/a>] optimize: add recover for client&amp;rsquo;s Close&lt;/li>
+&lt;/ul>
+&lt;h3 id="fix">Fix&lt;/h3>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/734">#734&lt;/a>] fix(retry): fix the panic problem caused by concurrent read and write of rpcinfo under backup retry&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/837">#837&lt;/a> &lt;a href="https://github.com/cloudwego/kitex/pull/842">#842&lt;/a>] fix(metahandler): adjust MetainfoHandler to the top of the MetaHandlers array to ensure that the logic of custom MetaHandlers that depends on MetainfoHandler works&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/812">#812&lt;/a>] fix: use detectionHandler to perform protocol detection in windows environment to support gRPC&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/851">#851&lt;/a>] fix: upgrade frugal to v0.1.6 for missing stop field&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/845">#845&lt;/a>] fix: fix the problem that RPCStat report status as success when biz handler return err&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/822">#822&lt;/a>] fix(loadbalance): don&amp;rsquo;t share balancer factory when loadbalance is defined by user&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/732">#732&lt;/a>] fix(mux): mux server waits for shardqueue close before shutdown&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/795">#795&lt;/a>] fix(grpc): zero first byte of grpc data frame, which could be random data from mcache&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/668">#668&lt;/a>] fix: fix race problem in queue.go/queue @dugenkui03&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/743">#743&lt;/a>] fix: use sharedTicker for long conn pool to prevent goroutine numbers increase as the number of client increases&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/799">#799&lt;/a>] fix(util): should return when get at least one GOPATH @StellarisW&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/807">#807&lt;/a>] fix(codec): fix fastpb nil ptr when struct fields are all default values&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/794">#794&lt;/a>] fix(tool): fix fastpb codegen by updating dependency&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/787">#787&lt;/a>] fix(tool): the import did not use the new method to render when template append content&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/785">#785&lt;/a>] fix(tool): remove useless combine service files&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/754">#754&lt;/a>] fix: fix the usage of metainfo in grpc scene&lt;/li>
+&lt;/ul>
+&lt;h3 id="refactor">Refactor&lt;/h3>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/814">#814&lt;/a> &lt;a href="https://github.com/cloudwego/kitex/pull/843">#843&lt;/a>] refactor(trans): return error in onRead of defaultServerHandler and close conn in outer method&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/816">#816&lt;/a>] refactor(utils): add utils.GetEnvLogDir and deprecate utils.GetLogDir&lt;/li>
+&lt;/ul>
+&lt;h3 id="test--docs--chore">Test &amp;amp; Docs &amp;amp; Chore&lt;/h3>
+&lt;ul>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/839">#839&lt;/a> &lt;a href="https://github.com/cloudwego/kitex/pull/693">#693&lt;/a>] test: import mockey repo and add usage demo of mockey unit test&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/806">#806&lt;/a>] test(transmeta):add some test cases for tansmeta package&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/761">#761&lt;/a>] docs: update README.md @fuergaosi233&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/817">#817&lt;/a>, &lt;a href="https://github.com/cloudwego/kitex/pull/832">#832&lt;/a>] chore: upgrade dependency lib to adapt go 1.20&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/772">#772&lt;/a>] chore: modify kitex gen code meta file name from kitex.yaml to kitex_info.yaml&lt;/li>
+&lt;/ul></description></item><item><title>Blog: Hertz Release v0.6.0</title><link>https://www.cloudwego.io/blog/2023/03/02/hertz-release-v0.6.0/</link><pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2023/03/02/hertz-release-v0.6.0/</guid><description>
 &lt;p>In version 0.6.0 of Hertz, in addition to regular iterative optimization, we also brought several important features.&lt;/p>
 &lt;h2 id="http-trailer-support">HTTP Trailer support&lt;/h2>
 &lt;p>In Hertz v0.6.0, we support encoding and parsing of HTTP Trailer.&lt;/p>
@@ -519,22 +599,22 @@ The original intention is to provide valuable references for enterprise users to
 &lt;li>[&lt;a href="https://github.com/cloudwego/netpoll/pull/179">#179&lt;/a>] fix: length overflow.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/netpoll/pull/183">#183&lt;/a>] fix: dont check epollout when epollerr.&lt;/li>
 &lt;/ul></description></item><item><title>Blog: Kitex Release v0.4.3</title><link>https://www.cloudwego.io/blog/2022/11/02/kitex-release-v0.4.3/</link><pubDate>Wed, 02 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/11/02/kitex-release-v0.4.3/</guid><description>
-&lt;h1 id="lite-version">Lite Version&lt;/h1>
-&lt;h2 id="feature">Feature&lt;/h2>
-&lt;ul>
+&lt;h2 id="introduction-to-key-changes">&lt;strong>Introduction to Key Changes&lt;/strong>&lt;/h2>
+&lt;h3 id="feature">&lt;strong>Feature&lt;/strong>&lt;/h3>
+&lt;ol>
 &lt;li>&lt;strong>Extend the Generated Code of client/server&lt;/strong>: Add a new feature which can extend generated client.go/server.go with config file. It is applicable to the scenario for customizing the unified suite. See &lt;a href="%5Bhttps://www.cloudwego.io/docs/kitex/tutorials/code-gen/template_extension/%5D">Extend the Templates of Service Generated Code&lt;/a> for details.&lt;/li>
 &lt;li>&lt;strong>Biz Customized Exception&lt;/strong> : Add supporting to return customized biz error which can distinguish with RPC error. See &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/basic-feature/bizstatuserr/">Business Exception&lt;/a>, &lt;a href="https://github.com/cloudwego/kitex/issues/511">Proposal&lt;/a>.&lt;/li>
 &lt;li>&lt;strong>Request Profiler&lt;/strong> : Add a new feature to do profiler for requests which can be used for cost statistics.&lt;/li>
 &lt;li>&lt;strong>Context Middleware&lt;/strong> : Add Context Middleware which is used for adding request-level middlewares.&lt;/li>
-&lt;/ul>
-&lt;h2 id="optimization">&lt;strong>Optimization&lt;/strong>&lt;/h2>
-&lt;ul>
+&lt;/ol>
+&lt;h3 id="optimization">&lt;strong>Optimization&lt;/strong>&lt;/h3>
+&lt;ol>
 &lt;li>&lt;strong>Frugal Performance Optimization&lt;/strong> : Support frugal precompile (pretouch) when new client or server, which is to reduce the impact of dynamic compilation on latency.&lt;/li>
 &lt;li>&lt;strong>Connpool Optimiztion&lt;/strong> : Refactor connection pool to improve the idle connections cleanup.&lt;/li>
-&lt;/ul>
+&lt;/ol>
 &lt;hr>
-&lt;h1 id="full-version">Full Version&lt;/h1>
-&lt;h2 id="feature-1">Feature&lt;/h2>
+&lt;h2 id="full-release-log">&lt;strong>Full Release Log&lt;/strong>&lt;/h2>
+&lt;h3 id="feature-1">Feature&lt;/h3>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/691">#691&lt;/a>] feat(client): add context middleware which is used for adding request-level middlewares.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/649">#649&lt;/a>] feat(connpool): new long connection pool with minIdle config and idle connections cleanup.&lt;/li>
@@ -546,13 +626,13 @@ The original intention is to provide valuable references for enterprise users to
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/657">#657&lt;/a>] feat(tool): support template extension.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/527">#527&lt;/a>] feat(profiler): profiler for rpc request which can be used for cost statistics.&lt;/li>
 &lt;/ul>
-&lt;h2 id="optimize">Optimize&lt;/h2>
+&lt;h3 id="optimize">Optimize&lt;/h3>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/690">#690&lt;/a>] optimize(meta): remove error logic for adding default metaHandler in #503.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/638">#638&lt;/a>] optimize(generic): httppb generic support map/list elem type as struct.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/641">#641&lt;/a>] optimize(tool): add warnings comments for oneway methods.&lt;/li>
 &lt;/ul>
-&lt;h2 id="fix">Fix&lt;/h2>
+&lt;h3 id="fix">Fix&lt;/h3>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/611">#611&lt;/a>] fix(client): fix resource leaks caused by Finalizer not being triggered in the scenario where clients are created frequently.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/698">#698&lt;/a>] fix(connpool): adjust globalIdle based on the number of connections decreased during the Get.&lt;/li>
@@ -566,18 +646,18 @@ The original intention is to provide valuable references for enterprise users to
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/630">#630&lt;/a>] fix(tool): remove redundant kitex comments for file that do not declare an interface.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/627">#627&lt;/a>] fix(tool): fix import missing when having different alias for the same path.&lt;/li>
 &lt;/ul>
-&lt;h2 id="refactor">Refactor&lt;/h2>
+&lt;h3 id="refactor">Refactor&lt;/h3>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/651">#651&lt;/a>] refactor(server): server handler read/write interface return new context.&lt;/li>
 &lt;/ul>
-&lt;h2 id="docs">Docs&lt;/h2>
+&lt;h3 id="docs">Docs&lt;/h3>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/656">#656&lt;/a>] docs: remove wrong message in CONTRIBUTING.md.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/683">#683&lt;/a>] docs(kerrors): fix kerrors WithCauseAndExtraMsg method comment.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/625">#625&lt;/a>] chore: fix grammar of pull request template.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/623">#623&lt;/a>] chore: modify the template of pull request.&lt;/li>
 &lt;/ul>
-&lt;h2 id="test--ci">Test &amp;amp; CI&lt;/h2>
+&lt;h3 id="test--ci">Test &amp;amp; CI&lt;/h3>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/646">#646&lt;/a>] test: fix ut failure caused by InitRPCInfoFunc not setting rpcinfo.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/680">#680&lt;/a>] test: fix retry test race.&lt;/li>
@@ -722,7 +802,24 @@ The original intention is to provide valuable references for enterprise users to
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/203">#203&lt;/a>] add v6 support for AddMissingPort function.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/hertz/pull/186">#186&lt;/a>] chore: support codecov.&lt;/li>
 &lt;/ul></description></item><item><title>Blog: Kitex Release v0.4.0</title><link>https://www.cloudwego.io/blog/2022/08/26/kitex-release-v0.4.0/</link><pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/08/26/kitex-release-v0.4.0/</guid><description>
-&lt;h2 id="feature">Feature&lt;/h2>
+&lt;h2 id="introduction-to-key-changes">&lt;strong>Introduction to Key Changes&lt;/strong>&lt;/h2>
+&lt;h3 id="feature">&lt;strong>Feature&lt;/strong>&lt;/h3>
+&lt;ol>
+&lt;li>&lt;strong>Retry enhancement&lt;/strong>: Support user-defined result retry; Support request-level configuration (priority is higher than Neptune). See &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/basic-feature/retry/">retry guide&lt;/a> for details&lt;/li>
+&lt;li>&lt;strong>Frugal (Thrift)&lt;/strong>: Support default value of IDL; No codec code is supported by using frugal. See &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/advanced-feature/codec_frugal/">frugal&lt;/a> for details&lt;/li>
+&lt;li>&lt;strong>Tool-Protobuf&lt;/strong>: Support depend on external libraries with go_package, see &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/code-gen/code_generation/#notes-for-using-protobuf-idls">Notes for Using Protobuf IDLs&lt;/a>; Support Guess IDL type from the file extension, it is unnecessary to specify the type param when generating the protobuf code&lt;/li>
+&lt;li>&lt;strong>Fastpb(protobuf)&lt;/strong>: Support fastpb to optimize performance of protobuf, and it is integrated into Kite by default. See &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/code-gen/fastpb/">fastpb&lt;/a> for details&lt;/li>
+&lt;li>&lt;strong>Generic Call&lt;/strong>: Support HTTP+Protobuf generic call&lt;/li>
+&lt;li>&lt;strong>Kitex lib supports Windows&lt;/strong>: You can use kitex running on Windows (Kitex tool still doesn&amp;rsquo;t support)&lt;/li>
+&lt;/ol>
+&lt;h3 id="optimization--bugfix">&lt;strong>Optimization &amp;amp; Bugfix&lt;/strong>&lt;/h3>
+&lt;ol>
+&lt;li>&lt;strong>Performance Optimization&lt;/strong>: gRPC unary throughput increased by 46-70%, and 51% - 70% higher than the official gRPC framework throughput. See &lt;a href="https://github.com/cloudwego/kitex-benchmark">benchmark&lt;/a> for details&lt;/li>
+&lt;li>&lt;strong>Generic Call&lt;/strong>: Support default value defined in thrift IDL for HTTP / Map / JSON Generic&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h2 id="full-release-log">&lt;strong>Full Release Log&lt;/strong>&lt;/h2>
+&lt;h3 id="feature-1">Feature&lt;/h3>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/571">#571&lt;/a>] feat(protobuf): integrate &lt;a href="https://github.com/cloudwego/fastpb">fastpb&lt;/a> into kitex, refer to &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/code-gen/fastpb/">doc&lt;/a>.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/592">#592&lt;/a>] feat(generic): add default value defined in thrift idl for HTTP/Map/JSON generic call.&lt;/li>
@@ -732,14 +829,14 @@ The original intention is to provide valuable references for enterprise users to
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/540">#540&lt;/a>] feat(retry): support retry with specified error or response and add retry option for setup method retry policy.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/533">#533&lt;/a>] feat(generic): js_conv annotation of generic call supports map type conversion.&lt;/li>
 &lt;/ul>
-&lt;h2 id="optimize">Optimize&lt;/h2>
+&lt;h3 id="optimize">Optimize&lt;/h3>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/522">#522&lt;/a>, &lt;a href="https://github.com/cloudwego/kitex/pull/538">#538&lt;/a>, &lt;a href="https://github.com/cloudwego/kitex/pull/605">#605&lt;/a>] perf(grpc): optimize performance for gRPC protocol.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/590">#590&lt;/a>] optimize(tool): guess IDL type from file extension.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/559">#559&lt;/a>] optimize(timeout): use wrap func to check timeout err in timeout middleware which can ignore logs customized timeout err.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/581">#581&lt;/a>] optimize(tool): kitex tool usage add cmd example.&lt;/li>
 &lt;/ul>
-&lt;h2 id="bugfix">Bugfix&lt;/h2>
+&lt;h3 id="bugfix">Bugfix&lt;/h3>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/564">#564&lt;/a>] fix(oneway): discard oneway conn after sending complete, or subsequent requests that send to the same connection may get blocked until the oneway request gets processed by the server.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/577">#577&lt;/a>, &lt;a href="https://github.com/cloudwego/kitex/pull/584">#584&lt;/a>, &lt;a href="https://github.com/cloudwego/kitex/pull/602">#602&lt;/a>] fix(rpcinfo): fix rpcinfo reuse problem in longconn scene.&lt;/li>
@@ -750,13 +847,13 @@ The original intention is to provide valuable references for enterprise users to
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/595">#595&lt;/a>] fix: fix nil union panic in BLength.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/589">#589&lt;/a>, &lt;a href="https://github.com/cloudwego/kitex/pull/596">#596&lt;/a>] fix(frugal): fix frugal build tag.&lt;/li>
 &lt;/ul>
-&lt;h2 id="refactor">Refactor&lt;/h2>
+&lt;h3 id="refactor">Refactor&lt;/h3>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/566">#566&lt;/a>] refactor(metainfo): remove noused metakeys of HTTP2 Header.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/593">#593&lt;/a>] refactor(trans): support specify Listener for server by option WithListener, the priority is higher than WithServiceAddr.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/582">#582&lt;/a>] refactor(tool): use templates by embedding and export APIs for external usage for kitex tool.&lt;/li>
 &lt;/ul>
-&lt;h2 id="test">Test&lt;/h2>
+&lt;h3 id="test">Test&lt;/h3>
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/579">#579&lt;/a>] test: add ut for long pool dump function.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/608">#608&lt;/a>] test: fix data race in TestClientConnDecoupledFromApplicationRead.&lt;/li>
@@ -772,7 +869,7 @@ The original intention is to provide valuable references for enterprise users to
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/604">#604&lt;/a>] chore: upgrade fastpb to v0.0.2.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/kitex/pull/603">#603&lt;/a>] chore: upgrade frugal to v0.1.2.&lt;/li>
 &lt;/ul>
-&lt;h2 id="dependency-change">Dependency Change&lt;/h2>
+&lt;h3 id="dependency-change">Dependency Change&lt;/h3>
 &lt;p>github.com/cloudwego/frugal v0.1.1 -&amp;gt; v0.1.3&lt;/p>
 &lt;p>github.com/cloudwego/netpoll v0.2.5 -&amp;gt; v0.2.6&lt;/p>
 &lt;p>github.com/cloudwego/thriftgo v0.1.2 -&amp;gt; v0.2.0&lt;/p>
