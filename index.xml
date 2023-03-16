@@ -9,9 +9,9 @@ Refer to &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/basic-feature
 &lt;p>Setup via client.WithGRPCTLSConfig option.&lt;/p>
 &lt;p>&lt;strong>3. Kitex - Tool&lt;/strong>&lt;/p>
 &lt;ul>
-&lt;li>&lt;strong>Support customized scaffold templates&lt;/strong>, refer to &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/code-gen/custom_tpl/">自定义脚手架模板&lt;/a>&lt;/li>
-&lt;li>&lt;strong>Support specifying the directory for generating code&lt;/strong>, refer to &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/code-gen/code_generation/#-gen-path">代码生成工具 -gen-path&lt;/a>&lt;/li>
-&lt;li>&lt;strong>Support using protoc plugin&lt;/strong>, refer to &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/code-gen/code_generation/#-protobuf-plugin">代码生成工具 -protobuf-plugin&lt;/a>&lt;/li>
+&lt;li>&lt;strong>Support customized scaffold templates&lt;/strong>, refer to &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/code-gen/custom_tpl/">Custom Scaffold Template&lt;/a>&lt;/li>
+&lt;li>&lt;strong>Support specifying the directory for generating code&lt;/strong>, refer to &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/code-gen/code_generation/#-gen-path">Code Generation Tool -gen-path&lt;/a>&lt;/li>
+&lt;li>&lt;strong>Support using protoc plugin&lt;/strong>, refer to &lt;a href="https://www.cloudwego.io/docs/kitex/tutorials/code-gen/code_generation/#-protobuf-plugin">Code Generation Tool -protobuf-plugin&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h3 id="optimization">&lt;strong>Optimization&lt;/strong>&lt;/h3>
 &lt;p>&lt;strong>1. Loadbalance：Use Weighted Round Robin algo as default Loadbalance policy&lt;/strong>&lt;/p>
