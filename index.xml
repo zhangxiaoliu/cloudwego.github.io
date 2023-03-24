@@ -716,7 +716,7 @@ The original intention is to provide valuable references for enterprise users to
 &lt;ul>
 &lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/61">#61&lt;/a>] optimize volo-thrift code, remove unnecessary generic parameters.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/63">#63&lt;/a>] remove TAIT elision lifetime required after nightly-2022-10-20.&lt;/li>
-&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/73">#73&lt;/a>] remove useless liftetime paramenter in LoadBalance:: InstanceIter.&lt;/li>
+&lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/73">#73&lt;/a>] remove useless liftetime parameter in LoadBalance:: InstanceIter.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/65">#65&lt;/a>] feat: upgrade clap to 4.&lt;/li>
 &lt;li>[&lt;a href="https://github.com/cloudwego/volo/pull/72">#72&lt;/a>] feat: add writev support for volo net conn.&lt;/li>
 &lt;/ul></description></item><item><title>Blog: Volo Release v0.2.0</title><link>https://www.cloudwego.io/blog/2022/10/18/volo-release-v0.2.0/</link><pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate><guid>https://www.cloudwego.io/blog/2022/10/18/volo-release-v0.2.0/</guid><description>
@@ -1711,7 +1711,7 @@ In terms of CPU usage, ZeroCopy can save half the cpu of non-ZeroCopy in large p
 &lt;span style="color:#000">msec&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#0000cf;font-weight:bold">0&lt;/span>
 &lt;span style="color:#ce5c00;font-weight:bold">...&lt;/span>
 &lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>Neverthless, our experiments have proved that the improvement is insignificant. Setting &amp;ldquo;msec = 0&amp;rdquo; merely reduces the delay of a single call by 50ns, which is not a considerable improvement. If we want to further reduce latency, adjustment must be made in Go runtime scheduling.
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Nevertheless, our experiments have proved that the improvement is insignificant. Setting &amp;ldquo;msec = 0&amp;rdquo; merely reduces the delay of a single call by 50ns, which is not a considerable improvement. If we want to further reduce latency, adjustment must be made in Go runtime scheduling.
 Thus, let&amp;rsquo;s further explore this issue:
 In the pseudocode above, setting &amp;ldquo;msec= -1&amp;rdquo; with no triggered event, and &amp;ldquo;continue&amp;rdquo; directly will immediately execute &amp;ldquo;EpollWait&amp;rdquo; again. Since there is no triggered event while &amp;ldquo;msec = -1&amp;rdquo;, the current &amp;ldquo;goroutine&amp;rdquo; will block and be switched by &amp;ldquo;P&amp;rdquo; passively. However, it is less efficient, and we can save time if we actively switch &amp;ldquo;goroutine&amp;rdquo; for &amp;ldquo;P&amp;rdquo; before &amp;ldquo;continue&amp;rdquo;. So we modified the above pseudocode as follows:&lt;/p>
 &lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go" data-lang="go">&lt;span style="color:#204a87;font-weight:bold">var&lt;/span> &lt;span style="color:#000">msec&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">-&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>
@@ -1933,7 +1933,7 @@ go &lt;span style="color:#204a87">test&lt;/span> -gcflags&lt;span style="color:#
 &lt;p>It reveals that turning on the highest level of inlining intensity does eliminate many functions that cannot be inlined due to &amp;ldquo;function too complex&amp;rdquo;, but the test results show that the improvement is insignificant.&lt;/p>
 &lt;h3 id="testing-results">Testing Results&lt;/h3>
 &lt;p>We built benchmarks to compare performance before and after optimization, and here are the results.
-Testing Enviornment:
+Testing Environment:
 Go 1.13.5 darwin/amd64 on a 2.5 GHz Intel Core i7 16GB&lt;/p>
 &lt;p>&lt;strong>Small Data Size&lt;/strong>&lt;/p>
 &lt;p>Data size: 20KB&lt;/p>
