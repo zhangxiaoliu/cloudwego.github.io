@@ -19,7 +19,7 @@ description: "Hertz 开发环境准备、快速上手与代码生成工具 hz �
 
 在完成环境准备后，可以按照如下操作快速启动 Hertz Server：
 
-1. 在当前目录下创建 hertz_demo 文件夹，进入该目录中。
+1. 在任意目录下创建 hertz_demo 文件夹，进入该目录中。
 2. 创建 `main.go` 文件。
 3. 在 `main.go` 文件中添加以下代码。
 
@@ -39,7 +39,7 @@ description: "Hertz 开发环境准备、快速上手与代码生成工具 hz �
        h := server.Default()
 
        h.GET("/ping", func(ctx context.Context, c *app.RequestContext) {
-               ctx.JSON(consts.StatusOK, utils.H{"message": "pong"})
+               c.JSON(consts.StatusOK, utils.H{"message": "pong"})
        })
 
        h.Spin()
